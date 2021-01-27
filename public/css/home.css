@@ -1,0 +1,203 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  font-family: "Roboto", "sans-serif";
+
+}
+
+
+.nav-container{
+  background: #FFFFFF;
+  box-shadow: 0px 2px 15px 2px rgba(29, 111, 295, 0.4);
+  height: 54px;
+  margin-bottom: 40px;
+}
+
+.wrapper{
+   width: 1200px;
+  margin: 0 auto;
+}
+
+nav{
+  display: flex;
+  padding-top: 8px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+nav ul{
+  display: flex;
+  height: 32px;
+}
+
+nav .logo{
+  font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nav-items li{
+  list-style: none;
+  margin-right: 100px;
+}
+
+.nav-items li a{
+  font-family: Roboto;
+  font-style: normal;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 35px;
+  text-transform: capitalize;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #000000
+}
+
+
+.header-container{
+  margin: 0;
+  max-width:1519.200px;
+ height:853px;
+  position: relative;
+  background: url("/assets/Ellipse.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+
+}
+
+
+.text{
+  text-align: center;
+  padding-top: 150px;
+}
+
+
+
+.photo{
+  text-align: right;
+  padding-right: 80px;
+  padding-top: 90px;
+}
+
+.photo img{
+  position: relative;
+  z-index: 100;
+  transition: 300ms;
+}
+
+.photo img:hover{
+  transform: rotate(-6.74deg);
+  border: 1px solid red;
+}
+
+.photo-bg{
+  position: absolute;
+width: 327px;
+height: 603px;
+left: 368px;
+top: 90.95px;
+z-index: 00;
+background: #94A6B3;
+transform: rotate(-6.74deg);
+}
+
+
+
+
+/* LOGIN PAGE CSS */
+
+
+
+.block-container{
+  margin-top: 100px;
+}
+
+
+.box{
+  height: calc(100vh - 200px);
+
+}
+.left{
+background: #1A6382
+}
+.right{
+background: #EDFEFC;
+ }
+.right-box-container{
+  margin-top: 50px;
+  margin-left: 40px;
+}
+
+.right-box-container h5{
+  font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+margin-bottom: 20px;
+
+}
+.buttons{
+  font-family: "Roboto","cursive";
+font-style: normal;
+font-weight: normal;
+}
+.button1{
+border:none;
+width: 156px;
+height: 41px;
+background: #FFFFFF;
+}
+
+.button2{
+border: none;
+width: 156px;
+height: 41px;
+background: #FFFFFF;
+float: left;
+}
+
+
+.button3{
+border: none;
+width: 156px;
+height: 41px;
+background: #FFFFFF;
+float: left;
+}
+
+
+.button1:hover{
+  background: #0024E0;
+  color: white;
+}
+
+.button2:hover{
+  background: #0024E0;
+  color: white;
+}
+
+.button3:hover{
+  background: #0024E0;
+  color: white;
+}
+
+.active{
+  border: none;
+  background: #0024E0;
+  color: white;
+}
+
+.rectangle{
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+
+ margin-top: 40px;
+ margin-right:30px;
+ height: 40px;
+background: #FFFFFF;
+}

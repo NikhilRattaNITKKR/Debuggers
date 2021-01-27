@@ -6,8 +6,12 @@ router.get("/",(req,res)=>{
   res.render("home");
 });
 
-router.get("/login",(req,res)=>{
-  res.render("login");
+router.get("/logIn",(req,res)=>{
+  res.render("logIn");
+});
+
+router.get("/SignUp",(req,res)=>{
+  res.render("SignUp");
 });
 
 module.exports=router;

@@ -143,15 +143,15 @@ transition: 300ms;
 
 .get_started:hover{
 
-  transform: translateY(-10px);
+  transform: translateY(-15px);
 }
 
 .text p{
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 
-/* LOGIN PAGE CSS */
+/* SIGNUP PAGE CSS */
 
 
 
@@ -243,3 +243,14 @@ float: left;
  height: 40px;
 background: #FFFFFF;
 }
+
+
+
+
+
+
+
+
+
+
+/* LOGIN PAGE  */

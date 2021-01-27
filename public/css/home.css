@@ -102,11 +102,44 @@ height: 603px;
 left: 368px;
 top: 90.95px;
 z-index: 00;
-background: #94A6B3;
+background: #FFF73A;
+border-radius: 20px;
 transform: rotate(-6.74deg);
 }
 
 
+.get_started{
+
+  background: linear-gradient(180deg, #6E3BFF 25.29%, rgba(110, 59, 255, 0) 100%);
+border-radius: 30px;
+width: 180px;
+height: 67px;
+margin: 0 auto;
+transition: 300ms;
+}
+
+.get_started a{
+  font-size: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  transform: translateY(15px);
+
+}
+
+.get_started a:hover{
+    text-decoration: none;
+
+}
+
+.get_started:hover{
+
+  transform: translateY(-10px);
+}
+
+.text p{
+  margin-bottom: 60px;
+}
 
 
 /* LOGIN PAGE CSS */

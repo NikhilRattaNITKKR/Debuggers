@@ -1,21 +1,7 @@
-const express = require('express');
-const request = require('request');
-const app=express();
+const app = require('./app');
 
+const port=3000||process.env.PORT;
 
-app.set("view engine", "ejs");
-
-app.use(express.static("public"));
-
-app.get("/",function(req,res){
-  res.render("home");
-});
-
-
-
-
-
-
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
   console.log("Server started");
 });

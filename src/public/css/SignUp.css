@@ -42,8 +42,57 @@ transform: translateY(20px);
 .login-text{
   display: flex;
   justify-content: center;
-
+  padding-left: 8%;
   transform: translateY(70px);
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  transform: translateY(90px);
+  padding-left: 8%;
+  border-radius: 20px;
+}
+.btn1, .btn2{
+  border: none;
+  float: left;
+  height: 40px;
+
+}
+.btn1{
+  border-radius: 10px 0 0 10px;
+}
+.btn2{
+  border-radius: 0px 10px 10px 0px;
+}
+.btn1:hover{
+  background:#FFD700;
+  color:white;
+
+}
+.btn2:hover{
+  background:#FFD700;
+  color:white;
+}
+
+.btn1:focus{
+  outline: none;
+  border: none;
+  background:#FFD700;
+  color:white;
+}
+
+.btn2:focus{
+  outline: none;
+  border: none;
+  background:#FFD700;
+  color:white;
+}
+.active{
+  outline: none;
+  border: none;
+  background:#FFD700;
+  color:white;
 }
 
 .username {
@@ -83,7 +132,7 @@ transform: translateY(20px);
  display: flex;
  justify-content: space-around;
  align-items: center;
-  transform: translateY(180px);
+  transform: translateY(160px);
 }
 
 .password input{
@@ -100,17 +149,38 @@ transform: translateY(20px);
   border-bottom: 1.5px solid black;
 }
 
+.confirm-password{
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+  transform: translateY(190px);
+}
+
+.confirm-password input{
+  background: none;
+  border: none;
+  transition: 300ms;
+}
+
+.confirm-password input:focus{
+  background: none;
+  border: none;
+  outline: none;
+  transform: translateY(-10px);
+  border-bottom: 1.5px solid black;
+}
+
 .button-login{
   display: flex;
   justify-content: center ;
-  transform: translateY(250px);
+  transform: translateY(240px);
 
 }
 
 .button-login button{
   background: none;
   border: none;
-  width: 120px;
+  width: 170px;
   height:40px;
   background: linear-gradient(180deg, #9507EC 44.06%, rgba(149, 7, 236, 0) 100%);
   border-radius: 50px;
@@ -127,20 +197,13 @@ transform: translateY(20px);
   outline: none;
 
 }
-.create-account{
-  display: flex;
-  justify-content: center ;
-  transform: translateY(260px);
-}
-.create-account a{
-  text-decoration: none;
-  color: black;
-}
+
+
 
 .forgot-pass{
   display: flex;
   justify-content: center ;
-  transform: translateY(300px);
+  transform: translateY(260px);
 }
 
 .forgot-pass a{

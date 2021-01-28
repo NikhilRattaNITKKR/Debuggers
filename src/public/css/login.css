@@ -1,5 +1,6 @@
 *{
-  background: url('')
+  background: url('');
+  font-family: "Helvetica";
 }
 .block1-container{
   margin-top: 100px;
@@ -48,26 +49,39 @@ transform: translateY(20px);
 .username {
   display: flex;
   justify-content: center ;
-  transform: translateY(110px);
+  transform: translateY(130px);
 }
 .username input{
   background: none;
   border: none;
+  transition: 300ms;
 }
 .username input:focus{
   background: none;
   border: none;
+  outline: none;
+  transform: translateY(-10px);
+  border-bottom: 1.5px solid black;
 }
- 
+
 .password{
   display: flex;
   justify-content: center ;
-  transform: translateY(140px);
+  transform: translateY(180px);
 }
 
 .password input{
   background: none;
   border: none;
+  transition: 300ms;
+}
+
+.password input:focus{
+  background: none;
+  border: none;
+  outline: none;
+  transform: translateY(-10px);
+  border-bottom: 1.5px solid black;
 }
 
 .button-login{
@@ -91,6 +105,11 @@ transform: translateY(20px);
 
 .button-login button:hover{
   transform: translateY(-10px);
+}
+
+.button-login button:focus{
+  outline: none;
+
 }
 .create-account{
   display: flex;

@@ -1,0 +1,47 @@
+::-webkit-scrollbar{
+  width: 10px;
+
+}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(transparent,#4D217B );
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(transparent,#0014ff);
+}
+
+.navbar
+{
+    background-color: white;
+}
+i{
+    color:rgb(51 66 255);
+}
+.brand_name
+{
+    margin:auto 10px;
+    font-size:30px;
+}
+.nav-link
+{
+    margin:auto 20px;
+    font-weight: 400;
+    font-size:20px;
+}
+.login_nav_text,.meet_nav_text,.contact_nav_text,.about_nav_text
+{
+
+    padding:0;
+    margin:0;
+    border:none;
+}
+.fas
+{
+    float:left;
+    font-size:30px;
+    margin:10px 20px;
+}
+nav
+{
+    box-shadow:0 0 15px 0 rgb(94, 93, 93);
+}

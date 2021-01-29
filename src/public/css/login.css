@@ -3,12 +3,12 @@
   font-family: "Helvetica";
 }
 .block1-container{
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 
 .box1{
-  height: calc(100vh - 200px);
+    height: calc(73.1vh);
   border-radius:25px;
   margin: 0 30px;
 }

@@ -5,68 +5,23 @@
 }
 
 body{
-  font-family: "Roboto", "sans-serif";
+  /*font-family: "Roboto", "sans-serif";*/
 
 }
 
 .row{
+  padding-top: 50px;
   margin-right: 0;
   margin-left: 0;
 }
-.nav-container{
-  background: #FFFFFF;
-  box-shadow: 0px 2px 15px 2px rgba(29, 111, 295, 0.4);
-  height: 54px;
-  margin-bottom: 40px;
-}
 
-.wrapper{
-   width: 1200px;
-  margin: 0 auto;
-}
-
-nav{
-  display: flex;
-  padding-top: 8px;
-  align-items: baseline;
-  justify-content: space-between;
-}
-
-nav ul{
-  display: flex;
-  height: 32px;
-}
-
-nav .logo{
-  font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 30px;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.nav-items li{
-  list-style: none;
-  margin-right: 100px;
-}
-
-.nav-items li a{
-  font-family: Roboto;
-  font-style: normal;
-  text-decoration: none;
-  font-size: 20px;
-  line-height: 35px;
-  text-transform: capitalize;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: #000000
-}
 
 
 .photo{
   position: relative;
   margin: 0;
   max-width:1519.200px;
- height:853px;
+ height:753px;
   position: relative;
   background: url("/assets/Ellipse.svg");
   background-repeat: no-repeat;
@@ -104,10 +59,10 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
 width: 327px;
 height: 603px;
-left: 337px;
+left: 341px;
 top: -603px;
 z-index: 00;
-background: #FFF73A;
+background: linear-gradient(180deg, #fff823, #000000de);
 border-radius: 20px;
 transform: rotate(-6.74deg);
 }
@@ -119,7 +74,7 @@ transform: rotate(-6.74deg);
 }
 .get_started{
 
-  background: linear-gradient(180deg, #6E3BFF 25.29%, rgba(110, 59, 255, 0) 100%);
+  background: linear-gradient(90deg, #4D217B 25.29%, rgba(134,62,210, 0.6) 100%);
 border-radius: 30px;
 width: 180px;
 height: 67px;

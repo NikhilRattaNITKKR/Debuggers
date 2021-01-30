@@ -8,7 +8,7 @@ function ScrollAppear(){
   }
 }
 
-function ScrollAppear2(x){
+function ScrollAppear2(){
   var x = document.querySelector('.second-block');
   var height = x.getBoundingClientRect().top;
   var screenPosition = window.innerHeight/2;
@@ -18,7 +18,7 @@ function ScrollAppear2(x){
   }
 }
 
-function ScrollAppear3(x){
+function ScrollAppear3(){
   var x = document.querySelector('.third-block');
   var height = x.getBoundingClientRect().top;
   var screenPosition = window.innerHeight/2;
@@ -28,7 +28,7 @@ function ScrollAppear3(x){
   }
 }
 
-function ScrollAppear4(x){
+function ScrollAppear4(){
   var x = document.querySelector('.fourth-block');
   var height = x.getBoundingClientRect().top;
   var screenPosition = window.innerHeight/2;

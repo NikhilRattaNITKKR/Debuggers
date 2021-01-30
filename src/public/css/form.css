@@ -1,0 +1,203 @@
+body
+{
+    font-size:20px;
+    position:relative;
+}
+.first_genre_card
+{
+    float: left;
+}
+.second_genre_card
+{
+    float: left;
+}
+.third_genre_card
+{
+    float: left;
+}
+input
+{
+    background-color: #0c1625;
+}
+.name_input,.roll_input,.branch_input,.mail_input,.password_input,.dropdown_one_button,.dropdown_two_button,.dropdown_three_button{
+    border:1px white;
+    border-style:outset;
+    border-radius: 3%;
+    height:50px;
+    width:100%;
+    color:#c89666;
+    text-align:left;
+    font-size:15px;
+}
+.roll_div,.branch_div,.mail_div,.password_div,.branch_div,.skillset_div,.genre_div
+{
+    margin-top:15px;
+}
+.name_div
+{
+    margin-top:5px;
+}
+.dropdown_one_button,.dropdown_two_button,.dropdown_three_button
+{
+    width:100%;
+    height:50px;
+    text-align:left;
+    font-size:15px;
+}
+.dropdown_one_content,.dropdown_two_content,.dropdown_three_content
+{
+    width:26%;
+    text-align:left;
+    margin:auto;
+    display:none;
+    position:absolute;
+    z-index:2;
+}
+.dropdown_one_content_list,.dropdown_two_content_list,.dropdown_three_content_list
+{
+    z-index:2;
+    padding-top:10px;
+    width:100%;
+    height:50px;
+    color:black;
+    display:block;
+    text-decoration: none;
+    background-color:#4D217B;
+    color:cornsilk;
+    font-size: 15px;
+    padding-left: 3px;
+}
+.dropdown_one_content_list:hover,.dropdown_two_content_list:hover,.dropdown_three_content_list:hover
+{
+    text-decoration:none;
+    color:black;
+}
+a{
+    text-decoration: none;
+}
+.dropdown_one:hover .dropdown_one_content
+{
+    display:block;
+}
+.dropdown_three:hover .dropdown_three_content
+{
+    display:block;
+}
+.dropdown_two_span:hover .dropdown_two_content
+{
+    display:block;
+}
+.submit_div
+{
+    position: absolute;
+    top:85%;
+    left:40%;
+    text-align:center;
+    height:40px;
+    margin:30px auto;
+    width:55%;
+}
+.submit_button
+{
+    text-align:center;
+    font-size:25px;
+    width:100%;
+    border:none;
+    border-radius:5%;
+    border-color:#feda6a;
+    background-color:#feda6a;
+    color:#0c1625;
+}
+.front_main_div
+{
+    width:90%;
+    height:90%;
+    z-index:1;
+    position:absolute;
+    top:5%;
+    margin:0 5%;
+}
+.front_left_div
+{
+    float:left;
+    width:35%;
+    height:100%;
+    background: url("Sign up image.jpg");
+    text-align: left;
+}
+.main_div
+{
+    background-color: #000913;
+    width:65%;
+    height:100%;
+    margin-left:35%;
+    text-align:left;
+    color:white;
+    padding-top:7px;
+}
+.back_main_div
+{
+    position:relative;
+}
+.first_back_div
+{
+    background: url("Sign up image.jpg");
+    width:36.5%;
+    height:100vh;
+    float:left;
+    opacity:0.5;
+}
+.second_back_div
+{
+    width:63.5%;
+    height:100vh;
+    margin-left:36.5%;
+}
+.left_part_div
+{
+    float:left;
+    width:40%;
+    margin-left:7.5%;
+    text-align:left;
+}
+.right_part_div
+{
+    width:40%;
+    margin-left:52.5%;
+    text-align:left;
+}
+.input_heading
+{
+    text-align:left;
+    font-size:20px;
+    margin-bottom:4px;
+}
+.main_div_head
+{
+    margin-left: 7.5%;
+    margin-bottom:10px;
+}
+.gender_div
+{
+    position:absolute;
+    top:78%;
+    left:40%;
+}
+.gender_input
+{
+    margin-top:10px;
+}
+.male_radio_text,.female_radio_text
+{
+    float:left;
+    margin-left: 15px;
+    margin-right: 70px;
+    font-size:15px;
+}
+.male_radio,.female_radio
+{
+    margin-top: 5px;
+    width: 20px;
+    height: 15px;
+    float:left;
+}

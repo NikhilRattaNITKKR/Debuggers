@@ -9,6 +9,10 @@ body{
 
 }
 
+.navbar{
+  opacity: 0.8;
+}
+
 .row{
   padding-top: 120px;
   margin-right: 0;
@@ -309,18 +313,28 @@ transition: 300ms;
 
 .team{
   height: 80vh;
+  background: url('/assets/line.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.team2{
+  height: 80vh;
+  background: url('/assets/line2.png');
+  background-repeat: no-repeat;
+  background-position: top;
 }
 
 @media screen and (max-width: 576px){
   .next{
     padding-top: 1460px;
   }
-  .team{
+  .team, .team2{
     padding: 10px 10px !important;
   }
 }
 
-.team{
+.team, .team2{
   padding: 10px 100px;
 }
 .team-blocks{
@@ -373,6 +387,30 @@ transition: 300ms;
    padding-top: 0px !important  ;
 
 }
+
+
+.bug{
+  margin: 190px 10px;
+
+}
+.bug img{
+  transition: 3s;
+}
+
+ 
+.bug-img-after{
+  transform: translateX(800px);
+}
+
+
+.contact-us{
+  height: 80vh;
+}
+
+
+
+
+
 
 
 /* SIGNUP PAGE CSS */

@@ -37,7 +37,18 @@ function ScrollAppear4(){
     x.classList.add('fourth-block-appear');
   }
 }
+
+function ScrollBug(){
+  var x = document.querySelector('.bug-img');
+  var height = x.getBoundingClientRect().top;
+  var screenPosition = window.innerHeight/2;
+  if (height < screenPosition){
+    x.classList.add('bug-img-after');
+  }
+
+}
 window.addEventListener('scroll',ScrollAppear);
 window.addEventListener('scroll',ScrollAppear2);
 window.addEventListener('scroll',ScrollAppear3);
 window.addEventListener('scroll',ScrollAppear4);
+window.addEventListener('scroll',ScrollBug);

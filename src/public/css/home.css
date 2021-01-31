@@ -121,6 +121,9 @@ transition: 300ms;
   .section-container2, .section-container, .section-container3, .section-container4{
     height: auto !important;
   }
+  .row3{
+
+  }
 }
 
 .section-container{
@@ -332,6 +335,15 @@ transition: 300ms;
   .team, .team2{
     padding: 10px 10px !important;
   }
+  .bug img{
+    display: none;
+  }
+  .bug-img-after{
+    transform: translateX(0) !important;
+  }
+  .frame{
+    width: 420px !important;
+  }
 }
 
 .team, .team2{
@@ -397,21 +409,132 @@ transition: 300ms;
   transition: 3s;
 }
 
- 
+
 .bug-img-after{
   transform: translateX(800px);
 }
 
 
 .contact-us{
-  height: 80vh;
+  height: 85vh;
+
+}
+
+#row3{
+  height: 82vh;
+  padding-top: 0 !important;
+}
+
+.contact-text{
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.contact-input-name, .contact-input-email{
+  margin-top: 7vh;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-input-name input, .contact-input-email input{
+  background: none;
+  border: none;
+  width: 60%;
+  height: 7vh;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  border-radius: 50px;
+  border: 2px solid  #863ED2;
 }
 
 
 
+.contact-input-name input:focus, .contact-input-email input:focus{
+  text-align: center;
+  color: black;
+  outline: none;
+  background-color: #863ED2;
+   border-radius: 50px;
+  opacity: 0.5;
+}
 
+.contact-input-msg{
+  margin-top: 9vh;
+  display: flex;
+  justify-content: center;
+}
 
+.contact-input-msg input{
+  background: none;
+  border: none;
+  width: 60%;
+  height: 7vh;
+  border-bottom: 2px solid #863ED2;
+  text-align: center;
+  transition: 300ms;
+}
 
+.contact-input-msg input:focus{
+  transform: translateY(-3vh);
+  text-align: center;
+  color: black;
+  outline: none;
+}
+
+.contact-button{
+  margin-top: 7vh;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-button button{
+  background: linear-gradient(180deg,  #4D217B, 10%,  #863ED2);
+  opacity: 0.8;
+  border: none;
+  border-radius: 50px;
+  width: 40%;
+  height: 7vh;
+  color: white;
+  transition: 300ms;
+}
+
+.contact-button button:focus{
+  outline: none;
+}
+.contact-button button:hover{
+  transform: translateY(-2vh);
+}
+
+.contact-mailid{
+  margin-top: 3vh;
+  display: flex;
+  justify-content: center;
+}
+
+#map{
+  margin-top: 110px;
+  height: 65vh;
+
+}
+
+.frame{
+  width: 800px;
+  height: 400px;
+  margin: 0 20px;
+}
+
+.map-section{
+
+}
+
+.contact-section{
+  background: url('/assets/line3.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: auto;
+}
 
 /* SIGNUP PAGE CSS */
 

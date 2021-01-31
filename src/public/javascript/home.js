@@ -52,3 +52,22 @@ window.addEventListener('scroll',ScrollAppear2);
 window.addEventListener('scroll',ScrollAppear3);
 window.addEventListener('scroll',ScrollAppear4);
 window.addEventListener('scroll',ScrollBug);
+
+
+
+
+/*
+
+function initMap() {
+
+  const dis = { lat: 29.948400, lng: 76.819633 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 16,
+    center: dis,
+  });
+
+  const marker = new google.maps.Marker({
+    position: dis,
+    map: map,
+  });
+}   */

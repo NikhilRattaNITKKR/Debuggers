@@ -344,6 +344,11 @@ transition: 300ms;
   .frame{
     width: 420px !important;
   }
+
+  .footer{
+    margin-top: 560px;
+    height: 40vh;
+  }
 }
 
 .team, .team2{
@@ -536,6 +541,112 @@ transition: 300ms;
   background-size: auto;
 }
 
+
+.footer{
+  height: 55vh;
+  background: linear-gradient(180deg,#4D217B, 20%, white );
+}
+
+.back-top{
+  margin-top: 0px !important;
+  padding-top: 20px;
+}
+
+.back-to-top, .social, .social-icons, .copyright{
+  margin-top: 4vh;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+}
+.social{
+  font-size: 25px !important;
+  font-weight: bold;
+}
+
+.copyright{
+  margin-top: 9vh;
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
+}
+.copyright2{
+  margin-top: 3vh;
+  display: flex;
+  justify-content: space-around;
+  font-size: 15px;
+}
+
+.social-icons-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkedin, .instagram, .facebook, .twitter{
+  width: 8vh;
+  height: 8vh;
+  padding: 10px 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+}
+
+
+.linkedin{
+  background: url("/assets/linkedin.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.linkedin:hover{
+  background: url("/assets/linkedinC.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.twitter{
+  background: url("/assets/twitter.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.twitter:hover{
+  background: url("/assets/twitterC.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.instagram{
+  background: url("/assets/insta.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.instagram:hover{
+  background: url("/assets/instaC.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.facebook{
+  background: url("/assets/facebook.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.facebook:hover{
+  background: url("/assets/facebookC.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+}
 /* SIGNUP PAGE CSS */
 
 

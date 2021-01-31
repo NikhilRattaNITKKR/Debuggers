@@ -1,6 +1,7 @@
 const express = require('express');
 const request = require('request');
 const path = require('path');
+var bodyParser = require('body-parser')
 const mainRouter=require('./routes/mainRouter');
 const app=express();
 
@@ -12,6 +13,12 @@ const viewsPath = path.join(__dirname, '/views')    //registering path for views
 app.set('views', viewsPath)
 
 app.use(express.static(pathName));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.use(mainRouter);
 

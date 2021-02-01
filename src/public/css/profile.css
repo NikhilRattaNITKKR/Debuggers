@@ -39,9 +39,47 @@
   opacity: 0;
 }
 
+.top-user-name{
+  justify-content: flex-end;
+  display: flex;
+  padding-right: 5vh;
+  margin-top: 0vh;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  text-transform: uppercase;
+  align-items: center;
+}
 
+.top-user-name i{
+  color:white;
+  cursor: pointer;
+}
 
+.top-user-name i:hover{
 
+}
+
+.signout-text{
+  justify-content: flex-end;
+  display: flex;
+  margin-top: 0vh;
+  width:4.5%;
+  padding-left: 67vh;
+  color: black;
+ 
+  align-items: center;
+  opacity: 0;
+}
+
+.signout-text div{
+  padding:1vh 1vh;
+  background: white;
+}
+
+.signout-visible{
+  opacity: 1;
+}
 .search-bar:focus{
   outline:none;
   background: white;

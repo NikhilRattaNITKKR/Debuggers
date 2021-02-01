@@ -103,19 +103,20 @@ a{
     font-size:25px;
     width:100%;
     border:none;
-    border-radius:5%;
     border-color:#feda6a;
     background-color:#feda6a;
+    border-radius:5%;
     color:#0c1625;
 }
 .front_main_div
 {
+    background-color: #000913;
     width:90%;
     height:90%;
-    z-index:1;
     position:absolute;
-    top:5%;
-    margin:0 5%;
+    /*top:5%;*/
+    z-index:1;
+    margin:34px 5%;
 }
 .front_left_div
 {
@@ -135,23 +136,21 @@ a{
     color:white;
     padding-top:7px;
 }
-.back_main_div
-{
-    position:relative;
-}
 .first_back_div
 {
     background: url("Sign up image.jpg");
     width:36.5%;
-    height:100vh;
     float:left;
     opacity:0.5;
+    position:static;
+    height:100vh;
 }
 .second_back_div
 {
     width:63.5%;
-    height:100vh;
     margin-left:36.5%;
+    position:static;
+    height:100vh;
 }
 .left_part_div
 {
@@ -200,4 +199,103 @@ a{
     width: 20px;
     height: 15px;
     float:left;
+}
+@media only screen and (max-width:1080px)
+{
+    .gender_div
+    {
+        position:absolute;
+        left:7.5%;
+    }
+    .submit_div
+    {
+        position:absolute;
+        left: 7.5%;
+        width: 85%;
+    }
+    .front_left_div
+    {
+        width:0%;
+    }
+    .main_div
+    {
+        width:100%;
+        margin-left:0;
+    }
+    .dropdown_one_content,.dropdown_two_content,.dropdown_three_content
+    {
+        width:40%;
+    }
+}
+@media only screen and (max-width:530px)
+{
+    .back_main_div
+    {
+        background-color: brown;
+        position: static;
+    }
+    .left_part_div
+    {
+        float:none;
+        width:85%;
+        height:40%
+    }
+    .right_part_div
+    {
+        margin-left:7.5%;
+        margin-top:20px;
+        width:85%;
+        height:40%
+    }
+    .dropdown_one_content,.dropdown_two_content,.dropdown_three_content
+    {
+        width:85%;
+    }
+    .front_main_div
+    {
+        height:118%;
+    }
+    .first_back_div
+    {
+        position:static;
+    }
+    .second_back_div
+    {
+        position:static;
+    }
+    .main_div
+    {
+        height:100%;
+    }
+    .gender_div
+    {
+        position:initial;
+        margin-left:7.5%;
+        margin-top:-60px;
+        /*top:85%;*/
+    }
+    .submit_div
+    {
+        position:initial;
+        /*top:91%;*/
+        margin-left:7.5%;
+        margin-bottom:60px;
+    }
+    .name_input,.roll_input,.branch_input,.mail_input,.password_input,.dropdown_one_button,.dropdown_two_button,.dropdown_three_button,.dropdown_one_content_list,.dropdown_two_content_list,.dropdown_three_content_list
+    {
+        height:40px;
+        margin-top:0px;
+    }
+    .roll_div,.branch_div,.mail_div,.password_div,.branch_div,.skillset_div,.genre_div
+    {
+        margin-top:5px;
+    }
+    body
+    {
+        background-color: brown;
+    }
+    /*.first_back_div
+    {
+        background: none;
+    }*/
 }

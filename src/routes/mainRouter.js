@@ -18,6 +18,10 @@ router.get("/form",async (req,res)=>{
   res.render("form");
 });
 
+router.get("/profile",async (req,res)=>{
+  res.render("profile");
+});
+
 router.post("/SignUp",async (req,res)=>{
 
 

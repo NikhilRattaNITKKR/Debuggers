@@ -1,0 +1,285 @@
+.navbar{
+  height: 8vh;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.top{
+  height: 25vh;
+  background: url('https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transform: translateZ(-30px);
+}
+
+ .user-container{
+   display: flex;
+   padding: 10vh 12vh;
+   transform:translateY(-25vh);
+ }
+
+ .user-left-block{
+   height: 80vh;
+   width: 40vh;
+   box-shadow: 0px -1px 10px 1px rgba(0, 0, 0, 0.15);
+   border-radius: 0 0 20px 20px;
+
+ }
+ .user-mid-block{
+   width: 110vh;
+   margin: 0 5vh;
+ }
+ .user-photo{
+   width: 100%;
+   height: 60%;
+ }
+.user-photo img{
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+.user-photo-edit{
+  transform: translateY(-60px);
+  text-align: right;
+
+}
+.user-photo-edit i{
+  margin-left: 225px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
+  color: white;
+  width: 6vh;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.user-name{
+  transform: translateY(-5vh;);
+}
+
+.user-name h5{
+
+  transform: translateY(-50px);
+ text-align: center;
+}
+.user-name p{
+  transform: translateY(-50px);
+  text-align: center;
+}
+.followers, .following{
+  transform: translateY(-40px);
+  text-align: center;
+}
+.followers p{
+  margin-bottom: 5px !important;
+}
+.followers{
+  margin-bottom: 10px;
+  border-bottom: 0.5px solid gray;
+}
+
+.followers i{
+  cursor: pointer;
+}
+.following i{
+  cursor: pointer;
+}
+.user-about{
+  padding: 3vh 4vh;
+  width: 100%;
+  margin-top: 18vh;
+  border-radius: 30px;
+   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
+}
+.user-features{
+  margin-top: 4vh;
+}
+
+.user-features span{
+  font-weight:500;
+
+}
+.features-span{
+  font-weight: 400 !important;
+  padding: 1vh 2vh;
+  margin: 1vh 1vh;
+  color:white;
+  background: linear-gradient(180deg, #4D217B, 80%, #863ED2);
+  border-radius: 50px;
+}
+.features-span:hover{
+  background: #863ED2;
+  cursor: pointer;
+}
+
+
+.user-post-header{
+  padding: 0vh 4vh;
+  padding-top: 4vh;
+  display: flex;
+    border-bottom: 1px solid gray;
+}
+
+.user-post-header img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+
+}
+
+#user{
+  height: 12vh;
+  width: 100vh;
+  padding: 0 3vh;
+}
+
+#edit{
+  display: flex;
+  justify-content: flex-end;
+
+ transform: translateY(-8vh);
+}
+
+.post-body-img{
+  margin: 0 auto;
+  width:80%;
+
+  overflow: hidden;
+    text-align: center;
+}
+.post-body-img img{
+  width: 100%;
+}
+
+.post-desc{
+  margin: 0 auto;
+  width: 80%;
+  padding: 2vh 2vh;
+  padding-bottom: 0vh !important;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.post-features{
+  display: flex;
+  justify-content: space-around;
+  padding: 2vh 0vh;
+  margin-top: 3vh;
+  border-top: 1px solid black;
+
+}
+.post-features button{
+background: none;
+border: none;
+width: 15vh;
+padding: 1vh 1vh;
+border-radius: 20px;
+}
+
+.post-features button:focus{
+  outline: none;
+}
+
+#upvote{
+background-image: radial-gradient( circle farthest-corner at 10% 20%, #5dfe60 0%, #28d1ab 90% );
+color: white;
+}
+
+#downvote{
+  background-image: linear-gradient( 248.2deg, rgba(242,13,13,0.74) 30.4%, rgba(249,244,53,1) 91.1% );
+  color:white;
+}
+
+#comment{
+  background: linear-gradient(145deg, rgb(195, 240, 200), rgb(80, 155, 245));
+  color: white;
+}
+.edit-btn{
+  cursor: pointer;
+}
+
+
+.user-right-block{
+  margin-top: 18vh;
+  height: 30vh;
+  width: 30vh;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+}
+
+.add-container{
+  overflow:hidden;
+  padding: 0vh 1vh;
+
+}
+.add-container img{
+  width: 100%;
+  height: 100%;
+  overflow:hidden;
+  border-radius: 20px;
+}
+
+
+
+.user-post{
+  margin-top: 5vh;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.post-click{
+  width: 15vh;
+  height: 10vh;
+  display: none;
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.post-click-edit{
+  opacity: 1;
+  display: block;
+}
+
+.pin-post, .delete-post{
+  height: 5vh;
+}
+
+.pin-post button{
+  color: white;
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+  background: #4D217B;
+}
+
+.delete-post button{
+  color: white;
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 0px 20px 20px;
+  background: #863ED2;
+}
+
+.pin-post button:focus, .delete-post button:focus{
+  outline: none;
+  background: gold;
+}

@@ -111,10 +111,7 @@ $('.contact').click(function(){
   if ($(getElement).length){
     var getOffset = $(getElement).offset().top;
     $('html,body').animate({
-      scrollTop: getOffset
+      scrollTop: getOffset -90
     },800);
   }
 });
-
-
-  

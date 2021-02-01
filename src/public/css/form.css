@@ -12,7 +12,7 @@ body
 }
 .back_left_div
 {
-    background: url("reading-in-window.jpg");
+    background: url("/assets/form.svg");
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;
@@ -34,7 +34,7 @@ body
 }
 .front_left_div
 {
-    background: url("reading-in-window.jpg");
+    background: url("/assets/form.svg");
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;
@@ -182,8 +182,8 @@ body
     width:0;
     height:0;*/
 }
-.main input:checkbox ~ .menu-option { 
-    background-color: black; 
+.main input:checkbox ~ .menu-option {
+    background-color: black;
 }
 .dropdown_two_content,.dropdown_one_content
 {
@@ -302,7 +302,7 @@ a:hover
     }
     .back_main_div
     {
-        background: url("reading-in-window.jpg");
+        background: url("/assets/form.svg");
         background-repeat:no-repeat;
         background-size:cover;
         background-position:center;
@@ -313,4 +313,3 @@ a:hover
         background:none;
     }
 }
-

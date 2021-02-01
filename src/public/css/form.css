@@ -1,301 +1,316 @@
 body
 {
-    font-size:20px;
-    position:relative;
+    text-align:center;
 }
-.first_genre_card
+.back_main_div
 {
-    float: left;
+    z-index:-2;
+    position: absolute;
+    margin:0;
+    height:100vh;
+    width:100vw;
 }
-.second_genre_card
+.back_left_div
 {
-    float: left;
+    background: url("reading-in-window.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    opacity:0.7;
+    width:34.2%;
 }
-.third_genre_card
+.back_right_div
 {
-    float: left;
+    width:65.8%;
 }
-input
+.front_main_div
 {
-    background-color: #0c1625;
+    z-index:2;
+    position: absolute;
+    width:95vw;
+    margin:5vh 2.5vw;
+    height:90vh;
+    box-shadow: 3px 3px 6px 6px rgb(209, 206, 206);
 }
-.name_input,.roll_input,.branch_input,.mail_input,.password_input,.dropdown_one_button,.dropdown_two_button,.dropdown_three_button{
-    border:1px white;
-    border-style:outset;
-    border-radius: 3%;
-    height:50px;
-    width:100%;
-    color:#c89666;
-    text-align:left;
-    font-size:15px;
-}
-.roll_div,.branch_div,.mail_div,.password_div,.branch_div,.skillset_div,.genre_div
+.front_left_div
 {
-    margin-top:15px;
+    background: url("reading-in-window.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
 }
-.name_div
+.front_right_div
+{
+    background-color:white 0.1;
+}
+.profile_heading_div
+{
+    margin-top:4vh;
+    margin-left:5vw;
+}
+.profile_heading_text
+{
+    float:left;
+    margin:5vh 0 0 0;
+}
+.profile_photo
+{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    float:right;
+    margin-right:6vw;
+}
+.main_row
+{
+    clear:both;
+    text-align:center;
+}
+.profile_heading_text
+{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+}
+.input_heading
+{
+    /*font-family: Roboto;*/
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom:7px;
+    text-align: left;
+    margin-left:1vw;
+}
+.main_row
+{
+    margin-left:4vw;
+    margin-top:2vh;
+}
+.main_row_left_div
+{
+    padding-left:1px;
+    padding-right:0px;
+}
+.main_row_right_div
+{
+    padding-left:1px;
+    margin-left:4vw;
+    padding-right:0px;
+}
+.male_radio,.female_radio,.other_radio
 {
     margin-top:5px;
+    float:left;
+    width: 20px;
+    height: 15px;
 }
-.dropdown_one_button,.dropdown_two_button,.dropdown_three_button
+.male_radio_text,.female_radio_text,.other_radio_text
 {
-    width:100%;
-    height:50px;
-    text-align:left;
-    font-size:15px;
+    float:left;
+    margin-left: 2vw;
+    margin-right: 4vw;
+    font-style: normal;
+    font-size: 16px;
 }
-.dropdown_one_content,.dropdown_two_content,.dropdown_three_content
+.submit_div
 {
-    width:26%;
+    clear:both;
+    margin-left:5vw;
+    width:80%;
+    border-radius:20%;
+}
+.submit_button
+{
+    text-align:center;
+    height:6vh;
+    width:79%;
+    clear:both;
+    /*margin-left:5vw;*/
+    /*border-radius:50%;*/
+    margin-top:3vh;
+    background-color:#0A3DC2;
+    color:white;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+}
+.gender_div
+{
+    margin-left:5vw;
     text-align:left;
-    margin:auto;
+}
+.mail_div,.password_div,.branch_div,.genre_div
+{
+    margin-top:3vh;
+}
+.name_input,.roll_input,.mail_input,.dropdown_one_button,.dropdown_two_button,.password_input
+{
+    width:90%;
+    height:6vh;
+    font-style: normal;
+    font-size: 14px;
+}
+.gender_heading_text
+{
+    /*font-family: Roboto;*/
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom:5px;
+}
+.gender_heading_div
+{
+    margin-top:3vh;
+}
+.back_right_div
+{
+    background-color: white;
+}
+.gender_table
+{
+    margin-top:2vh;
+}
+.checkbox
+{
+    color:black;
+    width:2vw;
+    /*margin-left:2%;
+    margin-right:2%;*/
+    /*opacity:0;
+    width:0;
+    height:0;*/
+}
+.main input:checkbox ~ .menu-option { 
+    background-color: black; 
+}
+.dropdown_two_content,.dropdown_one_content
+{
+    padding-top:2vh;
+    background-color:white;
     display:none;
+    text-align:left;
+    width:90%;
+    z-index:4;
     position:absolute;
-    z-index:2;
-}
-.dropdown_one_content_list,.dropdown_two_content_list,.dropdown_three_content_list
-{
-    z-index:2;
-    padding-top:10px;
-    width:100%;
-    height:50px;
-    color:black;
-    display:block;
-    text-decoration: none;
-    background-color:#4D217B;
-    color:cornsilk;
-    font-size: 15px;
-    padding-left: 3px;
-}
-.dropdown_one_content_list:hover,.dropdown_two_content_list:hover,.dropdown_three_content_list:hover
-{
-    text-decoration:none;
-    color:black;
-}
-a{
-    text-decoration: none;
+    margin-left:5%;
 }
 .dropdown_one:hover .dropdown_one_content
 {
     display:block;
 }
-.dropdown_three:hover .dropdown_three_content
+.dropdown_two:hover .dropdown_two_content
 {
     display:block;
 }
-.dropdown_two_span:hover .dropdown_two_content
+.dropdown_two_content:hover .dropdown_two_content
 {
     display:block;
 }
-.submit_div
+.dropdown_one_content_list
 {
-    position: absolute;
-    top:85%;
-    left:40%;
-    text-align:center;
-    height:40px;
-    margin:30px auto;
-    width:55%;
+    display:block;
+    text-decoration: none;
+    color:black;
+    height:5vh;
 }
-.submit_button
+a
 {
-    text-align:center;
-    font-size:25px;
-    width:100%;
-    border:none;
-    border-color:#feda6a;
-    background-color:#feda6a;
-    border-radius:5%;
-    color:#0c1625;
+    text-decoration:none;
 }
-.front_main_div
+a:hover
 {
-    background-color: #000913;
-    width:90%;
-    height:90%;
+    text-decoration: none;
+    color:black;
+}
+.design-1
+{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background-color: white;
+    border:2px dotted blue;
+    margin-left:30%;
+    margin-top:5px;
+}
+.design-2
+{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border:2px solid aquamarine;
     position:absolute;
-    /*top:5%;*/
-    z-index:1;
-    margin:34px 5%;
+    right:1%;
+    bottom:1%;
+    /*margin-left:88%;
+    margin-top:53%;*/
+    margin-bottom:0;
 }
-.front_left_div
+.design-3
 {
-    float:left;
-    width:35%;
-    height:100%;
-    background: url("Sign up image.jpg");
-    text-align: left;
-}
-.main_div
-{
-    background-color: #000913;
-    width:65%;
-    height:100%;
-    margin-left:35%;
-    text-align:left;
-    color:white;
-    padding-top:7px;
-}
-.first_back_div
-{
-    background: url("Sign up image.jpg");
-    width:36.5%;
-    float:left;
-    opacity:0.5;
-    position:static;
-    height:100vh;
-}
-.second_back_div
-{
-    width:63.5%;
-    margin-left:36.5%;
-    position:static;
-    height:100vh;
-}
-.left_part_div
-{
-    float:left;
-    width:40%;
-    margin-left:7.5%;
-    text-align:left;
-}
-.right_part_div
-{
-    width:40%;
-    margin-left:52.5%;
-    text-align:left;
-}
-.input_heading
-{
-    text-align:left;
-    font-size:20px;
-    margin-bottom:4px;
-}
-.main_div_head
-{
-    margin-left: 7.5%;
-    margin-bottom:10px;
-}
-.gender_div
-{
+    width:0;
+    height:0;
+    border-radius:50%;
+    border:6px solid yellow;
     position:absolute;
-    top:78%;
-    left:40%;
+    bottom:1%;
+    left:50%;
 }
-.gender_input
+.design-4
 {
-    margin-top:10px;
+    width:90px;
+    height:90px;
+    border-top:10px solid rgb(230, 26, 60);
+    border-right:10px solid rgb(103, 137, 250);
+    position:absolute;
+    right:1%;
+    top:1%;
 }
-.male_radio_text,.female_radio_text
+.design-5
 {
-    float:left;
-    margin-left: 15px;
-    margin-right: 70px;
-    font-size:15px;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border:2px solid rgb(240, 171, 234);
+    position:absolute;
+    right:60%;
+    bottom:30%;
 }
-.male_radio,.female_radio
+.design-6
 {
-    margin-top: 5px;
-    width: 20px;
-    height: 15px;
-    float:left;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border:2px solid rgb(109, 248, 151);
+    position:absolute;
+    right:20%;
+    bottom:30%;
 }
-@media only screen and (max-width:1080px)
+@media only screen and (max-width:767px)
 {
-    .gender_div
+    .front_right_div
     {
-        position:absolute;
-        left:7.5%;
-    }
-    .submit_div
-    {
-        position:absolute;
-        left: 7.5%;
-        width: 85%;
+        height:100%;
+        width:100%;
+        opacity:0.9;
     }
     .front_left_div
     {
-        width:0%;
+        height:0;
+        width:0;
     }
-    .main_div
-    {
-        width:100%;
-        margin-left:0;
-    }
-    .dropdown_one_content,.dropdown_two_content,.dropdown_three_content
-    {
-        width:40%;
-    }
-}
-@media only screen and (max-width:530px)
-{
     .back_main_div
     {
-        background-color: brown;
-        position: static;
+        background: url("reading-in-window.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:center;
+        opacity:0.7;
     }
-    .left_part_div
+    .back_left_div,.back_right_div
     {
-        float:none;
-        width:85%;
-        height:40%
+        background:none;
     }
-    .right_part_div
-    {
-        margin-left:7.5%;
-        margin-top:20px;
-        width:85%;
-        height:40%
-    }
-    .dropdown_one_content,.dropdown_two_content,.dropdown_three_content
-    {
-        width:85%;
-    }
-    .front_main_div
-    {
-        height:118%;
-    }
-    .first_back_div
-    {
-        position:static;
-    }
-    .second_back_div
-    {
-        position:static;
-    }
-    .main_div
-    {
-        height:100%;
-    }
-    .gender_div
-    {
-        position:initial;
-        margin-left:7.5%;
-        margin-top:-60px;
-        /*top:85%;*/
-    }
-    .submit_div
-    {
-        position:initial;
-        /*top:91%;*/
-        margin-left:7.5%;
-        margin-bottom:60px;
-    }
-    .name_input,.roll_input,.branch_input,.mail_input,.password_input,.dropdown_one_button,.dropdown_two_button,.dropdown_three_button,.dropdown_one_content_list,.dropdown_two_content_list,.dropdown_three_content_list
-    {
-        height:40px;
-        margin-top:0px;
-    }
-    .roll_div,.branch_div,.mail_div,.password_div,.branch_div,.skillset_div,.genre_div
-    {
-        margin-top:5px;
-    }
-    body
-    {
-        background-color: brown;
-    }
-    /*.first_back_div
-    {
-        background: none;
-    }*/
 }
+

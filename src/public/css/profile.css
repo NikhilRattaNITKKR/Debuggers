@@ -18,6 +18,7 @@
   z-index: -10;
 }
 
+
 .search-bar{
   height: 7vh;
   width: 50vh;
@@ -67,7 +68,7 @@
   width:4.5%;
   padding-left: 67vh;
   color: black;
- 
+
   align-items: center;
   opacity: 0;
 }

@@ -119,6 +119,8 @@ body
     font-size: 16px;
 }
 
+ 
+
 .submit-button
 {
    display: flex;
@@ -183,11 +185,7 @@ body
 {
     color:black;
     width:2vw;
-    /*margin-left:2%;
-    margin-right:2%;*/
-    /*opacity:0;
-    width:0;
-    height:0;*/
+
 }
 .main input:checkbox ~ .menu-option {
     background-color: black;

@@ -7,6 +7,29 @@
   padding: 0;
 }
 
+@media screen and (max-width: 576px){
+  .search-bar{
+    margin-left: 20.5vw !important;
+    width: 60vw !important;
+  }
+  #search-icon{
+    margin-left: 70vw !important;
+  }
+
+  .top-user-name{
+    transform: translateY(-45px);
+  }
+  .user-container{
+    display: block !important;
+  }
+  .signout-text div {
+    transform: translateY(-38px);
+  }
+
+   .user-left-block{
+     transform: translateY(0) !important;
+   }
+}
 
 
 .top{
@@ -21,9 +44,9 @@
 
 .search-bar{
   height: 7vh;
-  width: 50vh;
+  width: 23.5vw;
   margin-top: 10vh;
-  margin-left: 88vh;
+  margin-left: 41.5vw;
   background: none;
   border: none;
   font-size: 20px;
@@ -33,7 +56,7 @@
 }
 
 #search-icon{
-  margin-left: 132vh;
+  margin-left: 62vw;
   transform: translateY(-50px);
   color: black;
   cursor: pointer;
@@ -43,7 +66,7 @@
 .top-user-name{
   justify-content: flex-end;
   display: flex;
-  padding-right: 5vh;
+  padding-right: 2vw;
   margin-top: 0vh;
   font-size: 18px;
   font-weight: 500;

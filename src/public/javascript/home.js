@@ -47,6 +47,10 @@ function ScrollBug(){
   }
 
 }
+ 
+
+
+
 window.addEventListener('scroll',ScrollAppear);
 window.addEventListener('scroll',ScrollAppear2);
 window.addEventListener('scroll',ScrollAppear3);

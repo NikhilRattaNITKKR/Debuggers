@@ -2,6 +2,7 @@ const express = require('express');
 const request = require('request');
 const path = require('path');
 var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser');
 const mainRouter=require('./routes/mainRouter');
 const app=express();
 
@@ -19,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+app.use(cookieParser());
 
 app.use(mainRouter);
 

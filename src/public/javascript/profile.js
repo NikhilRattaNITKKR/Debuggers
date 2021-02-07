@@ -28,6 +28,7 @@ signout.addEventListener("mouseleave",function(){
 
 var signoutbtn = document.querySelector('#signOut');
 signoutbtn.addEventListener("click",function(){
+  alert("hello");
   console.log("Help");
   const cookieName = "www.debuggers.com";
   document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;

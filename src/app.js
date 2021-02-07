@@ -3,8 +3,10 @@ const request = require('request');
 const path = require('path');
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
+const Realm = require("realm");
 const mainRouter=require('./routes/mainRouter');
 const app=express();
+
 
 const pathName=path.join(__dirname,'/public')        //to register path for public directory
 

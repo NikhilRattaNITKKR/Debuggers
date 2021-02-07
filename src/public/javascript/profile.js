@@ -23,13 +23,3 @@ var signouttext =document.querySelector('.signout-text');
 signout.addEventListener("mouseleave",function(){
   signouttext.classList.remove('signout-visible');
 });
-
-
-
-var signoutbtn = document.querySelector('#signOut');
-signoutbtn.addEventListener("click",function(){
-  console.log("Help");
-  const cookieName = "www.debuggers.com";
-  document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  location.reload();
-});

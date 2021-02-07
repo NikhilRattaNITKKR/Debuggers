@@ -18,15 +18,6 @@ router.get("/profile",async (req,res)=>{
   res.render("profile");
 });
 
-<<<<<<< HEAD
-router.get("/events",async (req,res)=>{
-  res.render("events");
-});
-
-router.post("/SignUp",signUp)
-
-router.post("/logIn",logIn)
-=======
->>>>>>> 49992434cd1d93a83001beba6a4c9d311c4a8034
+ 
 
 module.exports=router;

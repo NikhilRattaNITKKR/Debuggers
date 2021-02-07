@@ -67,11 +67,10 @@ const logIn = async(req, res) => {
 
   }
 }
-
-async function getCookieValue (req) {
+ function getCookieValue (req) {
   const cookieName = "www.debuggers.com";
   const id  =  req.cookies.cookieName;
-  const user = await users.findOne({_id: id})
+  const user = users.findOne({_id: id})
   if (user == null) {
     return false;
   } else {

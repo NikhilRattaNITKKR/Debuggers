@@ -127,11 +127,3 @@ $('#top-icon').click(function(){
     },900);
   }
 });
-
-
-$('#signOut').click(function () {
-  console.log("He;lp");
-  const cookieName = "www.debuggers.com";
-  document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  location.reload();
-})

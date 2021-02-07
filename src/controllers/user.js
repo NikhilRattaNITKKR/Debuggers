@@ -35,7 +35,9 @@ const signUp = async(req,res)=>{
     } else {
       const email = req.body.email+req.body.college;
       const password = req.body.password;
-      const result = await app.emailPasswordAuth.registerUser(email, password);
+      await app.emailPasswordAuth.registerUser(email, password);
+      res.send({Message: "Check Your Email for Confirmation"})
+
     }
 
   } catch (e) {
@@ -105,6 +107,7 @@ const logOut = async(req, res) => {
 const getProfile = async(req, res) => {
   try {
     if (app.currentUser !== null) {
+      console.log(app.currentUser.id);
       console.log(app.currentUser);
       res.render('profile');
     } else {

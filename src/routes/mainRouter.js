@@ -6,18 +6,20 @@ const router=new express.Router();       //creates a new router object basically
 
 
 router.route('/').get(userControllers.getHome);
+
 router.route('/SignUp').get(userControllers.getSignUp).post(userControllers.signUp);
+router.route('/form/:value').get(userControllers.getForm)
+
+
 router.route('/logIn').get(userControllers.getLogIn).post(userControllers.logIn);
+router.route('/logOut').get(userControllers.logOut);
 
 
-router.get("/form",async (req,res)=>{
-  res.render("form");
-});
+router.route('/profile').get(userControllers.getProfile);
 
-router.get("/profile",async (req,res)=>{
-  res.render("profile");
-});
 
- 
+
+
+
 
 module.exports=router;

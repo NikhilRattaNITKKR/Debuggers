@@ -23,6 +23,7 @@ var signouttext =document.querySelector('.signout-text');
 signout.addEventListener("mouseleave",function(){
   signouttext.classList.remove('signout-visible');
 });
+<<<<<<< HEAD
 
 
 
@@ -34,3 +35,5 @@ signoutbtn.addEventListener("click",function(){
   document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   location.reload();
 });
+=======
+>>>>>>> 037d375ee2987bb68568970ec798f30d65a1a86e

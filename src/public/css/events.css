@@ -1,0 +1,55 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family:  sans-serif;
+}
+
+.top-section{
+
+  display: flex;
+  padding: 2vh 10vw;
+}
+
+.left-block, .right-block{
+  width: 20vw;
+
+}
+
+.right-block{
+  height: 90vh;
+  padding-top: 10vh;
+  padding-left: 5vw;
+}
+.mid-block{
+  width: 40vw;
+}
+
+.house-div-img{
+  overflow: hidden;
+  height: 20vh;
+}
+
+.house-div-img img{
+  height: 20vh;
+}
+
+.list{
+  list-style-type: none !important;
+
+}
+
+.list-element{
+  padding: 2vh 2vw !important;
+  display: flex;
+  justify-content: space-between;
+  font-size: 19px;
+
+  border-bottom: 1px solid #9e9e9e;
+  border-left: 1px solid #9e9e9e;
+  border-right: 1px solid #9e9e9e;
+}
+
+.list-element:hover{
+  background: blue;
+  color: white;
+}

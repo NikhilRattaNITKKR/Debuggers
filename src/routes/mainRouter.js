@@ -24,6 +24,10 @@ router.get("/profile",async (req,res)=>{
   res.render("profile");
 });
 
+router.get("/events",async (req,res)=>{
+  res.render("events");
+});
+
 router.post("/SignUp",signUp)
 
 router.post("/logIn",logIn)

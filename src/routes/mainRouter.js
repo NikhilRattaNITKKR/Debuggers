@@ -8,7 +8,7 @@ const router=new express.Router();       //creates a new router object basically
 router.route('/').get(userControllers.getHome);
 
 router.route('/SignUp').get(userControllers.getSignUp).post(userControllers.signUp);
-router.route('/form/:value').get(userControllers.getForm)
+router.route('/form').post(userControllers.form);
 
 
 router.route('/logIn').get(userControllers.getLogIn).post(userControllers.logIn);

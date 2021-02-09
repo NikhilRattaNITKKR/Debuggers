@@ -4,7 +4,7 @@
 
       <!--try to use partials in all view files-->
 
-        <title>Profile_form</title>
+        <title><%= locals.title %></title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/form.css">
     </head>
@@ -40,7 +40,7 @@
 
                 </div>
                 <div class="col-12 col-md-8 front_right_div">
-                  <form action="/" method="POST">
+                  <form action="/form" method="POST">
                     <div class="profile_heading_div">
                         <h2 class="profile_heading_text">Profile</h2>
 
@@ -84,11 +84,11 @@
                         </div>
                         <div class="col-5 main_row_right_div">
                             <div class="roll_div">
-                                <p class="input_heading">Roll No.</p>
+                                <p class="input_heading">Roll Number</p>
                                 <input type="text" class="roll_input" placeholder="Enter your roll number" name="rollNo">
                             </div>
                             <div class="mail_div">
-                                <p class="input_heading">Mail</p>
+                                <p class="input_heading">E-Mail</p>
                                 <input type="text" class="mail_input" placeholder="Enter your mail" name="email">
                             </div>
                             <div class="password_div">

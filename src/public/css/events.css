@@ -33,9 +33,9 @@
 .right-section{
   width: 20%;
   height: 60vh;
-  position: fixed;
-  left:80%;
-  top: 35vh;
+  position: relative;
+  left:20%;
+  top: 28vh;
 }
 
 .sidebar-img{
@@ -277,7 +277,7 @@ color: white;
 
 .user-post{
   position: relative;
-   
+
   width: 80%;
   margin: 0 auto;
   margin-top: 5vh;

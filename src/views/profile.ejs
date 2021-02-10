@@ -16,7 +16,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand" href="/"><i class="fas fa-bug icon"></i><p class="brand_name">Debuggers</p></a>
         </nav>
 
@@ -27,9 +27,9 @@
          <span class="signout-text"><div>
            SignOut
          </div></span>
-         <span class="top-user-name">FAISAL ALI KHAN <a href="/logOut"><i class="fas fa-sign-out-alt"></i></a></span>
+         <span class="top-user-name"><%=user.name%> <a href="/logOut"><i class="fas fa-sign-out-alt"></i></a></span>
       </section>
-      <section>
+      <section class="user">
       <div class="user-container">
         <section class="user-left-block">
             <div class="user-photo">
@@ -41,8 +41,8 @@
             </div>
 
             <div class="user-name">
-              <h5>Faisal Ali Khan</h5>
-              <p>Electronics & Communication</p>
+              <h5><%= user.name %></h5>
+              <p><%= user.branch %></p>
             </div>
 
             <div class="followers">

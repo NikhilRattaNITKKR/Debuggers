@@ -150,7 +150,7 @@ const getProfile = async(req, res) => {
         await app.allUsers[app.currentUser.id].logOut();
         res.render('form', {title: "Detail Form"});
       } else {
-        res.render('profile');
+        res.render('profile', {user: user});
       }
     }
   } catch (e) {
@@ -158,6 +158,13 @@ const getProfile = async(req, res) => {
   }
 }
 
+const getEvents = async(req, res) =>{
+  if (app.currentUser !== null) {
+    res.render('events');
+  } else {
+    res.redirect('/');
+  }
+}
 
 
 module.exports={
@@ -168,5 +175,6 @@ module.exports={
   getLogIn,
   logIn,
   logOut,
-  getProfile
+  getProfile,
+  getEvents
 }

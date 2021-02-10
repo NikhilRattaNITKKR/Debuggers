@@ -1,8 +1,13 @@
-var button = document.querySelector('.edit-btn');
-var box = document.querySelector('.post-click');
-button.addEventListener("click", function(){
-  box.classList.toggle('post-click-edit');
-});
+var button = document.getElementsByClassName('edit-btn');
+var box = document.getElementsByClassName('post-click');
+
+for(var i=0;i<button.length;i++){
+ 
+  button[i].addEventListener("click", function(){
+  box[0].classList.toggle('post-click-edit');
+  });
+}  // ye change krna hai abhi
+
 
 var search = document.querySelector('.search-bar');
 var search_icon = document.querySelector('#search-icon');
@@ -23,7 +28,3 @@ var signouttext =document.querySelector('.signout-text');
 signout.addEventListener("mouseleave",function(){
   signouttext.classList.remove('signout-visible');
 });
-
-
-
- 

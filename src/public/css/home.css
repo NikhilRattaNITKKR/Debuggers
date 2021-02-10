@@ -183,9 +183,18 @@ transition: 300ms;
 .second-block-img{
   display: flex;
   justify-content: center;
+  animation: photo infinite 20s linear;
 }
 .second-block-img img{
   width:80%;
+
+}
+
+@@keyframes photo {
+    0%   {top: 0px;}
+    25%  {top: 200px;}
+    75%  {top: 50px}
+    100% {top: 100px;}
 }
 
 .second-block{

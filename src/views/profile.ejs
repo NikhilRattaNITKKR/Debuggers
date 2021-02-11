@@ -99,9 +99,13 @@
                   </div>
 
                   <div class="post-features">
-                    <button id="upvote" type="button" name="button">Upvote</button>
-                    <button id="downvote"type="button" name="button">Downvote</button>
-                    <button id="comment" type="button" name="button">Comment</button>
+                    <form  method="post" id="postForm">
+                      <input type="text" name="pid" value="<%=post._id%>" hidden="true" id="pid">
+                      <button id="upvote" type="submit" name="upvote">Upvote</button>
+                      <button id="downvote" type="submit" name="downvote">Downvote</button>
+                      <button id="comment" type="submit" name="comment">Comment</button>
+                    </form>
+
                   </div>
                 </div>
 

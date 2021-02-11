@@ -158,7 +158,22 @@ const getProfile = async(req, res) => {
   }
 }
 
-
+const upVote= async (req,res)=>{
+try {
+  if (app.currentUser == null) {
+    res.redirect('/');
+  } else {
+    const mongodbRealm =await app.currentUser.mongoClient("mongodb-atlas");
+    const collection =await mongodbRealm.db("Debuggers").collection("Events");
+    await  collection.updateOne({_id:req.query.pid},{$inc:{votes:1}})
+    const post= await collection.findOne({_id:req.query.pid});
+    return res.send(post);
+  }
+} catch (e) {
+  res.send({error:"something went wrong"})
+console.log(e);
+}
+}
 
 module.exports={
   getHome,
@@ -168,5 +183,6 @@ module.exports={
   getLogIn,
   logIn,
   logOut,
-  getProfile
+  getProfile,
+  upVote
 }

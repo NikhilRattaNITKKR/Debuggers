@@ -2,7 +2,7 @@ var button = document.getElementsByClassName('edit-btn');
 var box = document.getElementsByClassName('post-click');
 
 for(var i=0;i<button.length;i++){
- 
+
   button[i].addEventListener("click", function(){
   box[0].classList.toggle('post-click-edit');
   });
@@ -28,7 +28,6 @@ var signouttext =document.querySelector('.signout-text');
 signout.addEventListener("mouseleave",function(){
   signouttext.classList.remove('signout-visible');
 });
-<<<<<<< HEAD
 
 let form=document.querySelector("#myForm");
 let pid=document.querySelector('#pid')
@@ -60,7 +59,5 @@ signoutbtn.addEventListener("click",function(){
 });
 
 
-=======
->>>>>>> 037d375ee2987bb68568970ec798f30d65a1a86e
 =======
 >>>>>>> 844b583e195485f013752dd8fbb08c3073e822dc

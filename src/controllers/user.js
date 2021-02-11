@@ -150,7 +150,7 @@ const getProfile = async(req, res) => {
         await app.allUsers[app.currentUser.id].logOut();
         res.render('form', {title: "Detail Form"});
       } else {
-        res.render('profile');
+        res.render('profile', {user:user});
       }
     }
   } catch (e) {

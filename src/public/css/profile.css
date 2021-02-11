@@ -38,7 +38,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: -10;
+  z-index: 10;
+  position: relative;
+  top:8vh;
 }
 
 
@@ -111,14 +113,21 @@
   border-radius: 30px;
 
 }
+.user{
+  position: relative;
+  top:8vh;
+}
 
  .user-container{
    display: flex;
    padding: 2vh 12vh;
+   position: relative;
 
  }
 
  .user-left-block{
+   position: fixed;
+   z-index: 100;
    height: 80vh;
    width: 40vh;
    box-shadow: 0px -1px 10px 1px rgba(0, 0, 0, 0.15);
@@ -128,6 +137,8 @@
  .user-mid-block{
    width: 110vh;
    margin: 0 5vh;
+   position: relative;
+   left:40vh;
  }
  .user-photo{
    width: 100%;
@@ -312,6 +323,8 @@ color: white;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
+ position: relative;
+  left: 40vh;
 }
 
 .add-container{

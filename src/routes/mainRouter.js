@@ -18,6 +18,7 @@ router.route('/logOut').get(userControllers.logOut);
 router.route('/profile').get(userControllers.getProfile);
 router.route('/upVote').get(userControllers.upVote);
 
+router.route('/events').get(userControllers.getEvents);
 
 
 

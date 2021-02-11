@@ -1,8 +1,13 @@
-var button = document.querySelector('.edit-btn');
-var box = document.querySelector('.post-click');
-button.addEventListener("click", function(){
-  box.classList.toggle('post-click-edit');
-});
+var button = document.getElementsByClassName('edit-btn');
+var box = document.getElementsByClassName('post-click');
+
+for(var i=0;i<button.length;i++){
+ 
+  button[i].addEventListener("click", function(){
+  box[0].classList.toggle('post-click-edit');
+  });
+}  // ye change krna hai abhi
+
 
 var search = document.querySelector('.search-bar');
 var search_icon = document.querySelector('#search-icon');
@@ -23,17 +28,3 @@ var signouttext =document.querySelector('.signout-text');
 signout.addEventListener("mouseleave",function(){
   signouttext.classList.remove('signout-visible');
 });
-<<<<<<< HEAD
-
-
-
-var signoutbtn = document.querySelector('#signOut');
-signoutbtn.addEventListener("click",function(){
-  alert("hello");
-  console.log("Help");
-  const cookieName = "www.debuggers.com";
-  document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  location.reload();
-});
-=======
->>>>>>> 037d375ee2987bb68568970ec798f30d65a1a86e

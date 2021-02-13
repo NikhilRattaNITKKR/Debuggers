@@ -10,9 +10,9 @@ const currentUserId =  app.currentUser.id;
 const user = null;
 async function () => {
   user = await Users.findOne({_id: currentUserId});
-  
+
 }
 
 const getEvent = async (req, res) => {
-
+return 0;
 }

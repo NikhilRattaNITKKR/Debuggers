@@ -7,7 +7,6 @@ const Realm = require("realm");
 const mainRouter=require('./routes/mainRouter');
 const app=express();
 
-
 const pathName=path.join(__dirname,'/public')        //to register path for public directory
 
 app.set("view engine", "ejs");

@@ -158,9 +158,9 @@ const getProfile = async(req, res) => {
 }
 
 
-const getnewEvents = async(req, res) =>{
+const getEvents = async(req, res) =>{
   if (app.currentUser !== null) {
-    res.render('newevents');
+    res.render('events');
   } else {
     res.redirect('/');
   }
@@ -184,6 +184,6 @@ module.exports={
   logIn,
   logOut,
   getProfile,
-  getnewEvents,
+  getEvents,
   getDoubtForum
 }

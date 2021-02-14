@@ -16,7 +16,7 @@ router.route('/logOut').get(userControllers.logOut);
 
 router.route('/profile/:id').get(userControllers.getProfile);
 
-router.route('/newevents').get(userControllers.getnewEvents);
+router.route('/events').get(userControllers.getEvents);
 
 
 router.route('/doubtforum').get(userControllers.getDoubtForum);

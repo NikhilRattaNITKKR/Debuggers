@@ -1,12 +1,11 @@
 const Realm = require("realm");
 const BSON = require("bson");
 
+
 const app = new Realm.App({ id: "debuggers-lzxyc" });
-if (app.currentUser !== null) {
-  console.log("User: ", app.currentUser);
-  const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-  const Users = mongodb.db("Debuggers").collection("Users");
-}
+
+// const mongodb = app.currentUser.mongoClient("mongodb-atlas");
+// const Users = mongodb.db("Debuggers").collection('Users');
 
 
 
@@ -14,7 +13,7 @@ const getHome = async(req, res) => {
   console.log("Get Home:", app.currentUser);
   try {
     if (app.currentUser != null) {
-      res.redirect('/profile');
+      res.redirect(`/profile/${app.currentUser.id}`);
     } else {
       if (req.query.tokenId == null) {
         res.render('home')
@@ -30,9 +29,6 @@ const getHome = async(req, res) => {
     }
   } catch (e) {
     console.error("Get Home Error: ", e);
-  } finally{
-    console.log("Get Home 2: ", app.currentUser);
-
   }
 
 }
@@ -42,7 +38,7 @@ const getSignUp = function(req, res) {
   if (app.currentUser == null) {
     res.render('signup');
   } else {
-    res.redirect('/profile');
+    res.redirect(`/profile/${app.currentUser.id}`);
   }
 }
 const signUp = async(req,res)=>{
@@ -78,7 +74,7 @@ const form = async({body, params}, res)=>{
 
 
     const result = await collection.insertOne({
-      _id: user.id,
+      _id: new BSON.ObjectID(user.id),
       name: body.name,
       branch: body.branch,
       genre: body.genre,
@@ -89,7 +85,7 @@ const form = async({body, params}, res)=>{
 
     console.log("Form: ", result);
 
-    res.redirect('/profile')
+    res.redirect(`/profile/${user.id}`)
 
 
   } catch (e) {
@@ -103,7 +99,7 @@ const getLogIn = async(req, res) => {
   if (app.currentUser == null) {
     res.render('login');
   } else {
-    res.redirect('/profile');
+    res.redirect(`/profile/${app.currentUser.id}`);
   }
 }
 const logIn = async(req, res) => {
@@ -118,7 +114,7 @@ const logIn = async(req, res) => {
       );
       const user = await app.logIn(credentials);
       console.log("Successfully logged in!", user.id);
-      res.redirect('/profile');
+      res.redirect(`/profile/${user.id}`);
     }
 
   } catch (e) {
@@ -127,7 +123,9 @@ const logIn = async(req, res) => {
 }
 const logOut = async(req, res) => {
   try {
-    await app.allUsers[app.currentUser.id].logOut();
+    if (app.currentUser != null) {
+      await app.allUsers[app.currentUser.id].logOut();
+    }
     res.redirect('/')
   } catch (e) {
     console.error('Log Out Error: ', e);
@@ -142,9 +140,10 @@ const getProfile = async(req, res) => {
       res.redirect('/');
     } else {
 
-      const mongodbRealm = app.currentUser.mongoClient("mongodb-atlas");
-      const collection = mongodbRealm.db("Debuggers").collection("Users");
-      const user = await collection.findOne({_id: app.currentUser.id});
+      const id = new BSON.ObjectID(req.params.id);
+      const mongodb = app.currentUser.mongoClient("mongodb-atlas");
+      const Users = mongodb.db("Debuggers").collection('Users');
+      const user = await Users.findOne({_id: id});
       console.log("Profile:", user);
       if (user == null) {
         await app.allUsers[app.currentUser.id].logOut();

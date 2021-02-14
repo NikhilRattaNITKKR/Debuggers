@@ -14,9 +14,7 @@ router.route('/form').post(userControllers.form);
 router.route('/logIn').get(userControllers.getLogIn).post(userControllers.logIn);
 router.route('/logOut').get(userControllers.logOut);
 
-
-router.route('/profile').get(userControllers.getProfile);
-
+router.route('/profile/:id').get(userControllers.getProfile);
 
 router.route('/events').get(userControllers.getEvents);
 

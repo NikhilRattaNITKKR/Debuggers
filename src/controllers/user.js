@@ -157,13 +157,6 @@ const getProfile = async(req, res) => {
   }
 }
 
-const getEvents = async(req, res) =>{
-  if (app.currentUser !== null) {
-    res.render('events');
-  } else {
-    res.redirect('/');
-  }
-}
 
 const getnewEvents = async(req, res) =>{
   if (app.currentUser !== null) {
@@ -191,7 +184,6 @@ module.exports={
   logIn,
   logOut,
   getProfile,
-  getEvents,
   getnewEvents,
   getDoubtForum
 }

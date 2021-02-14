@@ -16,8 +16,6 @@ router.route('/logOut').get(userControllers.logOut);
 
 router.route('/profile/:id').get(userControllers.getProfile);
 
-router.route('/events').get(userControllers.getEvents);
-
 router.route('/newevents').get(userControllers.getnewEvents);
 
 

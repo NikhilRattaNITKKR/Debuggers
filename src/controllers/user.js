@@ -166,6 +166,22 @@ const getEvents = async(req, res) =>{
   }
 }
 
+const getnewEvents = async(req, res) =>{
+  if (app.currentUser !== null) {
+    res.render('newevents');
+  } else {
+    res.redirect('/');
+  }
+}
+
+const getDoubtForum = async(req, res) =>{
+  if (app.currentUser !== null) {
+    res.render('doubtforum');
+  } else {
+    res.redirect('/');
+  }
+}
+
 
 module.exports={
   getHome,
@@ -176,5 +192,7 @@ module.exports={
   logIn,
   logOut,
   getProfile,
-  getEvents
+  getEvents,
+  getnewEvents,
+  getDoubtForum
 }

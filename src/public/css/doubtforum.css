@@ -1,0 +1,16 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.navbar{
+  height: 8vh;
+  opacity: 0.9;
+}
+
+.main-container{
+  display: flex;
+  flex: 1;
+  position: relative;
+  top: 8vh;
+}

@@ -20,7 +20,9 @@ router.route('/profile').get(userControllers.getProfile);
 
 router.route('/events').get(userControllers.getEvents);
 
+router.route('/newevents').get(userControllers.getnewEvents);
 
 
+router.route('/doubtforum').get(userControllers.getDoubtForum);
 
 module.exports=router;

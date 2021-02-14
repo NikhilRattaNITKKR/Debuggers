@@ -2,7 +2,7 @@ var button = document.getElementsByClassName('edit-btn');
 var box = document.getElementsByClassName('post-click');
 
 for(var i=0;i<button.length;i++){
- 
+
   button[i].addEventListener("click", function(){
   box[0].classList.toggle('post-click-edit');
   });
@@ -27,4 +27,16 @@ var signout = document.querySelector('.fa-sign-out-alt');
 var signouttext =document.querySelector('.signout-text');
 signout.addEventListener("mouseleave",function(){
   signouttext.classList.remove('signout-visible');
+});
+
+var camera = document.querySelector(".fa-camera");
+camera.addEventListener("click",function(){
+  document.querySelector(".bg-photo-input").style.display="flex";
+  document.querySelector("*").style.overflow="hidden";
+});
+
+var close = document.querySelector(".fa-window-close");
+close.addEventListener("click",function(){
+  document.querySelector(".bg-photo-input").style.display="none";
+  document.querySelector("*").style.overflow="initial";
 });

@@ -159,12 +159,12 @@
 
  .user-left-block{
    position: fixed;
-   z-index: 100;
+   z-index: 10;
    height: 80vh;
    width: 40vh;
    box-shadow: 0px -1px 10px 1px rgba(0, 0, 0, 0.15);
    border-radius: 0 0 20px 20px;
-  top: 15vh;
+  top: 13vh;
  }
  .user-mid-block{
    width: 110vh;
@@ -184,7 +184,7 @@
 
 .user-photo-edit i{
 
-  margin-left: 225px;
+
   background: rgba(255,255,255,0.7);
   border-radius: 30px;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.55);
@@ -195,27 +195,30 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transform: translateY(-350px);
+  transform: translateY(-48vh);
   text-align: right;
-  margin-right: 8px;
+  margin: 10px;
+  position: absolute;
+  right: 0px;
 }
 
 
 .user-name{
-  transform: translateY(-5vh;);
+  margin-top: 2vh;
+  margin-bottom: 3vh;
 }
 
 .user-name h5{
 
-  transform: translateY(-50px);
+
  text-align: center;
 }
 .user-name p{
-  transform: translateY(-50px);
+
   text-align: center;
 }
 .followers, .following{
-  transform: translateY(-40px);
+ ;
   text-align: center;
 }
 .followers p{
@@ -535,4 +538,50 @@ color: white;
   display: flex;
   justify-content: center;
 
+}
+
+
+
+.create-a-post-div{
+  position: sticky;
+  top: 13vh;
+  background: white;
+  padding: 3vh 4vh;
+  box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 15%);
+  border-radius: 20px;
+  margin-top: 3vh;
+  height: 14vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 100;
+}
+
+.create-a-post-div-img{
+  display: flex;
+  align-items: center;
+}
+
+.create-a-post-div-img img{
+  width: 4vw;
+  clip-path: circle();
+}
+
+.create-a-post-div-img div{
+  width: 38vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 7vh;
+  font-size: 20px;
+  background: #dddddd;
+  text-align: center;
+  margin-left: 2vw;
+  cursor: pointer;
+}
+
+.create-a-post-div-img div:hover{
+  background: #cccccc;
 }

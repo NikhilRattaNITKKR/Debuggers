@@ -47,7 +47,13 @@
   z-index: 10;
   position: relative;
   top:8vh;
+
+
 }
+
+
+
+
 
 
 .search-bar{
@@ -434,24 +440,26 @@ color: white;
 }
 
 .photo-input-div{
-  width: 50vw;
+  width: 45vw;
   height: 65vh;
-  background: white url("https://image.freepik.com/free-vector/abstract-colorful-topographic-map-design-vector_1035-14092.jpg");
+  background: linear-gradient(180deg, #4D217B, 60%, #863ED2) ;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
-  padding: 20px;
+  padding: 0;
   position: relative;
+  box-shadow:  0px 0px 50px 0px rgba(256, 256, 256, 0.45);
+
 }
 
 .form-div{
   position: relative;
-  top: 7vh;
+  top: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(256,256,256,0.8);
+  background: none;
+
 }
 
  .fa-window-close{
@@ -461,22 +469,70 @@ color: white;
    cursor: pointer;
  }
 
- .form-div h4{
-   text-align: center;
+ .fa-window-close:hover{
+   color:#4D217B;
  }
 
  .user-img-input{
-   margin-top: 5vh;
+   margin-top: 1vh;
    text-align: center;
+   border: 2px solid #dddddd;
+   color: white;
+   cursor: pointer;
  }
 
 .form-div button{
   text-align: center;
   margin-top: 3vh;
-  background: blue;
+  background: white;
   border: none;
   border-radius: 30px;
   width: 10vw;
   height: 6vh;
-  color: white;
+  color: black;
+}
+
+.img-display{
+  width: 300px;
+  height: 250px;
+  border: 2px solid #dddddd;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #cccccc;
+  overflow: hidden;
+  position: relative;
+
+  cursor: move;
+}
+
+.img-display img{
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+  cursor: move;
+
+}
+
+.pop-header{
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 10vh;
+  background: white;
+
+}
+.pop-header h4{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.image-btn{
+  display: flex;
+  justify-content: center;
+
 }

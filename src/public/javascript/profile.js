@@ -40,3 +40,25 @@ close.addEventListener("click",function(){
   document.querySelector(".bg-photo-input").style.display="none";
   document.querySelector("*").style.overflow="initial";
 });
+
+var imageinp = document.querySelector(".user-img-input");
+var display = document.querySelector(".img-display");
+var image = document.querySelector(".img-display-img");
+var defaulttxt = document.querySelector(".default-txt");
+
+imageinp.addEventListener("change",function(){
+  const file = this.files[0];
+
+  if(file){
+    const reader = new FileReader();
+    defaulttxt.style.display="none";
+    image.style.display="block";
+
+    reader.addEventListener("load",function(){
+      image.setAttribute("src", this.result);
+
+    });
+
+    reader.readAsDataURL(file);
+  }
+});

@@ -96,3 +96,44 @@ checkbox.addEventListener("click",function(){
     },500);
   }
 });
+
+
+var dropdown = document.querySelector(".dropdown_button");
+dropdown.addEventListener("focus",function(){
+  setTimeout(function(){
+    document.querySelector(".dropdown_content").style.display="block";
+  },300);
+
+
+});
+
+document.querySelector(".dropdown").addEventListener("mouseleave",function(){
+
+
+  setTimeout(function(){
+    document.querySelector(".dropdown_content").style.display="none";
+  },300);
+
+
+});
+
+
+var imagepostinp = document.querySelector(".user-img-post");
+imagepostinp.addEventListener("change",function(){
+  document.querySelector(".photo_div").style.display="flex";
+
+
+  const file = this.files[0];
+
+  if(file){
+    const reader = new FileReader();
+
+    reader.addEventListener("load",function(){
+      document.querySelector(".photo-post").setAttribute("src", this.result);
+
+    });
+
+    reader.readAsDataURL(file);
+  }
+
+});

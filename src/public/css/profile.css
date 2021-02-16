@@ -444,7 +444,7 @@ color: white;
 
 .photo-input-div{
   width: 45vw;
-  height: 65vh;
+  height: 70vh;
   background: linear-gradient(180deg, #4D217B, 60%, #863ED2) ;
   background-repeat: no-repeat;
   background-position: center;
@@ -497,12 +497,12 @@ color: white;
 
 .img-display{
   width: 300px;
-  height: 250px;
+  height: 280px;
   border: 2px solid #dddddd;
   margin-top: 15px;
   display: flex;
   justify-content: center;
-  align-items: center;
+
   font-weight: bold;
   color: #cccccc;
   overflow: hidden;
@@ -512,11 +512,9 @@ color: white;
 }
 
 .img-display img{
-  width: 100%;
+
   display: none;
-  position: absolute;
-  top: 0px;
-  overflow: hidden;
+  overflow-x: hidden;
   cursor: move;
 
 }
@@ -600,7 +598,7 @@ color: white;
   position: fixed;
   top: 0;
   z-index: 10000;
-   
+
   justify-content: center;
   align-items: center;
   display: none;
@@ -647,14 +645,19 @@ color: white;
     margin-left: 5%;
     padding-left: 1vw;
 }
-.photo
+.photo-post
 {
-    width:90%;
-    height:60vh;
+
+    overflow-x: hidden;
+    margin: 0 auto;
 }
 .photo_div
 {
-    margin-top:3vh;
+    padding: 1%;
+    border: 2px solid #cccccc;
+    margin: 3vh 5%;
+    height: 50vh;
+    overflow: hidden;
     display:none;
 }
 .dropdown
@@ -673,10 +676,10 @@ color: white;
     margin-left:4.5%;
     padding-left:1%;
 }
-.dropdown:hover .dropdown_content
+/* .dropdown:hover .dropdown_content
 {
     display:block;
-}
+} */
 .add_to_post_div
 {
     text-align: left;
@@ -864,4 +867,19 @@ ayushman new */
   font-size: 35px;
   color: orange;
   cursor: pointer;
+}
+
+.user-img-post{
+  position: absolute;
+  right:6vw;
+  width: 2.3vw;
+  z-index: 10;
+  background: none;
+  opacity: 0;
+  cursor: pointer;
+
+}
+
+input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
+    cursor: pointer;
 }

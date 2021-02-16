@@ -666,7 +666,8 @@ color: white;
 }
 .dropdown_content
 {
-    padding-top:2vh;
+    background: whitesmoke !important;
+    margin-top:0.5vh;
     background-color:white;
     display:none;
     text-align:left;
@@ -716,6 +717,31 @@ color: white;
     float:right;
 }
 
+.fa-time{
+  position: absolute;
+  right: 3vw;
+  color: black;
+  border-radius: 50px;
+  border: 2px solid #cccccc;
+  background: rgba(256,256,256,0.1);
+  height: 6.2vh;
+  width: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1vh 0.3vw;
+  cursor: pointer;
+}
+.fa-time:hover{
+  background: rgba(256,256,256,0.9);
+  border-radius: 50px;
+}
+
+
+
+.fa-times{
+    color: black;
+}
 
 a
 {

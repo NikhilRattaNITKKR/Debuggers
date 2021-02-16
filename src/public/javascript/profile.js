@@ -102,7 +102,7 @@ var dropdown = document.querySelector(".dropdown_button");
 dropdown.addEventListener("focus",function(){
   setTimeout(function(){
     document.querySelector(".dropdown_content").style.display="block";
-  },300);
+  },200);
 
 
 });
@@ -136,4 +136,11 @@ imagepostinp.addEventListener("change",function(){
     reader.readAsDataURL(file);
   }
 
+});
+
+
+
+document.querySelector(".fa-times").addEventListener("click",function(){
+  document.querySelector(".photo_div").style.display="none";
+  document.querySelector(".photo-post").setAttribute("src", "");
 });

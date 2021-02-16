@@ -28,7 +28,7 @@ var bool = 1;
 
 
 $('.tr-post-hover').on("mouseenter",function(){
- $(this).css("opacity","0.6");
+ $(this).css("opacity","1");
 });
 
 $('.tr-post-hover').on("mouseleave",function(){

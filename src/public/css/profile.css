@@ -585,3 +585,283 @@ color: white;
 .create-a-post-div-img div:hover{
   background: #cccccc;
 }
+
+
+
+
+/* Create a Post Popup */
+
+
+
+.bg-photo-post{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+   
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+
+.post-content-div{
+  width: 45vw;
+  height: 70vh;
+  background: white;
+  padding: 0;
+  position: relative;
+  overflow: scroll;
+}
+
+/* Ayushman */
+
+.title_div_input,.dropdown_button
+{
+    width:90%;
+    height:5vh;
+    border:none;
+    margin-left: 5%;
+    padding-left: 1vw;
+}
+
+.title_div_heading,.description_div_heading,.genre_div_heading
+{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom:1vh;
+    margin-top:2vh;
+    text-align: left;
+    margin-left:5%;
+}
+
+
+.description_div_input
+{
+    width:90%;
+    border:none;
+    padding-left:0px;
+    margin-left: 5%;
+    padding-left: 1vw;
+}
+.photo
+{
+    width:90%;
+    height:60vh;
+}
+.photo_div
+{
+    margin-top:3vh;
+    display:none;
+}
+.dropdown
+{
+    position:relative;
+}
+.dropdown_content
+{
+    padding-top:2vh;
+    background-color:white;
+    display:none;
+    text-align:left;
+    width:91%;
+    z-index:4;
+    position: relative;
+    margin-left:4.5%;
+    padding-left:1%;
+}
+.dropdown:hover .dropdown_content
+{
+    display:block;
+}
+.add_to_post_div
+{
+    text-align: left;
+    width:90%;
+    margin:auto;
+    border:rgb(94, 92, 92);
+    border-style:outset;
+    margin-top:3vh;
+    height:8vh;
+    border-width: 1px;
+    padding-left:15px;
+    border-radius:10px;
+    position: relative;
+    top: 1vh;
+}
+.add_to_post_text_div
+{
+    display:flex;
+    float:left;
+    height:100%;
+    align-items: center;
+}
+.add_to_post_text
+{
+    display:table-cell;
+    vertical-align: middle;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+}
+.add_to_post_icons
+{
+    float:right;
+}
+
+
+a
+{
+    text-decoration:none;
+}
+a:hover{
+    text-decoration:none;
+    color:white;
+}
+
+.checkbox
+{
+    margin-right: 0.7vw;
+    /* margin-left:1%; */
+}
+
+.post-button-post{
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.post-button-post button{
+  height: 5vh;
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  background: #4D217B;
+  border: none;
+  border-radius: 20px;
+}
+
+/*
+ayushman new */
+
+
+
+
+.switch {
+    position: absolute;
+    right: 2.5vw;
+    display: inline-block;
+    width: 45px;
+    height: 26px;
+    margin-top:0.5vh;
+  }
+
+  .toggle-section{
+    display: flex;
+    align-items: center;
+    height: 6vh;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 5.5px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #4D217B;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 2px #863ED2;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+.toggle_section_head_heading
+{
+    float:left;
+    font-size:20px;
+}
+.toggle_section_div
+{
+    margin-left:5%;
+    margin-top:5vh;
+}
+.toggle_section_dropdown_content
+{
+    clear:both;
+    margin:auto;
+    text-align: left;
+    margin-left: 5px;
+    display: none;
+}
+.toggle_section_dropdown_content_name_input,.toggle_section_dropdown_content_url_input
+{
+    width:93%;
+    margin:auto;
+    margin-top:1.5vh;
+    height:5vh;
+    border: none;
+    padding-left: 1vw;
+}
+
+.fa-image{
+  position: absolute;
+  right: 6vw;
+  font-size: 35px;
+  color: green;
+  cursor: pointer;
+}
+.fa-handshake{
+  position: absolute;
+  right: 1vw;
+  font-size: 35px;
+  color: orange;
+  cursor: pointer;
+}

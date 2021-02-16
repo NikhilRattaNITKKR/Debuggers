@@ -62,3 +62,37 @@ imageinp.addEventListener("change",function(){
     reader.readAsDataURL(file);
   }
 });
+
+
+
+var createpost = document.querySelector("#create-post");
+createpost.addEventListener("click",function(){
+  document.querySelector(".bg-photo-post").style.display="flex";
+  document.querySelector("*").style.overflow="hidden";
+});
+
+var closepost = document.querySelector("#closepost");
+closepost.addEventListener("click",function(){
+  document.querySelector(".bg-photo-post").style.display="none";
+  document.querySelector("*").style.overflow="initial";
+});
+
+
+
+
+var checkbox = document.querySelector("#check-box");
+checkbox.addEventListener("click",function(){
+
+  if(this.checked){
+    setTimeout(function(){
+      document.querySelector(".toggle_section_dropdown_content").style.display="block";
+    },500);
+
+  }
+
+  else{
+    setTimeout(function(){
+      document.querySelector(".toggle_section_dropdown_content").style.display="none";
+    },500);
+  }
+});

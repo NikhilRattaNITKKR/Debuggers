@@ -3,6 +3,7 @@
   margin: 0;
 }
 
+
 .navbar{
   height: 8vh;
   opacity: 0.9;
@@ -13,4 +14,34 @@
   flex: 1;
   position: relative;
   top: 8vh;
+}
+
+.left-div{
+  width: 20%;
+  height: 92vh;
+  position: fixed;
+  left: 0px;
+  top: 8vh;
+  overflow-y: scroll;
+
+}
+
+
+.mid-div{
+  width: 60%;
+  position: relative;
+  left: 20%;
+}
+
+.right-div{
+  position: relative;
+ width: 20%;
+ left:20%;
+}
+
+.today-doubt{
+ 
+  border-bottom: 2px solid black;
+  overflow-y: visible;
+
 }

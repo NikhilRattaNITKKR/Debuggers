@@ -58,7 +58,12 @@
       <div class="user-container">
         <section class="user-left-block">
             <div class="user-photo">
+              <% if (image != null) { %>
+            <img src="data:image/png;base64,<%= image %>">
+
+            <% } else { %>
               <img src="https://cutt.ly/rki7z0g" alt="">
+              <% } %>
 
               <span class="user-photo-edit">
                 <i class="fas fa-camera"> </i>
@@ -98,7 +103,12 @@
 
             <div class="create-a-post-div">
               <div class="create-a-post-div-img">
-                <img src="https://cutt.ly/rki7z0g" alt="">
+                <% if (image != null) { %>
+            <img src="data:image/png;base64,<%= image %>">
+
+            <% } else { %>
+              <img src="https://cutt.ly/rki7z0g" alt="">
+              <% } %>
                 <div id="create-post">Create a Post</div>
               </div>
             </div>
@@ -108,7 +118,12 @@
               <% for(var i = 0; i< 5; i++){ %>
               <div class="user-post">
                 <div class="user-post-header">
-                  <section><img src="https://cutt.ly/rki7z0g" alt=""></section>
+                  <section><% if (image != null) { %>
+          <img src="data:image/png;base64,<%= image %>">
+
+          <% } else { %>
+            <img src="https://cutt.ly/rki7z0g" alt="">
+            <% } %></section>
                   <section id="user"> <%= user.name %>  <p> 5 min ago</p>    <span id ="edit"> <i class="fas fa-ellipsis-h edit-btn"></i>  <div class="post-click">
                       <div class="pin-post">
                           <button type="button" name="button">Pin Post</button>
@@ -174,10 +189,10 @@
 
 
       <div class="form-div">
-        <form class="" action="" method="post">
+        <form class="" action="/editImage" enctype="multipart/form-data" method="post">
 
 
-         <input class="user-img-input" type="file" name="myImage" accept="image/*" />
+         <input class="user-img-input" type="file" name="profileImage" accept="image/*" />
 
          <div class="img-display">
            <img src="" alt="" class="img-display-img">

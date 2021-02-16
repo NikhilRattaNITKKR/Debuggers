@@ -140,22 +140,30 @@ const getProfile = async(req, res) => {
       res.redirect('/');
     } else {
 
-      const id = new BSON.ObjectID(req.params.id);
+      const id = new BSON.ObjectID(req.params.id.toString());
       const mongodb = app.currentUser.mongoClient("mongodb-atlas");
       const Users = mongodb.db("Debuggers").collection('Users');
+      const Events = mongodb.db("Debuggers").collection('Events');
       const user = await Users.findOne({_id: id});
-      console.log("Profile:", user);
+
       if (user == null) {
         await app.allUsers[app.currentUser.id].logOut();
         res.render('form', {title: "Detail Form"});
       } else {
-        res.render('profile', {user: user});
+        const events = await Events.find({uid: id});
+
+        let image = user.image;
+
+        res.render('profile', {user: user, events: events, image: image});
       }
     }
   } catch (e) {
     console.error("Get Profile Error: ", e);
   }
 }
+
+
+
 
 
 const getEvents = async(req, res) =>{

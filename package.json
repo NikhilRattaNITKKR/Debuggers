@@ -23,6 +23,7 @@
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "multer": "^1.4.2",
     "realm": "^10.1.4",
     "request": "^2.88.2",
     "sharp": "^0.27.1"

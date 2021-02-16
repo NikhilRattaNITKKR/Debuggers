@@ -1,324 +1,335 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
 
-    <!--try to use partials in all view files-->
+  <!--try to use partials in all view files-->
 
-    <title>Debuggers</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/profile.css">
-    <link rel="stylesheet" href="/css/nav.css">
-    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7d0e898fba.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/aea9fc94ab.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
-  </head>
-  <body>
+  <title>Debuggers</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/profile.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/7d0e898fba.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/aea9fc94ab.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-            <a class="navbar-brand" href="/"><i class="fas fa-bug icon"></i><p class="brand_name">Debuggers</p></a>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="/"><i class="fas fa-bug icon"></i><p class="brand_name">Debuggers</p></a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/events"><p class="about_nav_text">Events</p></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/doubtforum"><p class="meet_nav_text">Doubt Forum</p></a>
-                  </li>
-                 <li class="nav-item">
-                  <a class="nav-link " href="/"><p class="contact_nav_text">Profile</p></a>
-                </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/events"><p class="about_nav_text">Events</p></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/doubtforum"><p class="meet_nav_text">Doubt Forum</p></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/"><p class="contact_nav_text">Profile</p></a>
+        </li>
 
-                  <!-- <li class="nav-item">
-                    <a class="nav-link" href="/LogIn"><p class="login_nav_text">Login</p></a>
-                  </li>  -->
+        <!-- <li class="nav-item">
+        <a class="nav-link" href="/LogIn"><p class="login_nav_text">Login</p></a>
+      </li>  -->
 
-              </ul>
-            </div>
-        </nav>
+    </ul>
+  </div>
+</nav>
 
-      <section class="top">
+<section class="top">
 
-         <input class="search-bar" type="text" name="" value="" placeholder="Search..">
-         <i class="fas fa-search search-visible" id="search-icon"></i>
-         <span class="signout-text"><div>
-           SignOut
-         </div></span>
-         <span class="top-user-name"><%=user.name%> <a href="/logOut"><i class="fas fa-sign-out-alt"></i></a></span>
-      </section>
-      <section class="user">
-      <div class="user-container">
-        <section class="user-left-block">
-            <div class="user-photo">
-              <% if (image != null) { %>
-            <img src="data:image/png;base64,<%= image %>">
+  <input class="search-bar" type="text" name="" value="" placeholder="Search..">
+  <i class="fas fa-search search-visible" id="search-icon"></i>
+  <span class="signout-text"><div>
+    SignOut
+  </div></span>
+  <span class="top-user-name"><%=user.name%> <a href="/logOut"><i class="fas fa-sign-out-alt"></i></a></span>
+</section>
+<section class="user">
+  <div class="user-container">
+    <section class="user-left-block">
+      <div class="user-photo">
+        <% if (image != null) { %>
+          <img src="data:image/png;base64,<%= image %>">
 
-            <% } else { %>
-              <img src="https://cutt.ly/rki7z0g" alt="">
-              <% } %>
+          <% } else { %>
+            <img src="https://cutt.ly/rki7z0g" alt="">
+            <% } %>
 
-              <span class="user-photo-edit">
-                <i class="fas fa-camera"> </i>
-              </span>
+            <span class="user-photo-edit">
+              <i class="fas fa-camera"> </i>
+            </span>
 
-            </div>
+          </div>
 
-            <div class="user-name">
-              <h5><%= user.name %></h5>
-              <p><%= user.branch %></p>
-            </div>
+          <div class="user-name">
+            <h5><%= user.name %></h5>
+            <p><%= user.branch %></p>
+          </div>
 
-            <div class="followers">
-              <h6>Followers</h6>
-              <p>2300  <i class="far fa-heart"></i></p>
-            </div>
-            <div class="following">
-              <h6>Following</h6>
-              <p>230 <i class="far fa-heart"></i></p>
-            </div>
+          <div class="followers">
+            <h6>Followers</h6>
+            <p>2300  <i class="far fa-heart"></i></p>
+          </div>
+          <div class="following">
+            <h6>Following</h6>
+            <p>230 <i class="far fa-heart"></i></p>
+          </div>
         </section>
         <section class="user-mid-block">
-            <div class="user-about">
-              <div class="user-about-text">
-                <h4>About</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad  tation ull mmodo consequat. Duis aute irure dolor in reprehenderit in voluptate vel
-            </div>
-            <div class="user-features">
-              <span>Genre :</span>  <span class="features-span">Technology</span>  <span class="features-span">Research</span>
-            </div>
+          <div class="user-about">
+            <div class="user-about-text">
+              <h4>About</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad  tation ull mmodo consequat. Duis aute irure dolor in reprehenderit in voluptate vel
+              </div>
+              <div class="user-features">
+                <span>Genre :</span>  <span class="features-span">Technology</span>  <span class="features-span">Research</span>
+              </div>
 
-            <div class="user-features">
-              <span>Skills :</span>  <span class="features-span">Web-Development</span> <span class="features-span">UI/UX Designing</span> <span class="features-span">Android-Development</span>
-            </div>
+              <div class="user-features">
+                <span>Skills :</span>  <span class="features-span">Web-Development</span> <span class="features-span">UI/UX Designing</span> <span class="features-span">Android-Development</span>
+              </div>
 
             </div>
 
             <div class="create-a-post-div">
               <div class="create-a-post-div-img">
                 <% if (image != null) { %>
-            <img src="data:image/png;base64,<%= image %>">
+                  <img src="data:image/png;base64,<%= image %>">
 
-            <% } else { %>
-              <img src="https://cutt.ly/rki7z0g" alt="">
-              <% } %>
-                <div id="create-post">Create a Post</div>
-              </div>
-            </div>
+                  <% } else { %>
+                    <img src="https://cutt.ly/rki7z0g" alt="">
+                    <% } %>
+                    <div id="create-post">Create a Post</div>
+                  </div>
+                </div>
 
-            <section>
+                <section>
 
-              <% for(var i = 0; i< 5; i++){ %>
-              <div class="user-post">
-                <div class="user-post-header">
-                  <section><% if (image != null) { %>
-          <img src="data:image/png;base64,<%= image %>">
+                  <% for(var i = 0; i< events.length; i++){ %>
+                    <div class="user-post">
+                      <div class="user-post-header">
+                        <section><% if (image != null) { %>
+                          <img src="data:image/png;base64,<%= image %>">
 
-          <% } else { %>
-            <img src="https://cutt.ly/rki7z0g" alt="">
-            <% } %></section>
-                  <section id="user"> <%= user.name %>  <p> 5 min ago</p>    <span id ="edit"> <i class="fas fa-ellipsis-h edit-btn"></i>  <div class="post-click">
-                      <div class="pin-post">
-                          <button type="button" name="button">Pin Post</button>
+                          <% } else { %>
+                            <img src="https://cutt.ly/rki7z0g" alt="">
+                            <% } %></section>
+                            <section id="user"> <%= user.name %>  <p> <%= events[i]._id.getTimestamp() %> </p>    <span id ="edit"> <i class="fas fa-ellipsis-h edit-btn"></i>  <div class="post-click">
+                              <div class="pin-post">
+                                <button type="button" name="button">Pin Post</button>
+                              </div>
+                              <div class="delete-post">
+                                <button type="button" name="button">Delete Post</button>
+                              </div>
+                            </div></span>
+
+                          </section>
+                        </div>
+
+                        <div class="user-post-body">
+                          <div class="post-body-img">
+
+                            <% if(events[i].image!=null) { %>
+
+                              <img src="data:image/png;base64,<%= events[i].image %>">
+
+                            <% } else { %>
+                              <img src="https://dms.iitd.ac.in/international/dms_files/d_lama.jpg" alt="">
+                            <% } %>
+                          </div>
+
+
+                          <div class="post-desc">
+                            <h4><%= events[i].title %></h4>
+                            <p><%= events[i].desc %></p>
+                          </div>
+
+                          <div class="post-features">
+                            <button id="upvote" type="button" name="button">Upvote</button>
+                            <button id="downvote"type="button" name="button">Downvote</button>
+                            <button id="comment" type="button" name="button">Comment</button>
+                          </div>
+                        </div>
+
                       </div>
-                      <div class="delete-post">
-                          <button type="button" name="button">Delete Post</button>
-                      </div>
-                    </div></span>
 
+                      <%}%>
+
+
+                    </section>
+                  </section>
+
+
+
+
+                  <section>
+                    <div class="user-right-block">
+                      <div class="add-container">
+                        <img src="https://blog.littledata.io/wp-content/uploads/2019/02/google-ads.jpg" alt="">
+                      </div>
+                    </div>
                   </section>
                 </div>
 
-                <div class="user-post-body">
-                    <div class="post-body-img"><img src="https://dms.iitd.ac.in/international/dms_files/d_lama.jpg" alt=""></div>
 
 
-                  <div class="post-desc">
-                    <h4>It was a great seminar at IIT-D..</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit agna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea c  reprehenderit i giat nulla pariatur.  i officia deserunt mollit anim id est laborum.</p>
+              </section>
+
+
+
+
+              <div class="bg-photo-input">
+                <div class="photo-input-div">
+                  <div class="pop-header">
+                    <h4>Choose an Image</h4>
+                    <i class="fas fa-window-close"></i>
+
                   </div>
 
-                  <div class="post-features">
-                    <button id="upvote" type="button" name="button">Upvote</button>
-                    <button id="downvote"type="button" name="button">Downvote</button>
-                    <button id="comment" type="button" name="button">Comment</button>
+
+                  <div class="form-div">
+                    <form class="" action="/editImage" enctype="multipart/form-data" method="post">
+
+
+                      <input class="user-img-input" type="file" name="profileImage" accept="image/*" />
+
+                      <div class="img-display">
+                        <img src="" alt="" class="img-display-img">
+                        <span class="default-txt">Preview Image</span>
+                      </div>
+                      <div class="image-btn"><button type="submit" name="button">Upload</button></div>
+                    </form>
                   </div>
+
+                </div>
+              </div>
+
+
+
+
+              <div class="bg-photo-post">
+
+                <div class="post-content-div">
+                  <div class="pop-header">
+                    <h4>Create Post</h4>
+                    <i class="fas fa-window-close" id="closepost"></i>
+
+                  </div>
+                  <hr class="hor_line">
+
+                  <form action="/createPost" method="post" enctype="multipart/form-data">
+                    <div class="title_div">
+                      <div class="title_div_heading">Title</div>
+                      <input class="title_div_input" type="text" name="title" placeholder="Enter the title">
+                    </div>
+
+
+                    <div class="description_div">
+                      <div class="description_div_heading">Description</div>
+                      <textarea class="description_div_input" placeholder="Enter the description" name="desc" rows="5"></textarea>
+
+                    </div>
+
+
+                    <div class="genre_div">
+                      <div class="genre_div_heading">Genre</div>
+                      <div class="dropdown">
+                        <input class="dropdown_button" type="text" placeholder="Enter genre you are interested in" name="genre">
+                        <div class="dropdown_content">
+                          <span class="d-block menu-option" style="display: block;"><label><input class="checkbox" type="checkbox">Research</label></span>
+                          <span class="d-block menu-option" style="display: block; margin-top:5px;"><label><input class="checkbox" type="checkbox">Technology</label></span>
+                          <span class="d-block menu-option" style="display: block; margin-top:5px;"><label><input class="checkbox" type="checkbox">Internship</label></span>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="photo_div">
+                      <span class="fa-time"><i class="fas fa-times"></i></span>
+                      <img src="" class="photo-post" alt="photo">
+                    </div>
+
+                    <div class="add_to_post_div">
+                      <div class="add_to_post_text_div">
+                        <h2 class="add_to_post_text">Add to Post</h2>
+                        <i class="far fa-image"></i><input class="user-img-post" type="file" name="image" accept="image/*" />
+                        <i class="fas fa-handshake"></i>
+                      </div>
+                      <div class="add_to_post_icons">
+
+                      </div>
+                    </div>
+
+
+
+
+
+                    <div class="toggle_section_div">
+                      <div class="toggle_section_head">
+                        <div class="toggle-section">
+                          <h3 class="toggle_section_head_heading">Wanna add custom button?</h3>
+                          <label class="switch">
+                            <input type="checkbox" id="check-box" name="custom">  <!-- checked add krna hoga yaha  -->
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+
+                        <div class="toggle_section_dropdown_content">
+                          <input type="text" class="toggle_section_dropdown_content_name_input"
+                          name="buttonName" placeholder="Enter name of the button">
+                          <input type="text" class="toggle_section_dropdown_content_url_input"
+                          name="url" placeholder="Enter the url">
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="post-button-post">
+                      <button type="submit" name="button">Post</button>
+                    </div>
+
+                  </form>
                 </div>
 
               </div>
 
-            <%}%>
 
 
-            </section>
-        </section>
 
 
 
 
-        <section>
-            <div class="user-right-block">
-              <div class="add-container">
-                <img src="https://blog.littledata.io/wp-content/uploads/2019/02/google-ads.jpg" alt="">
-              </div>
-            </div>
-        </section>
-</div>
 
 
 
-</section>
 
 
 
 
-<div class="bg-photo-input">
-    <div class="photo-input-div">
-      <div class="pop-header">
-        <h4>Choose an Image</h4>
-      <i class="fas fa-window-close"></i>
 
-      </div>
 
 
-      <div class="form-div">
-        <form class="" action="/editImage" enctype="multipart/form-data" method="post">
 
 
-         <input class="user-img-input" type="file" name="profileImage" accept="image/*" />
 
-         <div class="img-display">
-           <img src="" alt="" class="img-display-img">
-           <span class="default-txt">Preview Image</span>
-         </div>
-         <div class="image-btn"><button type="submit" name="button">Upload</button></div>
-        </form>
-      </div>
 
-    </div>
-</div>
 
 
 
+              <script src="/javascript/lib/jquery.js"></script>
+              <script src="/javascript/profile.js"></script>
+              <script src="/javascript/profile_jquery.js"></script>
 
-<div class="bg-photo-post">
+            </body>
 
-  <div class="post-content-div">
-    <div class="pop-header">
-      <h4>Create Post</h4>
-    <i class="fas fa-window-close" id="closepost"></i>
-
-    </div>
-    <hr class="hor_line">
-
-<form action="" method="post">
-   <div class="title_div">
-                <div class="title_div_heading">Title</div>
-                <input class="title_div_input" type="text" placeholder="Enter the title">
-    </div>
-
-
-   <div class="description_div">
-                <div class="description_div_heading">Description</div>
-                <textarea class="description_div_input" placeholder="Enter the description" name="message" rows="5"></textarea>
-
-    </div>
-
-
-     <div class="genre_div">
-                <div class="genre_div_heading">Genre</div>
-                <div class="dropdown">
-                    <input class="dropdown_button" type="text" placeholder="Enter genre you are interested in" name="genre">
-                    <div class="dropdown_content">
-                        <span class="d-block menu-option" style="display: block;"><label><input class="checkbox" type="checkbox">Research</label></span>
-                        <span class="d-block menu-option" style="display: block; margin-top:5px;"><label><input class="checkbox" type="checkbox">Technology</label></span>
-                        <span class="d-block menu-option" style="display: block; margin-top:5px;"><label><input class="checkbox" type="checkbox">Internship</label></span>
-                    </div>
-                </div>
-      </div>
-
-
-     <div class="photo_div">
-                <span class="fa-time"><i class="fas fa-times"></i></span>
-                <img src="" class="photo-post" alt="photo">
-      </div>
-
-      <div class="add_to_post_div">
-                <div class="add_to_post_text_div">
-                    <h2 class="add_to_post_text">Add to Post</h2>
-                    <i class="far fa-image"></i><input class="user-img-post" type="file" name="myImage" accept="image/*" />
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <div class="add_to_post_icons">
-
-                </div>
-      </div>
-
-
-
-
-
-      <div class="toggle_section_div">
-                <div class="toggle_section_head">
-                  <div class="toggle-section">
-                    <h3 class="toggle_section_head_heading">Wanna add custom button?</h3>
-                    <label class="switch">
-                       <input type="checkbox" id="check-box">  <!-- checked add krna hoga yaha  -->
-                        <span class="slider round"></span>
-                    </label>
-                  </div>
-
-                    <div class="toggle_section_dropdown_content">
-                        <input type="text" class="toggle_section_dropdown_content_name_input" placeholder="Enter name of the button">
-                        <input type="text" class="toggle_section_dropdown_content_url_input" placeholder="Enter the url">
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="post-button-post">
-              <button type="submit" name="button">Post</button>
-            </div>
-
-</form>
-  </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/javascript/lib/jquery.js"></script>
-<script src="/javascript/profile.js"></script>
-<script src="/javascript/profile_jquery.js"></script>
-
-</body>
-
-</html>
+            </html>

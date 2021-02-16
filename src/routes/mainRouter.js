@@ -21,6 +21,7 @@ router.route('/logOut').get(userControllers.logOut);
 
 router.route('/profile/:id').get(userControllers.getProfile);
 router.route('/editImage').post(upload.single('profileImage'), profileControllers.editProfileImage);
+router.route('/createPost').post(upload.single('image'), profileControllers.createPost);
 
 router.route('/events').get(userControllers.getEvents);
 

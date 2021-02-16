@@ -8,6 +8,14 @@ const app = new Realm.App({ id: "debuggers-lzxyc" });
 // const Users = mongodb.db("Debuggers").collection('Users');
 
 
+function getMongo() {
+  const mongodb = app.currentUser.mongoClient("mongodb-atlas");
+  const Users = mongodb.db("Debuggers").collection('Users');
+  const Events = mongodb.db("Debuggers").collection('Events');
+
+  return {users: Users, events: Events};
+}
+
 
 const getHome = async(req, res) => {
   console.log("Get Home:", app.currentUser);
@@ -140,10 +148,11 @@ const getProfile = async(req, res) => {
       res.redirect('/');
     } else {
 
+      const mongo = getMongo();
+      const Users = mongo.users;
+      const Events = mongo.events;
+
       const id = new BSON.ObjectID(req.params.id.toString());
-      const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-      const Users = mongodb.db("Debuggers").collection('Users');
-      const Events = mongodb.db("Debuggers").collection('Events');
       const user = await Users.findOne({_id: id});
 
       if (user == null) {
@@ -168,7 +177,18 @@ const getProfile = async(req, res) => {
 
 const getEvents = async(req, res) =>{
   if (app.currentUser !== null) {
-    res.render('events');
+    const mongo = getMongo();
+    const Users = mongo.users;
+    const Events = mongo.events;
+
+    let events = await Events.find();
+    let users = [];
+    for (let i = 0; i<events.length; i++) {
+      users[i] = await Users.findOne({_id: events[i].uid});
+    }
+
+    
+    res.render('events', {events: events, users: users});
   } else {
     res.redirect('/');
   }

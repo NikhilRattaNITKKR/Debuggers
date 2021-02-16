@@ -92,21 +92,32 @@
     <h1 class="trending-posts-txt">Trending Posts</h1>
     <div class="trending-posts">
 
+      <% for(let i = 0; i< 3; i++) {  %>
+
       <section class="tr-posts">
         <div class="post-header">
           <section class="header-left">
-              <img src="https://cutt.ly/rki7z0g" alt="" class="header-post-img">
+            <a href="/profile/<%= users[i]._id %>"><img src="data:image/png;base64,<%= users[i].image %>" class="header-post-img"></a>
+
           </section>
           <section class="header-mid">
-            <p>Faisal Ali Khan<br>
-              2 min ago
+            <p><%= users[i].name %><br>
+              <%= events[i]._id.getTimestamp() %>
             </p>
           </section>
 
         </div>
 
        <div class="post-img">
-          <img src="https://www.ecell.in/2020/images/gallery/_dsc7848.jpg" alt="">
+          <% if (events[i].image != null) { %>
+            <img src="data:image/png;base64,<%= events[i].image%>">
+            <% } else { %>
+              <img src="https://www.ecell.in/2020/images/gallery/_dsc7848.jpg" alt="">
+              <% } %>
+
+              <% if(events.length > 3) { %>
+                  //Add Span Here
+              <% } %>
         </div>
 
 
@@ -114,47 +125,7 @@
         <div class="tr-post-hover"><div>Go to Post</div></div>
       </section>
 
-      <section class="tr-posts">
-        <div class="post-header">
-          <section class="header-left">
-              <img src="https://cutt.ly/rki7z0g" alt="" class="header-post-img">
-          </section>
-          <section class="header-mid">
-            <p>Faisal Ali Khan<br>
-              2 min ago
-            </p>
-          </section>
-
-        </div>
-
-        <div class="post-img">
-          <img src="https://www.ecell.in/2020/images/gallery/_dsc7848.jpg" alt="">
-        </div>
-
-
-        <div class="tr-post-hover"><div>Go to Post</div></div>
-      </section>
-
-      <section class="tr-posts">
-        <div class="post-header">
-          <section class="header-left">
-              <img src="https://cutt.ly/rki7z0g" alt="" class="header-post-img">
-
-          </section>
-          <section class="header-mid">
-            <p>Faisal Ali Khan<br>
-              2 min ago
-            </p>
-          </section>
-
-        </div>
-
-        <div class="post-img">
-          <img src="https://www.ecell.in/2020/images/gallery/_dsc7848.jpg" alt="">
-        </div>
-
-        <div class="tr-post-hover"><div>Go to Post</div></div>
-      </section>
+      <% } %>
 
     </div>
 

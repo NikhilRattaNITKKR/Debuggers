@@ -13,4 +13,36 @@ $(".new-post-text").click(function(){
 $("#cancel-btn").click(function(){
   $(".doubt-section").removeClass("doubt-section-none");
   $(".post-a-doubt").removeClass("post-a-doubt-display");
-})
+});
+
+$(".new-post-text").click(function(){
+setTimeout(function(){
+  $(".doubt-section").addClass("doubt-section-none");
+  $(".post-a-doubt").addClass("post-a-doubt-display");
+},300);
+
+});
+
+$("#cancel-btn").click(function(){
+setTimeout(function(){
+  $(".doubt-section").removeClass("doubt-section-none");
+  $(".post-a-doubt").removeClass("post-a-doubt-display");
+},300);
+
+});
+
+$(".add-a-comment").click(function(){
+setTimeout(function(){
+  $("#new-comment-div").css("display","flex");
+},200);
+
+
+});
+
+$("#new-btn-cancel").click(function(){
+setTimeout(function(){
+    $("#new-comment-div").css("display","none");
+    $(".new-comment-input").val("");
+},200);
+
+});

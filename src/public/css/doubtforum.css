@@ -75,6 +75,9 @@
   height: 7vh;
   padding: 0 3%;
   background: #dddddd;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .new-post-text, .post-search{
@@ -109,4 +112,275 @@ color: #444444;
   top: 1.4vh;
   cursor: pointer;
   margin: 0 !important;
+  width: 2vw;
+}
+
+.fa-arrows-alt-v:hover{
+  color: black;
+}
+
+
+
+.doubt-section, .post-a-doubt{
+  padding: 3%;
+
+}
+
+.question-mid-div{
+  margin-bottom: 3vh;
+  box-shadow: 0px -2px 8px  rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  position: relative;
+}
+
+.question-top, .post-a-doubt-top{
+  font-size: 18px;
+  padding: 1% 2%;
+  border-bottom: 1px solid gray;
+  display: flex;
+  align-items: center;
+}
+.top-views{
+  position: absolute;
+  right: 2vw;
+}
+
+.username-a{
+  text-decoration: none;
+  color: #aaaaaa;
+  margin-left: 10px;
+}
+.username-a:hover{
+  text-decoration: none;
+  color: black;
+}
+.fa-eye{
+  color: #333333;
+}
+.question-mid-container{
+  padding: 1% 2%;
+  margin: 3vh 0;
+}
+
+.doubt-bottom-div{
+  padding: 1.5% 2%;
+  background: #dddddd;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.doubt-options button{
+  border: none;
+  background: #7880b5;
+  width: 5vw;
+  height: 4vh;
+  color: white;
+  border-radius: 20px;
+}
+.doubt-options button:hover{
+  outline: none;
+  background: navajowhite;
+  color:black;
+}
+.doubt-options button:focus{
+  outline: none;
+}
+.doubt-options{
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+}
+.doubt-options a{
+  text-decoration: none;
+  color: #7880b5;
+}
+.doubt-options a:hover{
+  color: white;
+}
+
+.question-top:hover{
+  background: rgba(0, 166, 237,0.2);
+  border-radius: 10px 10px 0 0;
+}
+#answer-top:hover{
+  background: rgba(43, 192, 22,0.2);
+  border-radius: 10px 10px 0 0;
+}
+
+.doubt-options-span{
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.answer-followups{
+      padding: 1% 2%;
+}
+
+#answer-div{
+  margin-bottom: 0.5vh;
+}
+
+.answer-comments{
+  list-style: none;
+  padding-left: 7%;
+  margin-top: 3vh;
+}
+
+.comment-div{
+  padding: 2% 1.5%;
+  box-shadow: 0px 0px 3.5px  rgba(0, 0, 0, 0.25);
+  width: 70%;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  border-radius: 10px;
+
+}
+
+.comment-list{
+  display: flex;
+
+}
+
+.comment-list span{
+  margin-right: 1vw;
+  height: 10vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.comment-list span img{
+  clip-path: circle();
+  width: 3.5vw;
+}
+
+.add-a-comment{
+  margin: 1vh 0;
+  width: 66%;
+  margin-left: 15%;
+  font-size: 17px;
+  background: #dddddd;
+  padding: 1.5% 1.5%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.add-a-comment:hover{
+  background: #cccccc;
+}
+
+#answer-options-span{
+  width: 30%;
+}
+
+.post-a-doubt{
+
+}
+
+.post-doubt-div{
+  margin-top: 3.5vh;
+
+    box-shadow: 0px 0px 30px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    background: white;
+}
+
+.post-a-doubt-body{
+  padding: 1% 2%;
+
+}
+
+
+.post-type{
+  display: flex;
+  margin: 2vh 0;
+  padding: 0 1.5%;
+  font-size: 18px;
+  font-weight: 400;
+}
+.post-type-input{
+  margin-left: 5vw;
+  font-weight: 500;
+}
+.post-type-input input{
+  margin-right: 0.5vw;
+}
+
+.Question, .Desc, .doubt-buttons{
+  padding: 1% 1.5%;
+  margin-bottom: 2vh;
+}
+
+.Question input{
+  width: 90%;
+  border: none;
+  border-bottom: 2px solid #AEADF0;
+  padding: 1% 2%;
+  transition: 300ms;
+
+}
+
+.Question input:focus{
+  outline: none;
+  border-bottom: 3px solid #7880b5;
+  padding-bottom: 2%;
+}
+.Desc textarea{
+  width: 90%;
+  padding: 1% 2%;
+  border: 2px solid #AEADF0;
+  transition: 300ms;
+}
+
+.Desc textarea:focus{
+  outline: none;
+  border: 3px solid #7880b5;
+
+}
+
+.doubt-buttons{
+  display: flex;
+}
+
+.doubt-buttons button{
+  border: none;
+  background: #7880b5;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  padding: 1% 2%;
+  margin-right: 2vw;
+  border-radius: 20px;
+  color: white;
+}
+.doubt-buttons button:focus{
+  outline: none;
+}
+#cancel-btn{
+  background:navajowhite;
+  color: black;
+}
+
+.post-a-doubt-top{
+  height: 8vh;
+}
+
+.post-a-doubt-top:hover{
+  background: rgba(255, 238, 50,0.2);
+  border-radius: 10px 10px 0 0;
+}
+.post-a-doubt{
+  height: 92vh;
+  display: none;
+  background: rgba(144, 224, 239,0.3);
+}
+
+/* temporary */
+.doubt-section-none{
+  display: none;
+}
+.post-a-doubt-display{
+  display: block;
 }

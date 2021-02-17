@@ -7,6 +7,7 @@ var upload = multer({ storage: storage })
 
 const userControllers = require("../controllers/user")
 const profileControllers = require("../controllers/profile")
+const doubtControllers = require("../controllers/doubt");
 const router=new express.Router();       //creates a new router object basically it contains all the functions we need like get,post,delete.patchs
 
 
@@ -26,7 +27,7 @@ router.route('/createPost').post(upload.single('image'), profileControllers.crea
 router.route('/events').get(userControllers.getEvents);
 
 
-router.route('/doubtforum').get(userControllers.getDoubtForum);
+router.route('/doubtforum').get(doubtControllers.getDoubtForum).post(doubtControllers.createDoubt)
 
 
 

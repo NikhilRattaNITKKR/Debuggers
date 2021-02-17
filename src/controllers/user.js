@@ -182,25 +182,26 @@ const getEvents = async(req, res) =>{
     const Events = mongo.events;
 
     let events = await Events.find();
+    let user = await Users.find();
     let users = [];
     for (let i = 0; i<events.length; i++) {
-      users[i] = await Users.findOne({_id: events[i].uid});
+      for ( let j = 0; j<user.length; j++ ) {
+        if(events[i].uid.toString() === user[j]._id.toString()) {
+          users[i] = user[j];
+        }
+      }
     }
 
-    
+
+
+
     res.render('events', {events: events, users: users});
   } else {
     res.redirect('/');
   }
 }
 
-const getDoubtForum = async(req, res) =>{
-  if (app.currentUser !== null) {
-    res.render('doubtforum');
-  } else {
-    res.redirect('/');
-  }
-}
+
 
 
 module.exports={
@@ -213,5 +214,5 @@ module.exports={
   logOut,
   getProfile,
   getEvents,
-  getDoubtForum
+
 }

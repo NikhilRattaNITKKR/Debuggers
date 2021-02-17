@@ -9,8 +9,7 @@
     <script src="https://kit.fontawesome.com/7d0e898fba.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/aea9fc94ab.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7d0e898fba.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/aea9fc94ab.js" crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -110,14 +109,14 @@
 
        <div class="post-img">
           <% if (events[i].image != null) { %>
-            <img src="data:image/png;base64,<%= events[i].image%>">
+            <img src="data:image/png;base64,<%= events[i].image%>" alt="Image">
             <% } else { %>
-              <img src="https://www.ecell.in/2020/images/gallery/_dsc7848.jpg" alt="">
+              <img src="https://justanyrandomtopic.files.wordpress.com/2013/12/16bad-dsc_0035.jpg?w=400&h=196&zoom=2" alt="Image Alt">
               <% } %>
 
-              <% if(events.length > 3) { %>
-                  //Add Span Here
-              <% } %>
+              <!-- <% if(events.length > 3) { %>
+
+              <% } %> -->
         </div>
 
 

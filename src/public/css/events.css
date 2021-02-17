@@ -248,7 +248,7 @@ text-align: center;
 
 .tr-posts{
   width:35%;
-  height: 46.9vh;
+  height: 49.7vh;
   background: white;
   cursor: pointer;
   margin: 6vh 1.66%;
@@ -284,11 +284,11 @@ text-align: center;
 
 .tr-post-hover{
   display: block;
-  height: 46.9vh;
+  height: 35vh;
   z-index: 100;
   opacity: 0;
   background: rgba(0,0,0,0.5);
-  transform: translateY(-46.9vh);
+  transform: translateY(-35vh);
 }
 
 .tr-post-hover div{
@@ -301,7 +301,7 @@ text-align: center;
   align-items: center;
   margin: 0 auto;
   background: white;
-  transform: translateY(21.2vh);
+  transform: translateY(14.4vh);
   border: 5px solid #4D217B;
   border-radius: 20px;
 }

@@ -203,6 +203,10 @@
 }
 
 
+.user-photo-edit i:hover{
+  background: rgba(255,255,255,1);
+}
+
 .user-name{
   margin-top: 2vh;
   margin-bottom: 3vh;

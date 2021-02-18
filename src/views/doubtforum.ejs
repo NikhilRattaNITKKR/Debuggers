@@ -150,7 +150,7 @@
                       <div class="doubt-options">
                         <div class="doubt-options-span">
                           <div class="answer">
-                            <button type="button" name="button">Answer</button>
+                            <button type="button" name="button" id="answer-trigger">Answer</button>
                           </div>
                           <span><a href="#">Upvote</a></span>
                           <span> <a href="#">Downvote</a></span>
@@ -165,11 +165,35 @@
                   </div>
               </div>
 
+              <div class="question-mid-div" id="answer-pop">
+                <div class="question-top" id="answer-top">
+                    Answer by <a href="#" class="username-a"> Faisal Ali Khan</a>
+                </div>
+                <form action="" method="post">
+                <div class="question-mid-container">
+                  <textarea name="name" rows="2" placeholder="Type your Answer..." id="answer-input"></textarea>
+                </div>
 
+                <div class="doubt-bottom-div">
+
+                    <div class="doubt-options">
+                      <div class="doubt-options-span" id="answer-options-span">
+
+                        <span><button type="submit" name="button" id="answer-submit">Post my Answer</button>
+                       </span>
+                        <span>   <button type="button" name="button" class="cancel-answer">Cancel</button></span>
+
+                      </div>
+
+                    </div>
+
+                </div>
+              </form>
+              </div>
 
               <div class="question-mid-div">
                   <div class="question-top" id="answer-top">
-                      Answer by <a href="#" class="username-a"> Hemant Lakhotia</a>  <span class="top-views">1000 views <i class="far fa-eye"></i> </views>
+                      Answer by <a href="#" class="username-a"> Hemant Lakhotia</a>  <span class="top-views">1000 views <i class="far fa-eye"></i> </span>
                   </div>
                   <div class="question-mid-container" id="answer-div">
 

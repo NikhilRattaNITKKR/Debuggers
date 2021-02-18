@@ -157,6 +157,33 @@ form.addEventListener('submit',(e)=>{
 /*
 let upvote=document.querySelector("#upvote");
 let pid=upvote.value;
+
+function upVote(){
+
+fetch('/upVote?pid='+pid)
+.then(response=>response.json())
+.then((data)=>{
+
+if(data.error){
+  return console.log(data.error);
+}
+console.log("Successfully upvoted",data);
+})
+}
+
+function downVote(){
+
+fetch('/downVote?pid='+pid)
+.then(response=>response.json())
+.then((data)=>{
+
+if(data.error){
+  return console.log(data.error);
+}
+console.log("Successfully downvoted",data);
+})
+}
+
 */
 
 

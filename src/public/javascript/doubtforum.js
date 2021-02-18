@@ -6,11 +6,34 @@ $(".fa-arrows-alt-v").click(function(){
 
 
 $(".new-post-text").click(function(){
-  $(".doubt-section").addClass("doubt-section-none");
-  $(".post-a-doubt").addClass("post-a-doubt-display");
+
+  setTimeout(function(){
+    $(".doubt-section").addClass("doubt-section-none");
+    $(".post-a-doubt").addClass("post-a-doubt-display");
+  },300);
+
 })
 
 $("#cancel-btn").click(function(){
-  $(".doubt-section").removeClass("doubt-section-none");
-  $(".post-a-doubt").removeClass("post-a-doubt-display");
-})
+  setTimeout(function(){
+    $(".doubt-section").removeClass("doubt-section-none");
+    $(".post-a-doubt").removeClass("post-a-doubt-display");
+  },300);
+
+});
+
+$(".add-a-comment").click(function(){
+  setTimeout(function(){
+    $("#new-comment-div").css("display","flex");
+  },200);
+
+
+});
+
+$("#new-btn-cancel").click(function(){
+  setTimeout(function(){
+      $("#new-comment-div").css("display","none");
+      $(".new-comment-input").val("");
+  },200);
+
+});

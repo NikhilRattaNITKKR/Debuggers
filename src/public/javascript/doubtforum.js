@@ -5,15 +5,7 @@ $(".fa-arrows-alt-v").click(function(){
 });
 
 
-$(".new-post-text").click(function(){
-  $(".doubt-section").addClass("doubt-section-none");
-  $(".post-a-doubt").addClass("post-a-doubt-display");
-})
 
-$("#cancel-btn").click(function(){
-  $(".doubt-section").removeClass("doubt-section-none");
-  $(".post-a-doubt").removeClass("post-a-doubt-display");
-});
 
 $(".new-post-text").click(function(){
 setTimeout(function(){
@@ -34,6 +26,7 @@ setTimeout(function(){
 $(".add-a-comment").click(function(){
 setTimeout(function(){
   $("#new-comment-div").css("display","flex");
+  $(".new-comment-input").focus();
 },200);
 
 

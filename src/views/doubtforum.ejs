@@ -61,7 +61,10 @@
           <div class="toggle-by-arrow">
             <%  for(var i=0; i< 5; i++){ %>
                 <div class="doubt-div-left">
-
+                    <div class="left-block-content">
+                      <a href=""><h6><span>Q.</span> Can you tell me what is PMC?</h6>
+                      <p>I have heard something like PMC,can you tell what it is.</p></a>
+                    </div>
                 </div>
               <%} %>
           </div>
@@ -74,8 +77,11 @@
             </div>
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< 5; i++){ %>
-                  <div class="doubt-div-left">
-
+                  <div class="doubt-div-left" id="today-doubts">
+                    <div class="left-block-content">
+                      <a href=""><h6><span>Q.</span> Who are the Debuggers?</h6>
+                      <p>I have heard a company named Debuggers, can anyone tell me.</p></a>
+                    </div>
                   </div>
                 <%} %>
             </div>
@@ -86,8 +92,11 @@
             </div>
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< 5; i++){ %>
-                  <div class="doubt-div-left">
-
+                  <div class="doubt-div-left" id="yesterday-doubts">
+                    <div class="left-block-content">
+                      <a href=""><h6><span>Q.</span> What is KFC in NITKKR?</h6>
+                      <p>Heard a lot about this KFC is it not the original KFC?.</p></a>
+                    </div>
                   </div>
                 <%} %>
             </div>
@@ -98,8 +107,11 @@
             </div>
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< 5; i++){ %>
-                  <div class="doubt-div-left">
-
+                  <div class="doubt-div-left" id="week-doubts">
+                    <div class="left-block-content" >
+                      <a href=""><h6><span>Q.</span>When will be the Club Inductions?</h6>
+                      <p>Anyone?</p></a>
+                    </div>
                   </div>
                 <%} %>
             </div>
@@ -111,7 +123,10 @@
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< 5; i++){ %>
                   <div class="doubt-div-left">
-
+                    <div class="left-block-content">
+                      <a href=""><h6><span>Q.</span>When will be the Club Inductions? Please reply..</h6>
+                      <p>Anyone?</p></a>
+                    </div>
                   </div>
                 <%} %>
             </div>
@@ -170,7 +185,7 @@
                       <li class="comment-list"> <span><img src="https://cutt.ly/Wk3AhHo"></span> <div class="comment-div">Comment 3</div></li>
                       <li class="comment-list"> <span><img src="https://cutt.ly/yk3AvgY"></span> <div class="comment-div">Comment 4</div></li>
                       <li class="comment-list"> <span><img src="https://cutt.ly/qk3AmOK"></span> <div class="comment-div">Comment 4</div></li>
-                      <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div">
+                      <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div" id="new-comment-div-new">
                         <form action="" method="post">
                           <input class="new-comment-input" type="text" name="" value="" placeholder="Comment..">
                           <div class="new-comment-buttons">
@@ -217,11 +232,11 @@
                   <div class="post-type">
                     Post as
                     <div class="post-type-input">
-                      <input type="radio" name="postType" value="User">
+                      <input type="radio" name="postType" value="User" required="true">
                       <label for="User"> User</label>
                     </div>
                     <div class="post-type-input">
-                      <input type="radio" name="postType" value="Anonymous">
+                      <input type="radio" name="postType" value="Anonymous" required="true">
                       <label for="Anonymous">Anonymous</label>
                     </div>
 
@@ -230,7 +245,7 @@
 
                   <div class="Question">
                     <h5>Question</h5>
-                    <input type="text" name="question" value="" placeholder="Type your Question">
+                    <input type="text" name="question" value="" placeholder="Type your Question" required="true">
                   </div>
 
                   <div class="Desc">

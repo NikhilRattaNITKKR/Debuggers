@@ -39,3 +39,20 @@ setTimeout(function(){
 },200);
 
 });
+
+$("#answer-trigger").click(function(){
+  setTimeout(function(){
+    $("#answer-pop").css("display","block");
+  },300);
+  setTimeout(function(){
+    $("#answer-input").focus();
+  },600);
+
+});
+
+$(".cancel-answer").click(function(){
+  setTimeout(function(){
+    $("#answer-pop").css("display","none");
+    $("#answer-input").val("");
+  },300);
+})

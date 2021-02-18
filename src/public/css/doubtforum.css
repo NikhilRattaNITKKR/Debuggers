@@ -55,7 +55,7 @@
 }
 
 #today-doubts:hover{
-  background: #FEFFBE;
+  background: rgba(254, 255, 190,0.5);
 }
 
 #yesterday-doubts:hover{
@@ -63,7 +63,31 @@
 }
 
 #week-doubts:hover{
-  background: rgba(188, 235, 203,0.3);
+  background: rgba(188, 235, 203,0.5);
+}
+
+#answer-submit{
+  width: 9vw;
+}
+#answer-submit:hover{
+  background: #7880b5;
+  color: white;
+}
+
+#answer-input{
+  padding: 1% 1.5%;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #7880b5;
+  transition: 300ms;
+}
+#answer-input:focus{
+  border-bottom: 3px solid #7880a5;
+  padding-bottom: 1.5%;
+  outline: none;
+}
+#answer-pop{
+  display: none;
 }
 
 .left-block-content h6{
@@ -178,7 +202,7 @@ color: #444444;
 }
 
 .doubt-section{
-  background: rgb(242,242,242);
+  background: rgb(250,250,250);
 }
 
 .question-mid-div{
@@ -456,9 +480,13 @@ width: 100%;
 .doubt-buttons button:focus{
   outline: none;
 }
-#cancel-btn{
+#cancel-btn,{
   background:navajowhite;
   color: black;
+}
+.cancel-answer{
+  background:navajowhite !important;
+  color: black !important;
 }
 
 .post-a-doubt-top{

@@ -29,6 +29,8 @@ router.route('/events').get(userControllers.getEvents);
 
 router.route('/doubtforum').get(doubtControllers.getDoubtForum).post(doubtControllers.createDoubt)
 
+//router.route('/comments/:id').get(userControllers.getComments);
+
 
 
 module.exports=router;

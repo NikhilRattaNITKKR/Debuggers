@@ -160,7 +160,7 @@ const getProfile = async(req, res) => {
         res.render('form', {title: "Detail Form"});
       } else {
         const events = await Events.find({uid: id});
-        console.log(events[0]._id);
+  // to get id      console.log(events[0]._id);
 
         let image = user.image;
 

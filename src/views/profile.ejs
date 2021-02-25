@@ -155,9 +155,11 @@
                           </div>
 
                           <div class="post-features">
-                            <button id="upvote" type="button" name="button">Upvote</button>
-                            <button id="downvote"type="button" name="button">Downvote</button>
-                            <button id="comment" type="button" name="button">Comment</button>
+                            <form method="post" id="myForm">   <!--actions="/comments/:<%=events[i].id%>"  form for comments-->
+                            <button id="upvote" type="button" name="button" >Upvote</button>   <!--value="<%=events[i].id%>" onclick="upVote()"-->
+                            <button id="downvote"type="button" name="button" >Downvote</button> <!--value="<%=events[i].id%>" onclick="downVote()"-->
+                            <button id="comment" type="submit" name="button" >Comment</button>
+                          </form>
                           </div>
                         </div>
 

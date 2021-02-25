@@ -138,6 +138,55 @@ imagepostinp.addEventListener("change",function(){
 
 });
 
+/*  FOR COMMENTS
+let form=document.querySelector("#myForm");
+form.addEventListener('submit',(e)=>{
+  e.preventDefault();
+//chnage color of button to idicate change
+  fetch('/upVote?pid='+pid.value).then((response)=>{
+    response.json().then((data)=>{
+      if(data.error){
+        return console.log(data.error);
+      }
+      console.log("Successfully upvoted",data);
+    })
+  })
+})
+*/
+
+/*
+let upvote=document.querySelector("#upvote");
+let pid=upvote.value;
+
+function upVote(){
+
+fetch('/upVote?pid='+pid)
+.then(response=>response.json())
+.then((data)=>{
+
+if(data.error){
+  return console.log(data.error);
+}
+console.log("Successfully upvoted",data);
+})
+}
+
+function downVote(){
+
+fetch('/downVote?pid='+pid)
+.then(response=>response.json())
+.then((data)=>{
+
+if(data.error){
+  return console.log(data.error);
+}
+console.log("Successfully downvoted",data);
+})
+}
+
+*/
+
+
 
 
 document.querySelector(".fa-times").addEventListener("click",function(){

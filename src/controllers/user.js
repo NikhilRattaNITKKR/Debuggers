@@ -160,6 +160,7 @@ const getProfile = async(req, res) => {
         res.render('form', {title: "Detail Form"});
       } else {
         const events = await Events.find({uid: id});
+  // to get id      console.log(events[0]._id);
 
         let image = user.image;
 
@@ -176,6 +177,7 @@ const getProfile = async(req, res) => {
 
 
 const getEvents = async(req, res) =>{
+  try{
   if (app.currentUser !== null) {
     const mongo = getMongo();
     const Users = mongo.users;
@@ -199,11 +201,70 @@ const getEvents = async(req, res) =>{
   } else {
     res.redirect('/');
   }
+}catch (e){
+  console.log("Get Events error:",e);
+}
+}
+/*
+const upVote= async ()=>{
+
+try {
+
+  if (app.currentUser !== null) {
+    const mongo = getMongo();
+    const Events = mongo.events;
+    const id=req.query.pid;
+
+    const query = { "_id": id };
+    const update =   { "$inc": { "votes": 1 } };
+    const options = { "upsert": false };
+
+    Events.updateOne(query, update, options)
+      .then(result => {
+        const { matchedCount, modifiedCount } = result;
+        if(matchedCount && modifiedCount) {
+          console.log(`Successfully updated the item.`)
+        }
+      })
+      .catch(err => console.error(`Failed to update the item: ${err}`))
+
+}else {
+  res.redirect('/');
+}
+} catch (e) {
+console.log("Upvote error:",e);
+}
 }
 
+const downVote= async ()=>{
 
+try {
 
+  if (app.currentUser !== null) {
+    const mongo = getMongo();
+    const Events = mongo.events;
+    const id=req.query.pid;
+    const query = { "_id": id };
+    const update =   { "$inc": { "votes": -1 } };
+    const options = { "upsert": false };
 
+    Events.updateOne(query, update, options)
+      .then(result => {
+        const { matchedCount, modifiedCount } = result;
+        if(matchedCount && modifiedCount) {
+          console.log(`Successfully updated the item.`)
+        }
+      })
+      .catch(err => console.error(`Failed to update the item: ${err}`))
+
+}else {
+  res.redirect('/');
+}
+} catch (e) {
+console.log("downvote error :",e);
+}
+}
+*/
 module.exports={
   getHome,
   getSignUp,
@@ -214,5 +275,6 @@ module.exports={
   logOut,
   getProfile,
   getEvents,
-
+  //upVote,
+  //downVote
 }

@@ -4,10 +4,52 @@
 }
 
 
+@media only screen and (max-width: 768px){
+
+  .navbar{
+    height: auto !important;
+
+  }
+
+  .fixed-top{
+    position: sticky !important;
+  }
+
+  .main-container{
+    top: auto !important;
+
+  }
+
+  .left-div{
+    top: auto !important;
+    left: -20% !important;
+  }
+
+  .mid-div{
+    left: 0 !important;
+    width: 100% !important;
+  }
+  .right-div{
+    width: 0% !important;
+  }
+  .question-top, .post-a-doubt-top {
+    font-size: 1rem !important;
+  }
+  .doubt-options-span{
+    width: 80% !important;
+  }
+  .doubt-options button{
+    width: auto !important;
+    padding: 0 3% !important;
+  }
+
+}
+
 .navbar{
   height: 8vh;
   opacity: 0.9;
 }
+
 
 .main-container{
   display: flex;
@@ -93,7 +135,7 @@
 .left-block-content h6{
   transition: 300ms;
   overflow: hidden;
-    max-height: 3vh;
+  height: 3vh;
 }
 
 .doubt-div-left:hover{
@@ -311,7 +353,7 @@ width: 100%;
 }
 
 .comment-div{
-  padding: 1% 1.5%;
+  padding: 1.5% 1.5%;
   box-shadow: 0px 0px 3.5px  rgba(0, 0, 0, 0.25);
   width: 70%;
   margin-bottom: 1.5vh;
@@ -327,12 +369,12 @@ width: 100%;
 
 .comment-list{
   display: flex;
-
+  align-items: center;
 }
 
 .comment-list span{
   margin-right: 1vw;
-  height: 10vh;
+  height: auto;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -480,7 +522,7 @@ width: 100%;
 .doubt-buttons button:focus{
   outline: none;
 }
-#cancel-btn,{
+#cancel-btn{
   background:navajowhite;
   color: black;
 }

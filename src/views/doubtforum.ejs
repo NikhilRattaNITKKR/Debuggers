@@ -259,7 +259,7 @@ function getDoubt(_id) {
               <div class="doubt-options">
                 <div class="doubt-options-span">
                   <div class="answer">
-                    <button type="button" name="button" id="answer-trigger">Answer</button>
+                    <button type="button" name="button" id="answer-trigger" onclick="addAnswer()">Answer</button>
                   </div>
                   <span><a href="#">Upvote</a></span>
                   <span> <a href="#">Downvote</a></span>
@@ -290,7 +290,7 @@ function getDoubt(_id) {
 
                 <span><button type="submit" name="button" id="answer-submit">Post my Answer</button>
                </span>
-                <span>   <button type="button" name="button" class="cancel-answer">Cancel</button></span>
+                <span>   <button type="button" name="button" class="cancel-answer" onclick="cancelAnswer()">Cancel</button></span>
 
               </div>
 
@@ -323,7 +323,7 @@ function getDoubt(_id) {
                   <input class="new-comment-input" type="text" name="" value="" placeholder="Comment..">
                   <div class="new-comment-buttons">
                     <button class="new-comment-btn" type="submit" name="button">Post</button>
-                    <button class="new-comment-btn" id="new-btn-cancel" type="button" name="button">Cancel</button>
+                    <button class="new-comment-btn" id="new-btn-cancel" onclick="cancelComment()" type="button" name="button">Cancel</button>
                   </div>
                 </form>
 
@@ -331,7 +331,7 @@ function getDoubt(_id) {
               </li>
               </ul>
 
-              <div class="add-a-comment">
+              <div onclick="addComment()" class="add-a-comment">
                   Add a comment...
               </div>
           </div>

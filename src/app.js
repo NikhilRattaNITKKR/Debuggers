@@ -27,4 +27,8 @@ app.use(cookieParser());
 
 app.use(mainRouter);
 
+app.use("*", function(req, res) {
+  res.render('404', {title: 'Error 404'});
+});
+
 module.exports=app;

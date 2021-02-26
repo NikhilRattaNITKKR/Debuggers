@@ -1,5 +1,7 @@
 const Realm = require('realm');
 const BSON = require('bson');
+const ejs = require('../public/javascript/ejs');
+
 
 
 const app = new Realm.App({ id: "debuggers-lzxyc" });
@@ -13,32 +15,84 @@ function getMongo() {
 }
 
 
+let doubts = [];
 
 const getDoubtForum = async(req, res) =>{
-  if (app.currentUser !== null) {
-    const mongo = getMongo();
-    const Users = mongo.users;
-    const Doubts = mongo.doubts;
+  try {
+    if (app.currentUser !== null) {
+      const mongo = getMongo();
+      const Users = mongo.users;
+      const Doubts = mongo.doubts;
 
-    let doubts = await Doubts.find();
-    let user  = await Users.find();
-    let users = [];
+      let todayDoubts = [];
+      let yesterdayDoubts = [];
+      let thisWeekDoubts = [];
+      let thisMonthDoubts = [];
+      let otherDoubts = [];
 
-    for (let i = 0; i<doubts.length; i++) {
-      for ( let j = 0; j<user.length; j++ ) {
-        if(doubts[i].uid.toString() === user[j]._id.toString()) {
-          users[i] = user[j];
+      doubts = await Doubts.find();
+      // let user  = await Users.find();
+      let users = [];
+
+
+
+      for (let i = 0; i<doubts.length; i++) {
+
+        let time = ejs.convertTime(doubts[i]._id.getTimestamp())
+
+        if(time.includes('hour') || time.includes('min') || time.includes('sec')) {
+          todayDoubts.push(doubts[i])
+          // console.log('today:/ ', doubts[i] );
+
+        } else  if(time.includes('day') && time.includes('1')) {
+          yesterdayDoubts.push(doubts[i]);
+          // console.log('yesterdayDoubts');
+
+        } else if (time.includes('day') && !time.includes('1')) {
+          thisWeekDoubts.push(doubts[i]);
+          // console.log('thisWeekDoubts');
+
+        } else if (time.includes('week')) {
+          thisMonthDoubts.push(doubts[i]);
+          // console.log('thisMonthDoubts');
+
+        } else {
+          otherDoubts.push(doubts[i]);
         }
+
+      }
+
+
+      res.render('doubtforum', {users, todayDoubts, yesterdayDoubts,  thisWeekDoubts, thisMonthDoubts, otherDoubts, ejs, doubt: null});
+
+    } else {
+      res.redirect('/');
+    }
+  } catch (e) {
+    console.error('Error: ', e);
+  }
+}
+
+const getSpecificDoubt = async(req, res) => {
+  try {
+
+    const Users = getMongo().users;
+    var doubt;
+
+    for (let i = 0; i < doubts.length; i ++) {
+      if (req.params.id === doubts[i]._id.toString()) {
+        doubt = doubts[i];
       }
     }
 
+    const owner = await Users.findOne({_id: doubt.uid});
+    res.json({doubt, owner});
 
 
-
-    res.render('doubtforum', {users: users, doubts: doubts});
-  } else {
-    res.redirect('/');
+  } catch (err) {
+    console.error("Fetch Error: ", err);
   }
+
 }
 
 
@@ -76,4 +130,5 @@ const createDoubt = async(req, res) => {
 module.exports = {
   getDoubtForum,
   createDoubt,
+  getSpecificDoubt,
 }

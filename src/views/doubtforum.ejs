@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     
+
     <title>Debuggers</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/doubtforum.css">
@@ -63,7 +63,7 @@
             <%  for(var i=0; i< 5; i++){ %>
                 <div class="doubt-div-left">
                     <div class="left-block-content">
-                      <a href=""><h6><span>Q.</span> Can you tell me what is PMC?</h6>
+                      <a onclick="" ><h6><span>Q.</span> Can you tell me what is PMC?</h6>
                       <p>I have heard something like PMC,can you tell what it is.</p></a>
                     </div>
                 </div>
@@ -77,14 +77,16 @@
               Today <i class="fas fa-arrows-alt-v"></i>
             </div>
             <div class="toggle-by-arrow">
-              <%  for(var i=0; i< 5; i++){ %>
+              <% for(let i=0; i< todayDoubts.length; i++) { %>
                   <div class="doubt-div-left" id="today-doubts">
                     <div class="left-block-content">
-                      <a href=""><h6><span>Q.</span> Who are the Debuggers?</h6>
-                      <p>I have heard a company named Debuggers, can anyone tell me.</p></a>
+
+
+                      <a onclick="getDoubt('<%= todayDoubts[i]._id%>')"><h6><span>Q.</span> <%= todayDoubts[i].question %></h6>
+                      <p><%= todayDoubts[i].desc %></p></a>
                     </div>
                   </div>
-                <%} %>
+                <% } %>
             </div>
           </div>
           <div class="today-doubt">
@@ -92,11 +94,11 @@
               Yesterday <i class="fas fa-arrows-alt-v"></i>
             </div>
             <div class="toggle-by-arrow">
-              <%  for(var i=0; i< 5; i++){ %>
+              <%  for(var i=0; i< yesterdayDoubts.length; i++){ %>
                   <div class="doubt-div-left" id="yesterday-doubts">
                     <div class="left-block-content">
-                      <a href=""><h6><span>Q.</span> What is KFC in NITKKR?</h6>
-                      <p>Heard a lot about this KFC is it not the original KFC?.</p></a>
+                      <a onclick="getDoubt('<%= yesterdayDoubts[i]._id%>')"><h6><span>Q.</span> <%= yesterdayDoubts[i].question %></h6>
+                      <p><%= yesterdayDoubts[i].desc %></p></a>
                     </div>
                   </div>
                 <%} %>
@@ -104,14 +106,14 @@
           </div>
           <div class="today-doubt">
             <div class="category-doubt">
-              1 week ago <i class="fas fa-arrows-alt-v"></i>
+              This week <i class="fas fa-arrows-alt-v"></i>
             </div>
             <div class="toggle-by-arrow">
-              <%  for(var i=0; i< 5; i++){ %>
+              <%  for(var i=0; i< thisWeekDoubts.length; i++){ %>
                   <div class="doubt-div-left" id="week-doubts">
                     <div class="left-block-content" >
-                      <a href=""><h6><span>Q.</span>When will be the Club Inductions?</h6>
-                      <p>Anyone?</p></a>
+                      <a onclick="getDoubt('<%= thisWeekDoubts[i]._id%>')"><h6><span>Q.</span> <%= thisWeekDoubts[i].question %></h6>
+                      <p><%= thisWeekDoubts[i].desc %></p></a>
                     </div>
                   </div>
                 <%} %>
@@ -119,14 +121,29 @@
           </div>
           <div class="today-doubt">
             <div class="category-doubt">
-              1 month ago <i class="fas fa-arrows-alt-v"></i>
+              This month <i class="fas fa-arrows-alt-v"></i>
             </div>
             <div class="toggle-by-arrow">
-              <%  for(var i=0; i< 5; i++){ %>
+              <%  for(var i=0; i< thisMonthDoubts.length; i++){ %>
                   <div class="doubt-div-left">
                     <div class="left-block-content">
-                      <a href=""><h6><span>Q.</span>When will be the Club Inductions? Please reply..</h6>
-                      <p>Anyone?</p></a>
+                      <a onclick="getDoubt('<%= thisMonthDoubts[i]._id%>')"><h6><span>Q.</span> <%= thisMonthDoubts[i].question %></h6>
+                      <p><%= thisMonthDoubts[i].desc %></p></a>
+                    </div>
+                  </div>
+                <%} %>
+            </div>
+          </div>
+          <div class="today-doubt">
+            <div class="category-doubt">
+              Past Doubts <i class="fas fa-arrows-alt-v"></i>
+            </div>
+            <div class="toggle-by-arrow">
+              <%  for(var i=0; i< otherDoubts.length; i++){ %>
+                  <div class="doubt-div-left">
+                    <div class="left-block-content">
+                      <a onclick="getDoubt('<%= otherDoubts[i]._id%>')"><h6><span>Q.</span> <%= otherDoubts[i].question %></h6>
+                      <p><%= otherDoubts[i].desc %></p></a>
                     </div>
                   </div>
                 <%} %>
@@ -135,116 +152,14 @@
         </section>
 
         <section class="mid-div">
-           <div class="doubt-section">
-
-              <div class="question-mid-div">
-                  <div class="question-top">
-                      Question by <a href="#" class="username-a"> Faisal Ali Khan</a>  <span class="top-views">1500 views <i class="far fa-eye"></i> </views>
-                  </div>
-                  <div class="question-mid-container">
-                    <h5>Can anyone tell me how to be a part of Debuggers?</h5>
-                    <p>Anyone please guide me for the same.</p>
-                  </div>
-
-                  <div class="doubt-bottom-div">
-
-                      <div class="doubt-options">
-                        <div class="doubt-options-span">
-                          <div class="answer">
-                            <button type="button" name="button" id="answer-trigger">Answer</button>
-                          </div>
-                          <span><a href="#">Upvote</a></span>
-                          <span> <a href="#">Downvote</a></span>
-                          <span><a href="#">Star</a></span>
-                        </div>
-
-                        <button type="button" name="button">Edit</button>
-
-                      </div>
 
 
-                  </div>
-              </div>
-
-              <div class="question-mid-div" id="answer-pop">
-                <div class="question-top" id="answer-top">
-                    Answer by <a href="#" class="username-a"> Faisal Ali Khan</a>
-                </div>
-                <form action="" method="post">
-                <div class="question-mid-container">
-                  <textarea name="name" rows="2" placeholder="Type your Answer..." id="answer-input" required="true"></textarea>
-                </div>
-
-                <div class="doubt-bottom-div">
-
-                    <div class="doubt-options">
-                      <div class="doubt-options-span" id="answer-options-span">
-
-                        <span><button type="submit" name="button" id="answer-submit">Post my Answer</button>
-                       </span>
-                        <span>   <button type="button" name="button" class="cancel-answer">Cancel</button></span>
-
-                      </div>
-
-                    </div>
-
-                </div>
-              </form>
-              </div>
-
-              <div class="question-mid-div">
-                  <div class="question-top" id="answer-top">
-                      Answer by <a href="#" class="username-a"> Hemant Lakhotia</a>  <span class="top-views">1000 views <i class="far fa-eye"></i> </span>
-                  </div>
-                  <div class="question-mid-container" id="answer-div">
-
-                    <p>Yea it's pretty simple. Just apply with a proper resume at debuggers.com and yeah extra curricular is also important.</p>
-                  </div>
-
-                  <div class="answer-followups">
-                      <h5>Follow-up Discussion/Comment</h5>
-
-                      <ul class="answer-comments">
-                      <li class="comment-list"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div">Comment 1</div></li>
-                      <li class="comment-list"> <span><img src="https://media.discordapp.net/attachments/802147732658716672/804975352552226856/Hemant_Lakhotia_2020.jpg?width=488&height=670"></span> <div class="comment-div">Comment 2</div></li>
-                      <li class="comment-list"> <span><img src="https://cutt.ly/Wk3AhHo"></span> <div class="comment-div">Comment 3</div></li>
-                      <li class="comment-list"> <span><img src="https://cutt.ly/yk3AvgY"></span> <div class="comment-div">Comment 4</div></li>
-                      <li class="comment-list"> <span><img src="https://cutt.ly/qk3AmOK"></span> <div class="comment-div">Comment 4</div></li>
-                      <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div" id="new-comment-div-new">
-                        <form action="" method="post">
-                          <input class="new-comment-input" type="text" name="" value="" placeholder="Comment..">
-                          <div class="new-comment-buttons">
-                            <button class="new-comment-btn" type="submit" name="button">Post</button>
-                            <button class="new-comment-btn" id="new-btn-cancel" type="button" name="button">Cancel</button>
-                          </div>
-
-                      </div>
-                      </li>
-                      </ul>
-
-                      <div class="add-a-comment">
-                          Add a comment...
-                      </div>
-                  </div>
-
-                  <div class="doubt-bottom-div">
-
-                      <div class="doubt-options">
-                        <div class="doubt-options-span" id="answer-options-span">
-
-                          <span><a href="#">Upvote</a></span>
-                          <span> <a href="#">Downvote</a></span>
-                          <span><a href="#">Star</a></span>
-                        </div>
-
-                        <button type="button" name="button">Edit</button>
-
-                      </div>
+           <div id='show-doubt' class="doubt-section">
 
 
-                  </div>
-              </div>
            </div>
+
+
 
            <div class="post-a-doubt">
              <div class="post-doubt-div">
@@ -299,5 +214,156 @@
 </script>
 <script src="/javascript/doubtforum.js">
 </script>
+
+<script>
+
+
+
+
+function getDoubt(_id) {
+  console.log(_id);
+
+  let doubt, owner = null;
+  _id = _id.toString();
+  fetch(`/doubtforum/${_id}`)
+  .then(response => response.json())
+  .then(data => {
+
+    doubt = data.doubt;
+    owner = data.owner;
+    console.log(owner);
+    console.log(doubt);
+    if(doubt.userName === 0) {
+      owner.name = "Anonymous"
+    }
+
+    if(doubt) {
+      document.getElementById('show-doubt').innerHTML = `
+
+       <div class="question-mid-div">
+          <div class="question-top">
+              Question by
+
+
+              <a href="#" class="username-a">${owner.name}</a>
+
+              <span class="top-views">1500 views <i class="far fa-eye"></i> </span>
+          </div>
+          <div class="question-mid-container">
+            <h5>${doubt.question}</h5>
+            <p>${doubt.desc}</p>
+          </div>
+
+          <div class="doubt-bottom-div">
+
+              <div class="doubt-options">
+                <div class="doubt-options-span">
+                  <div class="answer">
+                    <button type="button" name="button" id="answer-trigger">Answer</button>
+                  </div>
+                  <span><a href="#">Upvote</a></span>
+                  <span> <a href="#">Downvote</a></span>
+                  <span><a href="#">Star</a></span>
+                </div>
+
+                <button type="button" name="button">Edit</button>
+
+              </div>
+
+
+          </div>
+      </div>
+
+      <div class="question-mid-div" id="answer-pop">
+        <div class="question-top" id="answer-top">
+            Answer by <a href="#" class="username-a"> Faisal Ali Khan</a>
+        </div>
+        <form action="" method="post">
+        <div class="question-mid-container">
+          <textarea name="name" rows="2" placeholder="Type your Answer..." id="answer-input" required="true"></textarea>
+        </div>
+
+        <div class="doubt-bottom-div">
+
+            <div class="doubt-options">
+              <div class="doubt-options-span" id="answer-options-span">
+
+                <span><button type="submit" name="button" id="answer-submit">Post my Answer</button>
+               </span>
+                <span>   <button type="button" name="button" class="cancel-answer">Cancel</button></span>
+
+              </div>
+
+            </div>
+
+        </div>
+      </form>
+      </div>
+
+      <div class="question-mid-div">
+          <div class="question-top" id="answer-top">
+              Answer by <a href="#" class="username-a"> Hemant Lakhotia</a>  <span class="top-views">1000 views <i class="far fa-eye"></i> </span>
+          </div>
+          <div class="question-mid-container" id="answer-div">
+
+            <p>Yea it's pretty simple. Just apply with a proper resume at debuggers.com and yeah extra curricular is also important.</p>
+          </div>
+
+          <div class="answer-followups">
+              <h5>Follow-up Discussion/Comment</h5>
+
+              <ul class="answer-comments">
+              <li class="comment-list"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div">Comment 1</div></li>
+              <li class="comment-list"> <span><img src="https://media.discordapp.net/attachments/802147732658716672/804975352552226856/Hemant_Lakhotia_2020.jpg?width=488&height=670"></span> <div class="comment-div">Comment 2</div></li>
+              <li class="comment-list"> <span><img src="https://cutt.ly/Wk3AhHo"></span> <div class="comment-div">Comment 3</div></li>
+              <li class="comment-list"> <span><img src="https://cutt.ly/yk3AvgY"></span> <div class="comment-div">Comment 4</div></li>
+              <li class="comment-list"> <span><img src="https://cutt.ly/qk3AmOK"></span> <div class="comment-div">Comment 4</div></li>
+              <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div" id="new-comment-div-new">
+                <form action="" method="post">
+                  <input class="new-comment-input" type="text" name="" value="" placeholder="Comment..">
+                  <div class="new-comment-buttons">
+                    <button class="new-comment-btn" type="submit" name="button">Post</button>
+                    <button class="new-comment-btn" id="new-btn-cancel" type="button" name="button">Cancel</button>
+                  </div>
+                </form>
+
+              </div>
+              </li>
+              </ul>
+
+              <div class="add-a-comment">
+                  Add a comment...
+              </div>
+          </div>
+
+          <div class="doubt-bottom-div">
+
+              <div class="doubt-options">
+                <div class="doubt-options-span" id="answer-options-span">
+
+                  <span><a href="#">Upvote</a></span>
+                  <span> <a href="#">Downvote</a></span>
+                  <span><a href="#">Star</a></span>
+                </div>
+
+                <button type="button" name="button">Edit</button>
+
+              </div>
+
+
+          </div>
+      </div>
+
+      `
+    }
+  });
+}
+
+
+
+
+</script>
+
+
   </body>
 </html>

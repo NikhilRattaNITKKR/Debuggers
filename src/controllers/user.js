@@ -1,5 +1,6 @@
 const Realm = require("realm");
 const BSON = require("bson");
+const ejs = require('../public/javascript/ejs');
 
 
 const app = new Realm.App({ id: "debuggers-lzxyc" });
@@ -164,7 +165,7 @@ const getProfile = async(req, res) => {
 
         let image = user.image;
 
-        res.render('profile', {user: user, events: events, image: image});
+        res.render('profile', {user: user, events: events, image: image, ejs: ejs});
       }
     }
   } catch (e) {

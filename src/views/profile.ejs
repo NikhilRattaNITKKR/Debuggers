@@ -124,7 +124,9 @@
                           <% } else { %>
                             <img src="https://cutt.ly/rki7z0g" alt="">
                             <% } %></section>
-                            <section id="user"> <%= user.name %>  <p> <%= events[i]._id.getTimestamp() %> </p>    <span id ="edit"> <i class="fas fa-ellipsis-h edit-btn"></i>  <div class="post-click">
+
+
+                            <section id="user"> <%= user.name %>  <p> <%= ejs.convertTime(events[i]._id.getTimestamp()) %> </p>    <span id ="edit"> <i class="fas fa-ellipsis-h edit-btn"></i>  <div class="post-click">
                               <div class="pin-post">
                                 <button type="button" name="button">Pin Post</button>
                               </div>

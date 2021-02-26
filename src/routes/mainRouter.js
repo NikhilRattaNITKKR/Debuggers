@@ -28,6 +28,7 @@ router.route('/events').get(userControllers.getEvents);
 
 
 router.route('/doubtforum').get(doubtControllers.getDoubtForum).post(doubtControllers.createDoubt)
+router.route('/doubtforum/:id').get(doubtControllers.getSpecificDoubt);
 
 //router.route('/comments/:id').get(userControllers.getComments);
 //router.route('/upVote/:id').get(userControllers.upVote);

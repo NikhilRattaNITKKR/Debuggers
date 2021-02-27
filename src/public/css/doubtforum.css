@@ -445,7 +445,7 @@ width: 100%;
    display: none;
 }
 
-.comm-txt{
+.comment-txt{
   width: 100%;
   height: auto;
   margin: 0;
@@ -565,3 +565,17 @@ width: 100%;
 .post-a-doubt-display{
   display: block;
 }
+
+
+ .spinner-con{
+   opacity: 0;
+   position: absolute;
+   z-index: 10;
+   height: 92vh;
+   /* background: rgba(0,0,0,0.1); */
+   top: 0;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }

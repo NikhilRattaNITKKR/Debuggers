@@ -88,3 +88,19 @@ function cancelAnswer(){
     $("#answer-input").val("");
   },300);
 }
+
+
+$(".left-block-content").on("click",function(){
+  $("#show-doubt").css("opacity","0.5");
+  $(".spinner-con").css({
+    "display" : "flex",
+    "opacity" : "1"
+  });
+})
+
+
+
+function xyz(){
+  $("#show-doubt").css("opacity","1");
+  $(".spinner-con").css("display","none");
+}

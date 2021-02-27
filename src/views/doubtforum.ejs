@@ -79,7 +79,7 @@
             <div class="toggle-by-arrow">
               <% for(let i=0; i< todayDoubts.length; i++) { %>
                   <div class="doubt-div-left" id="today-doubts">
-                    <div class="left-block-content">
+                    <div class="left-block-content" onclick="getDoubt('<%= todayDoubts[i]._id%>')">
 
 
                       <a onclick="getDoubt('<%= todayDoubts[i]._id%>')"><h6><span>Q.</span> <%= todayDoubts[i].question %></h6>
@@ -96,7 +96,7 @@
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< yesterdayDoubts.length; i++){ %>
                   <div class="doubt-div-left" id="yesterday-doubts">
-                    <div class="left-block-content">
+                    <div class="left-block-content" onclick="getDoubt('<%= todayDoubts[i]._id%>')">
                       <a onclick="getDoubt('<%= yesterdayDoubts[i]._id%>')"><h6><span>Q.</span> <%= yesterdayDoubts[i].question %></h6>
                       <p><%= yesterdayDoubts[i].desc %></p></a>
                     </div>
@@ -111,7 +111,7 @@
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< thisWeekDoubts.length; i++){ %>
                   <div class="doubt-div-left" id="week-doubts">
-                    <div class="left-block-content" >
+                    <div class="left-block-content" onclick="getDoubt('<%= todayDoubts[i]._id%>')">
                       <a onclick="getDoubt('<%= thisWeekDoubts[i]._id%>')"><h6><span>Q.</span> <%= thisWeekDoubts[i].question %></h6>
                       <p><%= thisWeekDoubts[i].desc %></p></a>
                     </div>
@@ -126,7 +126,7 @@
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< thisMonthDoubts.length; i++){ %>
                   <div class="doubt-div-left">
-                    <div class="left-block-content">
+                    <div class="left-block-content" >
                       <a onclick="getDoubt('<%= thisMonthDoubts[i]._id%>')"><h6><span>Q.</span> <%= thisMonthDoubts[i].question %></h6>
                       <p><%= thisMonthDoubts[i].desc %></p></a>
                     </div>
@@ -159,6 +159,12 @@
 
            </div>
 
+
+          <div class="spinner-con">
+           <div class="spinner-container">
+             <img src="/assets/804.gif" alt="">
+           </div>
+          </div>
 
 
            <div class="post-a-doubt">
@@ -202,6 +208,10 @@
 
              </div>
            </div>
+
+
+
+
         </section>
 
         <section class="right-div">
@@ -215,7 +225,7 @@
 <script src="/javascript/doubtforum.js">
 </script>
 
-<script>
+<script >
 
 
 
@@ -241,6 +251,7 @@ function getDoubt(_id) {
       document.getElementById('show-doubt').innerHTML = `
 
        <div class="question-mid-div">
+
           <div class="question-top">
               Question by
 
@@ -313,11 +324,11 @@ function getDoubt(_id) {
               <h5>Follow-up Discussion/Comment</h5>
 
               <ul class="answer-comments">
-              <li class="comment-list"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div">Comment 1</div></li>
-              <li class="comment-list"> <span><img src="https://media.discordapp.net/attachments/802147732658716672/804975352552226856/Hemant_Lakhotia_2020.jpg?width=488&height=670"></span> <div class="comment-div">Comment 2</div></li>
-              <li class="comment-list"> <span><img src="https://cutt.ly/Wk3AhHo"></span> <div class="comment-div">Comment 3</div></li>
-              <li class="comment-list"> <span><img src="https://cutt.ly/yk3AvgY"></span> <div class="comment-div">Comment 4</div></li>
-              <li class="comment-list"> <span><img src="https://cutt.ly/qk3AmOK"></span> <div class="comment-div">Comment 4</div></li>
+              <li class="comment-list"> <span><img  src="https://cutt.ly/rki7z0g"></span> <div class="comment-div"><p class="comment-txt">Comment 1</p></div></li>
+              <li class="comment-list"> <span><img src="https://media.discordapp.net/attachments/802147732658716672/804975352552226856/Hemant_Lakhotia_2020.jpg?width=488&height=670"></span> <div class="comment-div"><p class="comment-txt">Comment 2</p></div></li>
+              <li class="comment-list"> <span><img src="https://cutt.ly/Wk3AhHo"></span> <div class="comment-div"><p class="comment-txt">Comment 3</p></div></li>
+              <li class="comment-list"> <span><img src="https://cutt.ly/yk3AvgY"></span> <div class="comment-div"><p class="comment-txt">Comment 4</p></div></li>
+              <li class="comment-list"> <span><img src="https://cutt.ly/qk3AmOK"></span> <div class="comment-div"><p class="comment-txt">Comment 4</p></div></li>
               <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div" id="new-comment-div-new">
                 <form action="" method="post">
                   <input class="new-comment-input" type="text" name="" value="" placeholder="Comment..">
@@ -352,7 +363,10 @@ function getDoubt(_id) {
 
 
           </div>
+
       </div>
+
+      <iframe style="display: none" onload="xyz()"> </iframe>
 
       `
     }

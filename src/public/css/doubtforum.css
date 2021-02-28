@@ -472,6 +472,10 @@ width: 100%;
   margin-top: 7vh;
 }
 
+.spinner-container{
+  position: fixed;
+top: 48vh;
+}
 
 .post-type{
   display: flex;

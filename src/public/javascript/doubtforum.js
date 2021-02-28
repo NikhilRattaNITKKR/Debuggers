@@ -70,7 +70,7 @@ function addComment(){
 function cancelComment(){
 
 
-      $(".new-comment-btn").on("click",function(){
+      $(".new-comment-btn-cncl").on("click",function(){
         var temp = $(this);
         $(this).parent().parent().parent().parent().fadeOut(300);
         setTimeout(function(){

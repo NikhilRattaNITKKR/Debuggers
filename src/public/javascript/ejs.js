@@ -35,6 +35,12 @@ function convertTime(isoDate) {
 }
 
 
+function createLocalUser(user) {
+  window.localStorage.setItem('user', user)
+}
+
+
 module.exports = {
-  convertTime: convertTime,
+  convertTime,
+  createLocalUser,
 }

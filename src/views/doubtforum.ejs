@@ -17,7 +17,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
   </head>
-  <body>
+
+  <body onload='getDoubt(<%= doubts[0]._id %>)' >
 
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -79,7 +80,7 @@
             <div class="toggle-by-arrow">
               <% for(let i=0; i< todayDoubts.length; i++) { %>
                   <div class="doubt-div-left" id="today-doubts">
-                    <div class="left-block-content" onclick="getDoubt('<%= todayDoubts[i]._id%>')">
+                    <div class="left-block-content">
 
 
                       <a onclick="getDoubt('<%= todayDoubts[i]._id%>')"><h6><span>Q.</span> <%= todayDoubts[i].question %></h6>
@@ -96,7 +97,7 @@
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< yesterdayDoubts.length; i++){ %>
                   <div class="doubt-div-left" id="yesterday-doubts">
-                    <div class="left-block-content" onclick="getDoubt('<%= todayDoubts[i]._id%>')">
+                    <div class="left-block-content">
                       <a onclick="getDoubt('<%= yesterdayDoubts[i]._id%>')"><h6><span>Q.</span> <%= yesterdayDoubts[i].question %></h6>
                       <p><%= yesterdayDoubts[i].desc %></p></a>
                     </div>
@@ -111,7 +112,7 @@
             <div class="toggle-by-arrow">
               <%  for(var i=0; i< thisWeekDoubts.length; i++){ %>
                   <div class="doubt-div-left" id="week-doubts">
-                    <div class="left-block-content" onclick="getDoubt('<%= todayDoubts[i]._id%>')">
+                    <div class="left-block-content">
                       <a onclick="getDoubt('<%= thisWeekDoubts[i]._id%>')"><h6><span>Q.</span> <%= thisWeekDoubts[i].question %></h6>
                       <p><%= thisWeekDoubts[i].desc %></p></a>
                     </div>
@@ -167,7 +168,7 @@
           </div>
 
 
-           <div class="post-a-doubt">
+          <div class="post-a-doubt">
              <div class="post-doubt-div">
                 <div class="post-a-doubt-top">
                   Post Your Doubt
@@ -253,139 +254,183 @@
 
 function getDoubt(_id) {
   console.log(_id);
+  window.history.pushState("", "", "/doubtforum");
 
-  let doubt, owner = null;
   _id = _id.toString();
   fetch(`/doubtforum/${_id}`)
   .then(response => response.json())
   .then(data => {
 
-    doubt = data.doubt;
-    owner = data.owner;
-    console.log(owner);
-    console.log(doubt);
-    if(doubt.userName === 0) {
-      owner.name = "Anonymous"
-    }
+    let  doubt = data.doubt;
+
+
 
     if(doubt) {
+      let answers = doubt.answers;
+
       document.getElementById('show-doubt').innerHTML = `
 
-       <div class="question-mid-div">
+      <div class="question-mid-div">
 
-          <div class="question-top">
-              Question by
-
-
-              <a href="#" class="username-a">${owner.name}</a>
-
-              <span class="top-views">1500 views <i class="far fa-eye"></i> </span>
-          </div>
-          <div class="question-mid-container">
-            <h5>${doubt.question}</h5>
-            <p>${doubt.desc}</p>
-          </div>
-
-          <div class="doubt-bottom-div">
-
-              <div class="doubt-options">
-                <div class="doubt-options-span">
-                  <div class="answer">
-                    <button type="button" name="button" id="answer-trigger" onclick="addAnswer()">Answer</button>
-                  </div>
-                  <span><a href="#">Upvote</a></span>
-                  <span> <a href="#">Downvote</a></span>
-                  <span><a href="#">Star</a></span>
-                </div>
-
-                <button type="button" name="button">Edit</button>
-
-              </div>
+        <div class="question-top">
+        Question by
 
 
-          </div>
-      </div>
+        <a href="#" class="username-a">${doubt.userName}</a>
 
-      <div class="question-mid-div" id="answer-pop">
-        <div class="question-top" id="answer-top">
-            Answer by <a href="#" class="username-a"> Faisal Ali Khan</a>
+        <span class="top-views">1500 views <i class="far fa-eye"></i> </span>
         </div>
-        <form action="" method="post">
         <div class="question-mid-container">
-          <textarea name="name" rows="2" placeholder="Type your Answer..." id="answer-input" required="true"></textarea>
+        <h5>${doubt.question}</h5>
+        <p>${doubt.desc}</p>
         </div>
 
         <div class="doubt-bottom-div">
 
-            <div class="doubt-options">
-              <div class="doubt-options-span" id="answer-options-span">
+        <div class="doubt-options">
+        <div class="doubt-options-span">
+        <div class="answer">
+        <button type="button" name="button" id="answer-trigger" onclick="addAnswer()">Answer</button>
+        </div>
+        <span><a href="#">Upvote</a></span>
+        <span> <a href="#">Downvote</a></span>
+        <span><a href="#">Star</a></span>
+        </div>
 
-                <span><button type="submit" name="button" id="answer-submit">Post my Answer</button>
-               </span>
-                <span>   <button type="button" name="button" class="cancel-answer" onclick="cancelAnswer()">Cancel</button></span>
-
-              </div>
-
-            </div>
+        <button type="button" name="button">Edit</button>
 
         </div>
-      </form>
+
+
+        </div>
       </div>
 
-      <div class="question-mid-div">
-          <div class="question-top" id="answer-top">
-              Answer by <a href="#" class="username-a"> Hemant Lakhotia</a>  <span class="top-views">1000 views <i class="far fa-eye"></i> </span>
-          </div>
-          <div class="question-mid-container" id="answer-div">
+      <div class="question-mid-div" id="answer-pop">
+        <div class="question-top" id="answer-top">
+        Answer by <a href="#" class="username-a"> Add Radio Button here User or Anonymous</a>
+        </div>
+        <form action="/doubtforum/${doubt._id}" method="post">
+        <div class="question-mid-container">
+        <textarea name="answer" rows="2" placeholder="Type your Answer..." id="answer-input" required="true"></textarea>
+        </div>
 
-            <p>Yea it's pretty simple. Just apply with a proper resume at debuggers.com and yeah extra curricular is also important.</p>
-          </div>
+        <div class="doubt-bottom-div">
 
-          <div class="answer-followups">
+        <div class="doubt-options">
+        <div class="doubt-options-span" id="answer-options-span">
+
+        <span><button type="submit" name="button" id="answer-submit">Post my Answer</button>
+        </span>
+        <span>   <button type="button" name="button" class="cancel-answer" onclick="cancelAnswer()">Cancel</button></span>
+
+        </div>
+
+        </div>
+
+        </div>
+        </form>
+      </div>
+
+      ${(() => {
+        if (answers) {
+        if(answers.length > 0)  {
+          let htmlAnswer = [];
+          try {
+            for (let i = 0; i < answers.length; i++) {
+              let comments = answers[i].comments;
+              htmlAnswer[i] =  `
+              <div class="question-mid-div">
+
+              <div class="question-top" id="answer-top">
+              Answer by <a href="/profile/${answers[i].uid}" class="username-a">${answers[i].name}</a>  <span class="top-views">1000 views <i class="far fa-eye"></i> </span>
+              </div>
+              <div class="question-mid-container" id="answer-div">
+
+              <p>${answers[i].answer}</p>
+              </div>
+
+              <div class="answer-followups">
               <h5>Follow-up Discussion/Comment</h5>
-
               <ul class="answer-comments">
-              <li class="comment-list"> <span><img  src="https://cutt.ly/rki7z0g"></span> <div class="comment-div"><p class="comment-txt">Comment 1</p></div></li>
-              <li class="comment-list"> <span><img src="https://media.discordapp.net/attachments/802147732658716672/804975352552226856/Hemant_Lakhotia_2020.jpg?width=488&height=670"></span> <div class="comment-div"><p class="comment-txt">Comment 2</p></div></li>
-              <li class="comment-list"> <span><img src="https://cutt.ly/Wk3AhHo"></span> <div class="comment-div"><p class="comment-txt">Comment 3</p></div></li>
-              <li class="comment-list"> <span><img src="https://cutt.ly/yk3AvgY"></span> <div class="comment-div"><p class="comment-txt">Comment 4</p></div></li>
-              <li class="comment-list"> <span><img src="https://cutt.ly/qk3AmOK"></span> <div class="comment-div"><p class="comment-txt">Comment 4</p></div></li>
-              <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span> <div class="comment-div" id="new-comment-div-new">
-                <form action="" method="post">
-                  <input class="new-comment-input" type="text" name="" value="" placeholder="Comment..">
-                  <div class="new-comment-buttons">
-                    <button class="new-comment-btn" type="submit" name="button">Post</button>
-                    <button class="new-comment-btn" id="new-btn-cancel" onclick="cancelComment()" type="button" name="button">Cancel</button>
-                  </div>
-                </form>
+
+              ${(() => {
+                if(comments) {
+                  if(comments.length > 0) {
+                    let htmlComment = [];
+                    try {
+                      for (var j = 0; j < comments.length; j++) {
+                        console.log(comments[j].comment);
+                        htmlComment[j] =  `
+
+                        <li class="comment-list"> <span><img  src="https://cutt.ly/rki7z0g"></span> <div class="comment-div"><p class="comment-txt">${comments[j].comment}</p></div></li>
+
+                        `
+                      }
+
+                    } catch (e) {
+                      console.error(e);
+                    } finally {
+                      return htmlComment.join("");
+                    }
+                  }
+                } else {
+                  return ``;
+                }
+              })()}
+
+              <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span>
+              <div class="comment-div" id="new-comment-div-new">
+              <form action="/doubtforum/${doubt._id}/${answers[i]._id}" method="post">
+              <input class="new-comment-input" type="text" name="comment" value="" placeholder="Comment..">
+              <div class="new-comment-buttons">
+              <button class="new-comment-btn" type="submit" name="button">Post</button>
+              <button class="new-comment-btn" id="new-btn-cancel" onclick="cancelComment()" type="button" name="button">Cancel</button>
+              </div>
+              </form>
 
               </div>
               </li>
               </ul>
 
               <div onclick="addComment()" class="add-a-comment">
-                  Add a comment...
+              Add a comment...
               </div>
-          </div>
+              </div>
 
-          <div class="doubt-bottom-div">
+              <div class="doubt-bottom-div">
 
-              <div class="doubt-options">
-                <div class="doubt-options-span" id="answer-options-span">
+                <div class="doubt-options">
+                  <div class="doubt-options-span" id="answer-options-span">
 
-                  <span><a href="#">Upvote</a></span>
-                  <span> <a href="#">Downvote</a></span>
-                  <span><a href="#">Star</a></span>
+                    <span><a href="#">Upvote</a></span>
+                    <span> <a href="#">Downvote</a></span>
+                    <span><a href="#">Star</a></span>
+                  </div>
+
+                  <button type="button" name="button">Edit</button>
+
                 </div>
 
-                <button type="button" name="button">Edit</button>
 
               </div>
+              </div>
+              `
+            }
+
+          } catch (e) {
+            console.error(e);
+          } finally {
+
+            return htmlAnswer.join("");
+          }
+        }
+      } else {
+        return ``
+      }
+
+      })()}
 
 
-          </div>
-
-      </div>
 
       <iframe style="display: none" onload="xyz()"> </iframe>
 
@@ -393,6 +438,8 @@ function getDoubt(_id) {
     }
   });
 }
+
+
 
 
 

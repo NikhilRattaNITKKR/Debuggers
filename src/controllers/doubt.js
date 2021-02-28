@@ -32,7 +32,7 @@ const getDoubtForum = async(req, res) =>{
 
       doubts = await Doubts.find();
       // let user  = await Users.find();
-      let users = [];
+
 
 
 
@@ -63,7 +63,7 @@ const getDoubtForum = async(req, res) =>{
       }
 
 
-      res.render('doubtforum', {users, todayDoubts, yesterdayDoubts,  thisWeekDoubts, thisMonthDoubts, otherDoubts, ejs, doubt: null});
+      res.render('doubtforum', {doubts, todayDoubts, yesterdayDoubts,  thisWeekDoubts, thisMonthDoubts, otherDoubts, ejs});
 
     } else {
       res.redirect('/');
@@ -85,8 +85,8 @@ const getSpecificDoubt = async(req, res) => {
       }
     }
 
-    const owner = await Users.findOne({_id: doubt.uid});
-    res.json({doubt, owner});
+
+    res.json({doubt});
 
 
   } catch (err) {
@@ -95,14 +95,14 @@ const getSpecificDoubt = async(req, res) => {
 
 }
 
-
 const createDoubt = async(req, res) => {
   const mongo = getMongo();
   const Users = mongo.users;
   const Doubts = mongo.doubts;
 
-  let userName = 0;
-  if(req.body.postType === "User") userName = 1;
+
+  let userName = "Anonymous"
+  if(req.body.postType === "User") userName = "user";
 
   try {
     const result = await Doubts.insertOne({
@@ -125,10 +125,82 @@ const createDoubt = async(req, res) => {
 }
 
 
+const createAnswer = async(req, res) => {
+  try {
+    const Doubts = getMongo().doubts;
+    const Users = getMongo().users;
+
+    const user = await Users.findOne({_id: new BSON.ObjectID(app.currentUser.id.toString())});
+    try {
+
+      if(user._id.toString() === app.currentUser.id.toString()) {
+        //  if() Add radio Buton value Here
+        let name = user.name;
+        const result = await Doubts.updateOne({
+          _id: new BSON.ObjectID(req.params.id)
+        },
+        {
+          $addToSet: {
+            answers: {
+              _id: new BSON.ObjectID(),
+              uid: new BSON.ObjectID(app.currentUser.id.toString()),
+              name: name,
+              answer: req.body.answer
+            }
+          }
+        });
+      }
+    } catch (e) {
+      console.error("User Get Error: ", e);
+    }
+    res.redirect('/doubtforum');
+  } catch (e) {
+    console.error("Create Answer Error: ", e);
+  }
+}
+
+const createComment = async(req, res) => {
+  try {
+    const Users = getMongo().users;
+    const Doubts = getMongo().doubts;
+
+    let user = await Users.findOne({
+      _id: new BSON.ObjectID(app.currentUser.id.toString())
+    });
+
+    try {
+      if(user._id.toString() === app.currentUser.id.toString()) {
+        let name = user.name;
+        console.log(name);
+        const result = await Doubts.updateOne({
+          answers: {$elemMatch: {_id: new BSON.ObjectID(req.params.aid)}}
+        },
+        {
+          $addToSet:{"answers.$.comments":{
+            uid: new BSON.ObjectID(app.currentUser.id.toString()),
+            image: null,
+            comment: req.body.comment,
+          }
+        }
+      })
+      console.log(result);
+    }
+  } catch (e) {
+    console.error("Create Comment Error: ", e);
+  }
+  res.redirect('/doubtforum')
+} catch (e) {
+  console.error("User Get Error: ", e);
+}
+}
+
+
 
 
 module.exports = {
   getDoubtForum,
   createDoubt,
   getSpecificDoubt,
+  createAnswer,
+  createComment,
 }

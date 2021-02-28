@@ -467,6 +467,8 @@ width: 100%;
 }
 
 .right-doubts{
+  position: sticky;
+  top: 15vh;
   margin-top: 7vh;
 }
 

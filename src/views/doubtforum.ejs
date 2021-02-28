@@ -351,6 +351,7 @@ function getDoubt(_id) {
 
               <div class="answer-followups">
               <h5>Follow-up Discussion/Comment</h5>
+              <div>
               <ul class="answer-comments">
 
               ${(() => {
@@ -378,13 +379,14 @@ function getDoubt(_id) {
                 }
               })()}
 
-              <li class="comment-list" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span>
+              <li class="comment-list add-comment" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span>
+
               <div class="comment-div" id="new-comment-div-new">
               <form action="/doubtforum/${doubt._id}/${answers[i]._id}" method="post">
               <input class="new-comment-input" type="text" name="comment" value="" placeholder="Comment..">
               <div class="new-comment-buttons">
               <button class="new-comment-btn" type="submit" name="button">Post</button>
-              <button class="new-comment-btn" id="new-btn-cancel" onclick="cancelComment()" type="button" name="button">Cancel</button>
+              <button class="new-comment-btn" id="new-btn-cancel" onmouseover="cancelComment()" type="button" name="button">Cancel</button>
               </div>
               </form>
 
@@ -392,10 +394,12 @@ function getDoubt(_id) {
               </li>
               </ul>
 
-              <div onclick="addComment()" class="add-a-comment">
+              <div onmouseover="addComment()" class="add-a-comment">
               Add a comment...
               </div>
               </div>
+              </div>
+
 
               <div class="doubt-bottom-div">
 

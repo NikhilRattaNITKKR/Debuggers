@@ -59,17 +59,29 @@ setTimeout(function(){
 
 
 function addComment(){
-  setTimeout(function(){
-    $("#new-comment-div").css("display","flex");
-    $(".new-comment-input").focus();
-  },200);
+  $(".add-a-comment").on("click",function(){
+
+      $(this).parent().find('ul').find(".add-comment").fadeIn(300);
+      $(this).parent().find('ul').find(".add-comment").css("display","flex");
+      $(".new-comment-input").focus();
+  });
 }
 
 function cancelComment(){
-  setTimeout(function(){
-      $("#new-comment-div").css("display","none");
-      $(".new-comment-input").val("");
-  },200);
+
+
+      $(".new-comment-btn").on("click",function(){
+        var temp = $(this);
+        $(this).parent().parent().parent().parent().fadeOut(300);
+        setTimeout(function(){
+          temp.parent().parent().parent().parent().css("display","none");
+        },400);
+
+        $(".new-comment-input").val("");
+      })
+
+
+
 }
 
 

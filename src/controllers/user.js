@@ -155,6 +155,13 @@ const getProfile = async(req, res) => {
 
       const id = new BSON.ObjectID(req.params.id.toString());
       const user = await Users.findOne({_id: id});
+      let owner = false;
+
+
+      // to store in locla storage
+      if(user._id.toString() === app.currentUser.id.toString()) {
+        owner = true;
+      }
 
       if (user == null) {
         await app.allUsers[app.currentUser.id].logOut();
@@ -165,7 +172,7 @@ const getProfile = async(req, res) => {
 
         let image = user.image;
 
-        res.render('profile', {user: user, events: events, image: image, ejs: ejs});
+        res.render('profile', {user, events, image, ejs, owner});
       }
     }
   } catch (e) {

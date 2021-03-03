@@ -4,7 +4,7 @@ var box = document.getElementsByClassName('post-click');
 for(var i=0;i<button.length;i++){
 
   button[i].addEventListener("click", function(){
-  box[0].classList.toggle('post-click-edit');
+    box[0].classList.toggle('post-click-edit');
   });
 }  // ye change krna hai abhi
 
@@ -14,7 +14,7 @@ var search_icon = document.querySelector('#search-icon');
 
 search.addEventListener("focus", function(){
 
-    search_icon.style.opacity = 1;
+  search_icon.style.opacity = 1;
 });
 
 var signout = document.querySelector('.fa-sign-out-alt');
@@ -141,16 +141,16 @@ imagepostinp.addEventListener("change",function(){
 /*  FOR COMMENTS
 let form=document.querySelector("#myForm");
 form.addEventListener('submit',(e)=>{
-  e.preventDefault();
+e.preventDefault();
 //chnage color of button to idicate change
-  fetch('/upVote?pid='+pid.value).then((response)=>{
-    response.json().then((data)=>{
-      if(data.error){
-        return console.log(data.error);
-      }
-      console.log("Successfully upvoted",data);
-    })
-  })
+fetch('/upVote?pid='+pid.value).then((response)=>{
+response.json().then((data)=>{
+if(data.error){
+return console.log(data.error);
+}
+console.log("Successfully upvoted",data);
+})
+})
 })
 */
 
@@ -165,7 +165,7 @@ fetch('/upVote?pid='+pid)
 .then((data)=>{
 
 if(data.error){
-  return console.log(data.error);
+return console.log(data.error);
 }
 console.log("Successfully upvoted",data);
 })
@@ -178,7 +178,7 @@ fetch('/downVote?pid='+pid)
 .then((data)=>{
 
 if(data.error){
-  return console.log(data.error);
+return console.log(data.error);
 }
 console.log("Successfully downvoted",data);
 })
@@ -193,3 +193,21 @@ document.querySelector(".fa-times").addEventListener("click",function(){
   document.querySelector(".photo_div").style.display="none";
   document.querySelector(".photo-post").setAttribute("src", "");
 });
+
+
+
+
+function createLocalUser(user) {
+  if(!localStorage.user) {
+
+    localStorage.user = JSON.stringify(user);
+    console.log("Not Exists");
+  } else {
+
+    localStorage.name = "Hemant"
+    console.log("Exists");
+    console.log(JSON.parse(localStorage.getItem('user')));
+
+
+  }
+}

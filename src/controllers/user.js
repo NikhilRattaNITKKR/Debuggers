@@ -1,12 +1,14 @@
 const Realm = require("realm");
 const BSON = require("bson");
 const ejs = require('../public/javascript/ejs');
-
+const {bot, token}= require('./bot.js')
 
 const app = new Realm.App({ id: "debuggers-lzxyc" });
 
-// const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-// const Users = mongodb.db("Debuggers").collection('Users');
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 
 
 function getMongo() {
@@ -19,10 +21,10 @@ function getMongo() {
 
 
 const getHome = async(req, res) => {
-  console.log("Get Home:", app.currentUser);
+
   try {
-    if (app.currentUser != null) {
-      res.redirect(`/profile/${app.currentUser.id}`);
+    if (req.cookies.uid) {
+      res.redirect(`/profile/${req.cookies.uid}`);
     } else {
       if (req.query.tokenId == null) {
         res.render('home')
@@ -44,10 +46,10 @@ const getHome = async(req, res) => {
 
 
 const getSignUp = function(req, res) {
-  if (app.currentUser == null) {
-    res.render('signup');
-  } else {
+  if (req.cookies.uid) {
     res.redirect(`/profile/${app.currentUser.id}`);
+  } else {
+    res.render('signup');
   }
 }
 const signUp = async(req,res)=>{
@@ -105,10 +107,10 @@ const form = async({body, params}, res)=>{
 
 
 const getLogIn = async(req, res) => {
-  if (app.currentUser == null) {
-    res.render('login');
-  } else {
+  if (req.cookies.uid) {
     res.redirect(`/profile/${app.currentUser.id}`);
+  } else {
+    res.render('login');
   }
 }
 const logIn = async(req, res) => {
@@ -123,6 +125,7 @@ const logIn = async(req, res) => {
       );
       const user = await app.logIn(credentials);
       console.log("Successfully logged in!", user.id);
+      res.cookie('uid', new BSON.ObjectID(user.id))
       res.redirect(`/profile/${user.id}`);
     }
 
@@ -132,8 +135,10 @@ const logIn = async(req, res) => {
 }
 const logOut = async(req, res) => {
   try {
-    if (app.currentUser != null) {
-      await app.allUsers[app.currentUser.id].logOut();
+    if (req.cookies.uid) {
+      await app.allUsers[req.cookies.uid.toString()].logOut();
+      res.clearCookie('uid');
+      localStorage.removeItem('user')
     }
     res.redirect('/')
   } catch (e) {
@@ -144,10 +149,12 @@ const logOut = async(req, res) => {
 
 const getProfile = async(req, res) => {
 
+
   try {
-    if (app.currentUser == null) {
+    if (!req.cookies.uid) {
       res.redirect('/');
     } else {
+
 
       const mongo = getMongo();
       const Users = mongo.users;
@@ -158,25 +165,27 @@ const getProfile = async(req, res) => {
       let owner = false;
 
 
-      // to store in locla storage
-      if(user._id.toString() === app.currentUser.id.toString()) {
+      // to store in local storage
+      if(user._id.toString() === req.cookies.uid.toString()) {
         owner = true;
       }
 
       if (user == null) {
-        await app.allUsers[app.currentUser.id].logOut();
+        await app.allUsers[req.cookies.uid.toString()].logOut();
         res.render('form', {title: "Detail Form"});
       } else {
         const events = await Events.find({uid: id});
-  // to get id      console.log(events[0]._id);
+        // to get id      console.log(events[0]._id);
 
         let image = user.image;
 
-        res.render('profile', {user, events, image, ejs, owner});
+        res.render('profile', {user, events, image, ejs, owner, localStorage});
       }
     }
   } catch (e) {
     console.error("Get Profile Error: ", e);
+  } finally {
+    console.log(JSON.parse(localStorage.getItem('user')));
   }
 }
 
@@ -186,58 +195,58 @@ const getProfile = async(req, res) => {
 
 const getEvents = async(req, res) =>{
   try{
-  if (app.currentUser !== null) {
-    const mongo = getMongo();
-    const Users = mongo.users;
-    const Events = mongo.events;
+    if (req.cookies.uid) {
+      const mongo = getMongo();
+      const Users = mongo.users;
+      const Events = mongo.events;
 
-    let events = await Events.find();
-    let user = await Users.find();
-    let users = [];
-    for (let i = 0; i<events.length; i++) {
-      for ( let j = 0; j<user.length; j++ ) {
-        if(events[i].uid.toString() === user[j]._id.toString()) {
-          users[i] = user[j];
+      let events = await Events.find();
+      let user = await Users.find();
+      let users = [];
+      for (let i = 0; i<events.length; i++) {
+        for ( let j = 0; j<user.length; j++ ) {
+          if(events[i].uid.toString() === user[j]._id.toString()) {
+            users[i] = user[j];
+          }
         }
       }
+
+
+
+
+      res.render('events', {events: events, users: users});
+    } else {
+      res.redirect('/');
     }
-
-
-
-
-    res.render('events', {events: events, users: users});
-  } else {
-    res.redirect('/');
+  }catch (e){
+    console.log("Get Events error:",e);
   }
-}catch (e){
-  console.log("Get Events error:",e);
-}
 }
 /*
 const upVote= async ()=>{
 
 try {
 
-  if (app.currentUser !== null) {
-    const mongo = getMongo();
-    const Events = mongo.events;
-    const id=req.query.pid;
+if (app.currentUser !== null) {
+const mongo = getMongo();
+const Events = mongo.events;
+const id=req.query.pid;
 
-    const query = { "_id": id };
-    const update =   { "$inc": { "votes": 1 } };
-    const options = { "upsert": false };
+const query = { "_id": id };
+const update =   { "$inc": { "votes": 1 } };
+const options = { "upsert": false };
 
-    Events.updateOne(query, update, options)
-      .then(result => {
-        const { matchedCount, modifiedCount } = result;
-        if(matchedCount && modifiedCount) {
-          console.log(`Successfully updated the item.`)
-        }
-      })
-      .catch(err => console.error(`Failed to update the item: ${err}`))
+Events.updateOne(query, update, options)
+.then(result => {
+const { matchedCount, modifiedCount } = result;
+if(matchedCount && modifiedCount) {
+console.log(`Successfully updated the item.`)
+}
+})
+.catch(err => console.error(`Failed to update the item: ${err}`))
 
 }else {
-  res.redirect('/');
+res.redirect('/');
 }
 } catch (e) {
 console.log("Upvote error:",e);
@@ -248,25 +257,25 @@ const downVote= async ()=>{
 
 try {
 
-  if (app.currentUser !== null) {
-    const mongo = getMongo();
-    const Events = mongo.events;
-    const id=req.query.pid;
-    const query = { "_id": id };
-    const update =   { "$inc": { "votes": -1 } };
-    const options = { "upsert": false };
+if (app.currentUser !== null) {
+const mongo = getMongo();
+const Events = mongo.events;
+const id=req.query.pid;
+const query = { "_id": id };
+const update =   { "$inc": { "votes": -1 } };
+const options = { "upsert": false };
 
-    Events.updateOne(query, update, options)
-      .then(result => {
-        const { matchedCount, modifiedCount } = result;
-        if(matchedCount && modifiedCount) {
-          console.log(`Successfully updated the item.`)
-        }
-      })
-      .catch(err => console.error(`Failed to update the item: ${err}`))
+Events.updateOne(query, update, options)
+.then(result => {
+const { matchedCount, modifiedCount } = result;
+if(matchedCount && modifiedCount) {
+console.log(`Successfully updated the item.`)
+}
+})
+.catch(err => console.error(`Failed to update the item: ${err}`))
 
 }else {
-  res.redirect('/');
+res.redirect('/');
 }
 } catch (e) {
 console.log("downvote error :",e);

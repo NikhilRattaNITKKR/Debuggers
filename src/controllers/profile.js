@@ -2,6 +2,8 @@ const Realm = require("realm");
 const BSON = require("bson");
 const sharp = require('sharp');
 const multer = require('multer');
+const {bot, token}= require('./bot.js')
+const fs = require('fs')
 
 const app = new Realm.App({ id: "debuggers-lzxyc" });
 
@@ -16,21 +18,20 @@ function getMongo() {
 
 const editProfileImage = async(req, res) => {
 
-  const mongo = getMongo();
-  const Users = mongo.users;
-
+  const Users = getMongo().users;
 
   var imgData = req.file.buffer;
-
 
   try {
     let resizedImage = await sharp(imgData).resize(289, 347).png().toBuffer();
     resizedImage = resizedImage.toString('base64');
 
-    const result = await Users.updateOne(
-      { _id: new BSON.ObjectID(app.currentUser.id)},
-      { $set: {image: resizedImage} }
-    );
+
+
+    // const result = await Users.updateOne(
+    //   { _id: new BSON.ObjectID(app.currentUser.id)},
+    //   { $set: {image: resizedImage} }
+    // );
 
 
   } catch(err) {
@@ -58,7 +59,7 @@ const createPost = async(req, res) => {
       image = image.toString('base64');
     }
 
-    if(app.currentUser) {
+    if(req.cookies.uid) {
       const result = await Events.insertOne({
         _id: new BSON.ObjectID,
         uid: new BSON.ObjectID(app.currentUser.id),

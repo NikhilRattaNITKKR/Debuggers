@@ -1,6 +1,14 @@
 const Realm = require('realm');
 const BSON = require('bson');
 const ejs = require('../public/javascript/ejs');
+const {bot, token}= require('./bot.js')
+
+
+
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 
 
 
@@ -19,7 +27,11 @@ let doubts = [];
 
 const getDoubtForum = async(req, res) =>{
   try {
-    if (app.currentUser !== null) {
+
+
+
+
+    if (req.cookies.uid) {
       const mongo = getMongo();
       const Users = mongo.users;
       const Doubts = mongo.doubts;
@@ -31,8 +43,24 @@ const getDoubtForum = async(req, res) =>{
       let otherDoubts = [];
 
       doubts = await Doubts.find();
-      // let user  = await Users.find();
 
+
+      console.log(JSON.parse(localStorage.getItem('user')));
+
+      //Check this
+      // if (localStorage.user) {
+      //   try {
+      //     console.log('Hello');
+      //     var user = await Users.findOne({_id: new BSON.ObjectID(req.cookies.uid.toString())})
+      //
+      //   } catch (e) {
+      //     console.error(e);
+      //   } finally {
+      //
+      //     localStorage.setItem('user', user)
+      //     console.log(localStorage.getItem('user'));
+      //   }
+      // }
 
 
 
@@ -74,6 +102,7 @@ const getDoubtForum = async(req, res) =>{
 }
 
 const getSpecificDoubt = async(req, res) => {
+
   try {
 
     const Users = getMongo().users;

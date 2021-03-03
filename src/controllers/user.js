@@ -1,7 +1,7 @@
 const Realm = require("realm");
 const BSON = require("bson");
 const ejs = require('../public/javascript/ejs');
-const {bot, token}= require('./bot.js')
+
 
 const app = new Realm.App({ id: "debuggers-lzxyc" });
 
@@ -154,19 +154,18 @@ const getProfile = async(req, res) => {
     if (!req.cookies.uid) {
       res.redirect('/');
     } else {
+      const Users = getMongo().users;
+      const Events = getMongo().events;
 
+      let id = new BSON.ObjectID(req.params.id.toString());
+      let user = await Users.findOne({_id: id});
 
-      const mongo = getMongo();
-      const Users = mongo.users;
-      const Events = mongo.events;
-
-      const id = new BSON.ObjectID(req.params.id.toString());
-      const user = await Users.findOne({_id: id});
       let owner = false;
-
-
-      // to store in local storage
       if(user._id.toString() === req.cookies.uid.toString()) {
+        if(!localStorage.user) {
+          console.log("!exists");
+          localStorage.setItem('user', JSON.stringify(user));
+        }
         owner = true;
       }
 
@@ -174,18 +173,12 @@ const getProfile = async(req, res) => {
         await app.allUsers[req.cookies.uid.toString()].logOut();
         res.render('form', {title: "Detail Form"});
       } else {
-        const events = await Events.find({uid: id});
-        // to get id      console.log(events[0]._id);
-
-        let image = user.image;
-
-        res.render('profile', {user, events, image, ejs, owner, localStorage});
+        let events = await Events.find({uid: id});
+        res.render('profile', {user, events, ejs, owner, localStorage});
       }
     }
   } catch (e) {
     console.error("Get Profile Error: ", e);
-  } finally {
-    console.log(JSON.parse(localStorage.getItem('user')));
   }
 }
 

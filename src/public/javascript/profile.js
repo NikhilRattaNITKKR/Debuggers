@@ -193,21 +193,3 @@ document.querySelector(".fa-times").addEventListener("click",function(){
   document.querySelector(".photo_div").style.display="none";
   document.querySelector(".photo-post").setAttribute("src", "");
 });
-
-
-
-
-function createLocalUser(user) {
-  if(!localStorage.user) {
-
-    localStorage.user = JSON.stringify(user);
-    console.log("Not Exists");
-  } else {
-
-    localStorage.name = "Hemant"
-    console.log("Exists");
-    console.log(JSON.parse(localStorage.getItem('user')));
-
-
-  }
-}

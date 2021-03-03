@@ -1,18 +1,17 @@
 const Realm = require('realm');
 const BSON = require('bson');
 const ejs = require('../public/javascript/ejs');
-const {bot, token}= require('./bot.js')
 
+
+const app = new Realm.App({ id: "debuggers-lzxyc" });
+let doubts = [];
+let user;
 
 
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
   localStorage = new LocalStorage('./scratch');
 }
-
-
-
-const app = new Realm.App({ id: "debuggers-lzxyc" });
 
 function getMongo() {
   const mongodb = app.currentUser.mongoClient("mongodb-atlas");
@@ -23,14 +22,9 @@ function getMongo() {
 }
 
 
-let doubts = [];
 
 const getDoubtForum = async(req, res) =>{
   try {
-
-
-
-
     if (req.cookies.uid) {
       const mongo = getMongo();
       const Users = mongo.users;
@@ -45,26 +39,19 @@ const getDoubtForum = async(req, res) =>{
       doubts = await Doubts.find();
 
 
-      console.log(JSON.parse(localStorage.getItem('user')));
+      if (!localStorage.user) {
+        try {
+          console.log('Doesnot Exist');
+          let user = await Users.findOne({_id: new BSON.ObjectID(req.cookies.uid.toString())})
+          localStorage.setItem('user',JSON.stringify(user))
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      user = JSON.parse(localStorage.getItem('user'))
 
-      //Check this
-      // if (localStorage.user) {
-      //   try {
-      //     console.log('Hello');
-      //     var user = await Users.findOne({_id: new BSON.ObjectID(req.cookies.uid.toString())})
-      //
-      //   } catch (e) {
-      //     console.error(e);
-      //   } finally {
-      //
-      //     localStorage.setItem('user', user)
-      //     console.log(localStorage.getItem('user'));
-      //   }
-      // }
-
-
-
-      for (let i = 0; i<doubts.length; i++) {
+      // Division of Doubts According to their timings
+      for (let i = doubts.length -1; i>=0; i--) {
 
         let time = ejs.convertTime(doubts[i]._id.getTimestamp())
 
@@ -90,7 +77,6 @@ const getDoubtForum = async(req, res) =>{
 
       }
 
-
       res.render('doubtforum', {doubts, todayDoubts, yesterdayDoubts,  thisWeekDoubts, thisMonthDoubts, otherDoubts, ejs});
 
     } else {
@@ -104,43 +90,36 @@ const getDoubtForum = async(req, res) =>{
 const getSpecificDoubt = async(req, res) => {
 
   try {
-
-    const Users = getMongo().users;
     var doubt;
-
     for (let i = 0; i < doubts.length; i ++) {
       if (req.params.id === doubts[i]._id.toString()) {
         doubt = doubts[i];
       }
     }
-
-
     res.json({doubt});
-
-
   } catch (err) {
     console.error("Fetch Error: ", err);
   }
-
 }
 
 const createDoubt = async(req, res) => {
-  const mongo = getMongo();
-  const Users = mongo.users;
-  const Doubts = mongo.doubts;
 
+  const Doubts =  getMongo().doubts;
+  let domain = user.email.split('@');
+  domain = domain[1];
 
   let userName = "Anonymous"
-  if(req.body.postType === "User") userName = "user";
+  if(req.body.postType === "User") userName = user.name;
 
   try {
     const result = await Doubts.insertOne({
       _id: new BSON.ObjectID,
-      uid: new BSON.ObjectID(app.currentUser.id),
+      uid: new BSON.ObjectID(user._id.toString()),
       userName: userName,
       question: req.body.question,
       desc: req.body.desc,
       votes: 0,
+      domain: domain,
     })
 
 
@@ -155,72 +134,56 @@ const createDoubt = async(req, res) => {
 
 
 const createAnswer = async(req, res) => {
+
+  const Doubts = getMongo().doubts;
+
   try {
-    const Doubts = getMongo().doubts;
-    const Users = getMongo().users;
-
-    const user = await Users.findOne({_id: new BSON.ObjectID(app.currentUser.id.toString())});
-    try {
-
-      if(user._id.toString() === app.currentUser.id.toString()) {
-        //  if() Add radio Buton value Here
-        let name = user.name;
-        const result = await Doubts.updateOne({
-          _id: new BSON.ObjectID(req.params.id)
-        },
-        {
-          $addToSet: {
-            answers: {
-              _id: new BSON.ObjectID(),
-              uid: new BSON.ObjectID(app.currentUser.id.toString()),
-              name: name,
-              answer: req.body.answer
-            }
-          }
-        });
+    //  if() Add radio Buton value Here
+    let name = user.name;
+    const result = await Doubts.updateOne({
+      _id: new BSON.ObjectID(req.params.id)
+    },
+    {
+      $addToSet: {
+        answers: {
+          _id: new BSON.ObjectID(),
+          uid: new BSON.ObjectID(user._id.toString()),
+          name: name,
+          answer: req.body.answer
+        }
       }
-    } catch (e) {
-      console.error("User Get Error: ", e);
-    }
-    res.redirect('/doubtforum');
+    });
+
   } catch (e) {
-    console.error("Create Answer Error: ", e);
+    console.error("User Get Error: ", e);
   }
+  res.redirect('/doubtforum');
 }
 
 const createComment = async(req, res) => {
+
+  const Doubts = getMongo().doubts;
+
   try {
-    const Users = getMongo().users;
-    const Doubts = getMongo().doubts;
-
-    let user = await Users.findOne({
-      _id: new BSON.ObjectID(app.currentUser.id.toString())
-    });
-
-    try {
-      if(user._id.toString() === app.currentUser.id.toString()) {
-        let name = user.name;
-        console.log(name);
-        const result = await Doubts.updateOne({
-          answers: {$elemMatch: {_id: new BSON.ObjectID(req.params.aid)}}
-        },
-        {
-          $addToSet:{"answers.$.comments":{
-            uid: new BSON.ObjectID(app.currentUser.id.toString()),
-            image: null,
-            comment: req.body.comment,
-          }
-        }
-      })
-      console.log(result);
+    let name = user.name;
+    console.log(name);
+    const result = await Doubts.updateOne({
+      answers: {$elemMatch: {_id: new BSON.ObjectID(req.params.aid)}}
+    },
+    {
+      $addToSet:{"answers.$.comments":{
+        uid: new BSON.ObjectID(user._id.toString()),
+        image: null,
+        comment: req.body.comment,
+      }
     }
-  } catch (e) {
-    console.error("Create Comment Error: ", e);
-  }
-  res.redirect('/doubtforum')
+  })
+  console.log(result);
+
 } catch (e) {
-  console.error("User Get Error: ", e);
+  console.error("Create Comment Error: ", e);
 }
+res.redirect('/doubtforum');
 }
 
 

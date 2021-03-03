@@ -2,7 +2,7 @@ const Realm = require("realm");
 const BSON = require("bson");
 const sharp = require('sharp');
 const multer = require('multer');
-const {bot, token}= require('./bot.js')
+
 const fs = require('fs')
 
 const app = new Realm.App({ id: "debuggers-lzxyc" });
@@ -38,7 +38,7 @@ const editProfileImage = async(req, res) => {
     console.error("Edit Profile Image: ", err);
   }
 
-  res.redirect(`/profile/${app.currentUser.id}`);
+  res.redirect(`/profile/${req.cookies.uid}`);
 
 
 }

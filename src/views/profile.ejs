@@ -16,7 +16,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
 </head>
-<body onload="createLocalUser('<%= JSON.stringify(user) %>')">
+<body>
 
 
 
@@ -60,8 +60,8 @@
   <div class="user-container">
     <section class="user-left-block">
       <div class="user-photo">
-        <% if (image != null) { %>
-          <img src="data:image/png;base64,<%= image %>">
+        <% if (user.image != null) { %>
+          <img src="data:image/png;base64,<%= user.image %>">
 
           <% } else { %>
             <img src="https://cutt.ly/rki7z0g" alt="">
@@ -105,8 +105,8 @@
 
             <div class="create-a-post-div">
               <div class="create-a-post-div-img">
-                <% if (image != null) { %>
-                  <img src="data:image/png;base64,<%= image %>">
+                <% if (user.image != null) { %>
+                  <img src="data:image/png;base64,<%= user.image %>">
 
                   <% } else { %>
                     <img src="https://cutt.ly/rki7z0g" alt="">
@@ -120,8 +120,8 @@
                   <% for(var i = 0; i< events.length; i++){ %>
                     <div class="user-post">
                       <div class="user-post-header">
-                        <section><% if (image != null) { %>
-                          <img src="data:image/png;base64,<%= image %>">
+                        <section><% if (user.image != null) { %>
+                          <img src="data:image/png;base64,<%= user.image %>">
 
                           <% } else { %>
                             <img src="https://cutt.ly/rki7z0g" alt="">
@@ -175,11 +175,6 @@
                     </section>
                   </section>
 
-
-                  <%
-                  console.log(JSON.parse(localStorage.getItem('user')));
-                  console.log(localStorage.getItem('name'))
-                   %>
 
                   <section>
                     <div class="user-right-block">

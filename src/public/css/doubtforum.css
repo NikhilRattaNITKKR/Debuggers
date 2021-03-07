@@ -55,7 +55,7 @@
   display: flex;
   flex: 1;
   position: relative;
-  top: 8vh;
+  top: 0vh;
 }
 
 .left-div{
@@ -63,7 +63,7 @@
   height: 92vh;
   position: fixed;
   left: 0px;
-  top: 8vh;
+  top: 0vh;
   overflow-y: scroll;
 
 }

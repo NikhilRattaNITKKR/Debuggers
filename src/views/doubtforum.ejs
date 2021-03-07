@@ -57,23 +57,7 @@
                 Search
             </div>
           </div>
-          <div class="today-doubt">
-          <div class="category-doubt">
-            Trending  <i class="fas fa-arrows-alt-v"></i>
-          </div>
-          <div class="toggle-by-arrow">
-            <%  for(var i=0; i< 5; i++){ %>
-                <div class="doubt-div-left">
-                    <div class="left-block-content">
-                      <a onclick="" ><h6><span>Q.</span> Can you tell me what is PMC?</h6>
-                      <p>I have heard something like PMC,can you tell what it is.</p></a>
-                    </div>
-                </div>
-              <%} %>
-          </div>
 
-
-          </div>
           <div class="today-doubt">
             <div class="category-doubt">
               Today <i class="fas fa-arrows-alt-v"></i>
@@ -82,8 +66,6 @@
               <% for(let i=0; i< todayDoubts.length; i++) { %>
                   <div class="doubt-div-left" id="today-doubts">
                     <div class="left-block-content">
-
-
                       <a onclick="getDoubt('<%= todayDoubts[i]._id%>')"><h6><span>Q.</span> <%= todayDoubts[i].question %></h6>
                       <p><%= todayDoubts[i].desc %></p></a>
                     </div>
@@ -251,9 +233,7 @@
 <script >
 
 
-
-
-function getDoubt(_id) {
+async function getDoubt(_id) {
   console.log(_id);
   window.history.pushState("", "", "/doubtforum");
 

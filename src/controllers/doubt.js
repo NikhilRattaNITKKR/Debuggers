@@ -51,11 +51,11 @@ const getDoubtForum = async(req, res) =>{
       user = JSON.parse(localStorage.getItem('user'))
 
       //Popular Doubts Algo
-      let votes = [];
+      // let votes = [];
 
       // Division of Doubts According to their timings
       for (let i = doubts.length -1; i>=0; i--) {
-        votes[i] = doubts[i].upvotes.length - doubts.downvotes.length;
+        // votes[i] = doubts[i].upvotes.length - doubts.downvotes.length;
         let time = ejs.convertTime(doubts[i]._id.getTimestamp())
 
         if(time.includes('hour') || time.includes('min') || time.includes('sec')) {

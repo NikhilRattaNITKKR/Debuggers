@@ -48,6 +48,9 @@
       <div class="top-profile-container">
         <section class="profile-img">
             <div class="profile-img-container">
+              <div class="camera">
+                <i class="fas fa-camera-retro"></i>
+              </div>
               <img src="https://scontent.fdel1-2.fna.fbcdn.net/v/t1.0-9/83219598_1280190498857198_5424995061551071232_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=7VccmVIk7hsAX9tYkAy&_nc_ht=scontent.fdel1-2.fna&oh=e84ee6495bc0e172a39134194f7356e5&oe=606BF152" alt="">
             </div>
         </section>
@@ -195,6 +198,36 @@
 
 
 
+    <div class="image-inp-popup">
+      <div class="popup-container">
+        <div class="popup-triangle">
+
+        </div>
+        <div class="popup">
+          <div class="popup-top">
+            <h4>Upload an Image</h4>
+            <div class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+          <div class="popup-body">
+            <div class="form-div">
+              <form class="" action="/editImage" enctype="multipart/form-data" method="post">
+
+
+                <input class="user-img-input" type="file" name="profileImage" accept="image/*" />
+
+                <div class="img-display">
+                  <img src="" alt="" class="img-display-img">
+                  <span class="default-txt">Preview Image</span>
+                </div>
+                <div class="image-btn"><button type="submit" name="button">Upload</button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 

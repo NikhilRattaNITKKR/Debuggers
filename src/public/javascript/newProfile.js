@@ -139,3 +139,37 @@ $('#interests').click(function(){
     },850);
 
     });
+
+
+
+
+
+const imageinp = $(".user-img-input");
+const display = $(".img-display");
+const image = $(".img-display-img");
+const defaulttxt = $(".default-txt");
+
+imageinp.on("change",function(){
+  const file = this.files[0];
+
+  if(file){
+    const reader = new FileReader();
+    defaulttxt.css("display","none");
+    image.css("display","block");
+
+    reader.onload = function(e) {
+      image.attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(file);
+  }
+});
+
+
+$('.camera').click(function(){
+  $('.image-inp-popup').css("display","block");
+});
+
+$('.cross').click(function(){
+  $('.image-inp-popup').css("display","none");
+});

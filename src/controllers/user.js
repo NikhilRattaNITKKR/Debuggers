@@ -79,7 +79,6 @@ const form = async({body, params}, res)=>{
     );
     const user = await app.logIn(credentials);
     console.log("Form: ",user.id);
-    console.log("Form 2: ", app.currentUser.id);
     const mongoUser = user.mongoClient("mongodb-atlas");
     const collection = mongoUser.db("Debuggers").collection("Users");
 
@@ -95,9 +94,10 @@ const form = async({body, params}, res)=>{
     })
 
     console.log("Form: ", result);
-
-    res.redirect(`/profile/${user.id}`)
-
+    console.log("Successfully logged in!", user.id);
+    res.cookie('uid', new BSON.ObjectID(user.id));
+    res.cookie('COL_CHECK', true);
+    res.redirect(`/profile/${user.id}`);
 
   } catch (e) {
     console.error("Form Error: ", e);
@@ -151,39 +151,38 @@ const getProfile = async(req, res) => {
 
 
   try {
+    let id = new BSON.ObjectID(req.params.id.toString());
+    let owner = false;
+    let user = JSON.parse(localStorage.getItem('user'));
+
+
     if (!req.cookies.uid) {
       res.redirect('/');
+
+    } else if(!req.cookies.COL_CHECK) {
+      await app.allUsers[req.cookies.uid.toString()].logOut();
+      res.render('form', {title: "Detail Form"});
+
     } else {
       const Users = getMongo().users;
       const Events = getMongo().events;
-      let owner = false;
-      let user = JSON.parse(localStorage.getItem('user'));
 
-      let id = new BSON.ObjectID(req.params.id.toString());
+
 
       if(id.toString() === req.cookies.uid.toString()) {
         owner  = true;
         if(!user) {
           console.log('Does not Exists');
           user = await Users.findOne({_id: id});
-          console.log(user);
-          if(!user) {
-            await app.allUsers[req.cookies.uid.toString()].logOut();
-            res.render('form', {title: "Detail Form"});
-          }
           localStorage.setItem('user', JSON.stringify(user));
-        } else {
-          if(!user) {
-            await app.allUsers[req.cookies.uid.toString()].logOut();
-            res.render('form', {title: "Detail Form"});
-          }
         }
+
       } else {
         user = await Users.findOne({_id: id});
       }
 
       let events = await Events.find({uid: id});
-      res.render('newrofile', {user, events, ejs, owner});
+      res.render('newprofile', {user, events, ejs, owner});
 
     }
   } catch (e) {

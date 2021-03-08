@@ -50,9 +50,12 @@ const getDoubtForum = async(req, res) =>{
       }
       user = JSON.parse(localStorage.getItem('user'))
 
+      //Popular Doubts Algo
+      // let votes = [];
+
       // Division of Doubts According to their timings
       for (let i = doubts.length -1; i>=0; i--) {
-
+        // votes[i] = doubts[i].upvotes.length - doubts.downvotes.length;
         let time = ejs.convertTime(doubts[i]._id.getTimestamp())
 
         if(time.includes('hour') || time.includes('min') || time.includes('sec')) {
@@ -76,6 +79,8 @@ const getDoubtForum = async(req, res) =>{
         }
 
       }
+
+      //// TODO: How to Sort Doubts with help of votes
 
       res.render('doubtforum', {doubts, todayDoubts, yesterdayDoubts,  thisWeekDoubts, thisMonthDoubts, otherDoubts, ejs});
 
@@ -118,7 +123,8 @@ const createDoubt = async(req, res) => {
       userName: userName,
       question: req.body.question,
       desc: req.body.desc,
-      votes: 0,
+      upvotes: {},
+      downvotes: {},
       domain: domain,
     })
 
@@ -139,7 +145,7 @@ const createAnswer = async(req, res) => {
 
   try {
     //  if() Add radio Buton value Here
-    let name = user.name;
+
     const result = await Doubts.updateOne({
       _id: new BSON.ObjectID(req.params.id)
     },
@@ -148,7 +154,7 @@ const createAnswer = async(req, res) => {
         answers: {
           _id: new BSON.ObjectID(),
           uid: new BSON.ObjectID(user._id.toString()),
-          name: name,
+          name: user.name,
           answer: req.body.answer
         }
       }

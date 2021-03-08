@@ -344,7 +344,24 @@ async function getDoubt(_id) {
                         console.log(comments[j].comment);
                         htmlComment[j] =  `
 
-                        <li class="comment-list"> <span><img  src="https://cutt.ly/rki7z0g"></span> <div class="comment-div"><p class="comment-txt">${comments[j].comment}</p></div></li>
+                        <li class="comment-list"> <span>
+                        ${(() => {
+                          if(comments[j].image ===  null) {
+                            return `
+                            <% if(user.gender === "male") { %>
+                              <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540444849012787/undraw_male_avatar_323b.png" alt="">
+                            <% } else { %>
+                              <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540456203517967/undraw_female_avatar_w3jk.png" alt="">
+                            <% } %>
+
+                            `
+                          } else {
+                            return `
+                              <img src="https://drive.google.com/thumbnail?id=${comments[j].image}" alt="">
+                            `
+                          }
+                        })()}
+                        </span> <div class="comment-div"><p class="comment-txt">${comments[j].comment}</p></div></li>
 
                         `
                       }
@@ -360,7 +377,18 @@ async function getDoubt(_id) {
                 }
               })()}
 
-              <li class="comment-list add-comment" id="new-comment-div"> <span><img src="https://cutt.ly/rki7z0g"></span>
+              <li class="comment-list add-comment" id="new-comment-div"> <span>
+              <% if(!user.image) { %>
+                <% if(user.gender === "male") { %>
+                  <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540444849012787/undraw_male_avatar_323b.png" alt="">
+                <% } else { %>
+                  <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540456203517967/undraw_female_avatar_w3jk.png" alt="">
+                <% } %>
+              <% } else { %>
+                <img src="https://drive.google.com/thumbnail?id=<%= user.image %>" alt="">
+              <% } %>
+
+              </span>
 
               <div class="comment-div" id="new-comment-div-new">
               <form action="/doubtforum/${doubt._id}/${answers[i]._id}" method="post">

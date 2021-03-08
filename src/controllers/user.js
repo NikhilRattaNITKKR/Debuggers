@@ -82,12 +82,13 @@ const form = async({body, params}, res)=>{
     const mongoUser = user.mongoClient("mongodb-atlas");
     const collection = mongoUser.db("Debuggers").collection("Users");
 
+    let genre = body.genre.split(' ');
 
     const result = await collection.insertOne({
       _id: new BSON.ObjectID(user.id),
       name: body.name,
       branch: body.branch,
-      genre: body.genre,
+      genre: genre,
       rollNo:body.rollNo,
       email: body.email,
       gender: body.gender
@@ -153,7 +154,7 @@ const getProfile = async(req, res) => {
   try {
     let id = new BSON.ObjectID(req.params.id.toString());
     let owner = false;
-    let user = JSON.parse(localStorage.getItem('user'));
+    let user = {};
 
 
     if (!req.cookies.uid) {
@@ -167,18 +168,15 @@ const getProfile = async(req, res) => {
       const Users = getMongo().users;
       const Events = getMongo().events;
 
-
+      user = await Users.findOne({_id: id});
+      localStorage.setItem('user', JSON.stringify(user));
 
       if(id.toString() === req.cookies.uid.toString()) {
         owner  = true;
         if(!user) {
           console.log('Does not Exists');
-          user = await Users.findOne({_id: id});
-          localStorage.setItem('user', JSON.stringify(user));
         }
 
-      } else {
-        user = await Users.findOne({_id: id});
       }
 
       let events = await Events.find({uid: id});

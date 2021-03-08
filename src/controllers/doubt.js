@@ -50,6 +50,7 @@ const getDoubtForum = async(req, res) =>{
       }
       user = JSON.parse(localStorage.getItem('user'))
 
+
       //Popular Doubts Algo
       // let votes = [];
 
@@ -82,7 +83,7 @@ const getDoubtForum = async(req, res) =>{
 
       //// TODO: How to Sort Doubts with help of votes
 
-      res.render('doubtforum', {doubts, todayDoubts, yesterdayDoubts,  thisWeekDoubts, thisMonthDoubts, otherDoubts, ejs});
+      res.render('doubtforum', {user, doubts, todayDoubts, yesterdayDoubts,  thisWeekDoubts, thisMonthDoubts, otherDoubts, ejs});
 
     } else {
       res.redirect('/');
@@ -169,6 +170,7 @@ const createAnswer = async(req, res) => {
 const createComment = async(req, res) => {
 
   const Doubts = getMongo().doubts;
+  let user = JSON.parse(localStorage.getItem('user'))
 
   try {
     let name = user.name;
@@ -179,7 +181,7 @@ const createComment = async(req, res) => {
     {
       $addToSet:{"answers.$.comments":{
         uid: new BSON.ObjectID(user._id.toString()),
-        image: null,
+        image: user.image || null,
         comment: req.body.comment,
       }
     }

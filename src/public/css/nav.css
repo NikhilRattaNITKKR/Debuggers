@@ -43,7 +43,6 @@ i{
 }
 nav
 {
-    box-shadow:0 0 15px 0 rgb(94, 93, 93);
+    /* box-shadow:0 0 15px 0 rgb(94, 93, 93); */
+    position: sticky !important;
 }
-
- 

@@ -60,8 +60,8 @@
   <div class="user-container">
     <section class="user-left-block">
       <div class="user-photo">
-        <% if (user.image != null) { %>
-          <img src="data:image/png;base64,<%= user.image %>">
+        <% if (user.image != null) { console.log(user.image) %>
+          <img src="https://drive.google.com/thumbnail?id=<%= user.image %>">
 
           <% } else { %>
             <img src="https://cutt.ly/rki7z0g" alt="">

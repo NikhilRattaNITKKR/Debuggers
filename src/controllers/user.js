@@ -149,37 +149,46 @@ const logOut = async(req, res) => {
 
 const getProfile = async(req, res) => {
 
-  res.render('newProfile');
-  // try {
-  //   if (!req.cookies.uid) {
-  //     res.redirect('/');
-  //   } else {
-  //     const Users = getMongo().users;
-  //     const Events = getMongo().events;
-  //
-  //     let id = new BSON.ObjectID(req.params.id.toString());
-  //     let user = await Users.findOne({_id: id});
-  //
-  //     let owner = false;
-  //     if(user._id.toString() === req.cookies.uid.toString()) {
-  //       if(!localStorage.user) {
-  //         console.log("!exists");
-  //         localStorage.setItem('user', JSON.stringify(user));
-  //       }
-  //       owner = true;
-  //     }
-  //
-  //     if (user == null) {
-  //       await app.allUsers[req.cookies.uid.toString()].logOut();
-  //       res.render('form', {title: "Detail Form"});
-  //     } else {
-  //       let events = await Events.find({uid: id});
-  //       res.render('newProfile', {user, events, ejs, owner, localStorage});
-  //     }
-  //   }
-  // } catch (e) {
-  //   console.error("Get Profile Error: ", e);
-  // }
+
+  try {
+    if (!req.cookies.uid) {
+      res.redirect('/');
+    } else {
+      const Users = getMongo().users;
+      const Events = getMongo().events;
+      let owner = false;
+      let user = JSON.parse(localStorage.getItem('user'));
+
+      let id = new BSON.ObjectID(req.params.id.toString());
+
+      if(id.toString() === req.cookies.uid.toString()) {
+        owner  = true;
+        if(!user) {
+          console.log('Does not Exists');
+          user = await Users.findOne({_id: id});
+          console.log(user);
+          if(!user) {
+            await app.allUsers[req.cookies.uid.toString()].logOut();
+            res.render('form', {title: "Detail Form"});
+          }
+          localStorage.setItem('user', JSON.stringify(user));
+        } else {
+          if(!user) {
+            await app.allUsers[req.cookies.uid.toString()].logOut();
+            res.render('form', {title: "Detail Form"});
+          }
+        }
+      } else {
+        user = await Users.findOne({_id: id});
+      }
+
+      let events = await Events.find({uid: id});
+      res.render('newrofile', {user, events, ejs, owner});
+
+    }
+  } catch (e) {
+    console.error("Get Profile Error: ", e);
+  }
 }
 
 

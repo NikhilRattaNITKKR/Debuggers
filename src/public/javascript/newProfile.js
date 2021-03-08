@@ -1,6 +1,6 @@
 $('.search-bar input').focus(function(){
   $('.search-bar').css({
-    "background":"rgba(0,0,0,0.4)",
+    "background":"rgba(255,255,255,0.4)",
     "border":"4px solid #FFE74C"
   });
   $(this).css("color","white");

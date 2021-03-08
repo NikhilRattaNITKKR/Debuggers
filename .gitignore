@@ -2,3 +2,4 @@ node_modules/
 mongodb-realm/
 src/db/
 scratch/
+src/controllers/image.png

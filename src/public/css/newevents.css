@@ -179,6 +179,7 @@ border: 2px solid deeppink;
 
 .categories-txt{
   margin-bottom: 8vh;
+  padding: 0 6%;
 }
 
 .categories-txt h4{
@@ -197,14 +198,27 @@ border: 2px solid deeppink;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  padding: 2% 0;
+  padding: 4% 0;
+  transition: all 300ms linear;
 }
+
+.categories-list li:hover{
+  background: #1700ff5c;
+  color: white !important;
+}
+
 .categories-list i{
   margin: 0 !important;
   margin-left: 1vw !important;
   font-size: 20px;
   color: black;
+  transition: all 300ms linear;
 }
+
+.categories-list i:hover{
+  color: white;
+}
+
 .categories-list a{
   color: black;
   text-decoration: none;
@@ -313,16 +327,64 @@ option{
 
 
 .categories-txt-div{
-  background-position-y: 0px;
-  background-image: url(/assets/bg.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin: 3vh 0;
-  padding: 3vh 1vw;
+  margin: 4vh 0;
+  padding: 4vh 1vw;
   text-align: center;
   font-weight: 500;
-  background-position-x: 30px;
+
+  border-radius:0 0 20px 20px;
+   border: 3.5px solid gray;
+   border-top: 5px solid transparent;
+   background-image: url('/assets/water.png');
+   background-repeat: repeat-x;
+   animation: water 5s linear infinite;
+   transition: all 300ms linear;
+   background-position: 0 8vh;
 }
+@keyframes water {
+
+  0%{
+    background-position: 0 18vh;
+  }
+  10%{
+    background-position: -2vw 16vh;
+  }
+  20%{
+    background-position: -5vw 14vh;
+  }
+  30%{
+    background-position: 0 12vh;
+  }
+  40%{
+    background-position: -1vw 10vh;
+
+  }
+  50%{
+    background-position: -4vw 8vh;
+
+  }
+  60%{
+    background-position: 0vw 12vh;
+  }
+  70%{
+    background-position: -4vw 14vh;
+
+  }
+  90%{
+      background-position: -8vw 16vh;
+  }
+  100%{
+    background-position: 0 18vh;
+
+  }
+
+}
+
+.categories-txt-div:hover{
+  background-image: none;
+  animation: none;
+}
+
 .categories-txt a{
   color: rgb(120,120,120);
   text-decoration: none;

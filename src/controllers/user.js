@@ -97,7 +97,6 @@ const form = async({body, params}, res)=>{
     console.log("Form: ", result);
     console.log("Successfully logged in!", user.id);
     res.cookie('uid', new BSON.ObjectID(user.id));
-    res.cookie('COL_CHECK', true);
     res.redirect(`/profile/${user.id}`);
 
   } catch (e) {
@@ -160,23 +159,19 @@ const getProfile = async(req, res) => {
     if (!req.cookies.uid) {
       res.redirect('/');
 
-    } else if(!req.cookies.COL_CHECK) {
-      await app.allUsers[req.cookies.uid.toString()].logOut();
-      res.render('form', {title: "Detail Form"});
-
     } else {
       const Users = getMongo().users;
       const Events = getMongo().events;
 
       user = await Users.findOne({_id: id});
-      localStorage.setItem('user', JSON.stringify(user));
+      if(user === null) {
+        await app.allUsers[req.cookies.uid.toString()].logOut();
+        res.render('form', {title: "Detail Form"});
+      }
 
       if(id.toString() === req.cookies.uid.toString()) {
+        localStorage.setItem('user', JSON.stringify(user));
         owner  = true;
-        if(!user) {
-          console.log('Does not Exists');
-        }
-
       }
 
       let events = await Events.find({uid: id});

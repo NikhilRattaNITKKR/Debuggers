@@ -49,7 +49,7 @@ const getSignUp = function(req, res) {
   if (req.cookies.uid) {
     res.redirect(`/profile/${app.currentUser.id}`);
   } else {
-    res.render('signup');
+    res.render('SignUp');
   }
 }
 const signUp = async(req,res)=>{
@@ -175,7 +175,7 @@ const getProfile = async(req, res) => {
       }
 
       let events = await Events.find({uid: id});
-      res.render('newprofile', {user, events, ejs, owner});
+      res.render('newProfile', {user, events, ejs, owner});
 
     }
   } catch (e) {

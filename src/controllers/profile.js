@@ -37,6 +37,7 @@ const editProfileImage = async(req, res) => {
   var imgData = req.file.buffer;
   const user = JSON.parse(localStorage.getItem('user'));
   try {
+
     let files = await drive.files.list({
       q: `name = '${user._id.toString()}'`
     });
@@ -54,7 +55,7 @@ const editProfileImage = async(req, res) => {
     let resizedImage = await sharp(imgData).resize(289, 347).png().toBuffer();
     resizedImage = resizedImage.toString('base64');
     resizedImage = new Buffer.from(resizedImage, 'base64');
-    fs.writeFileSync('src/controllers/image.png', resizedImage);
+    fs.writeFileSync('src/controllers/image.png', resizedImage);//Created Temp Image File In Controllers Directory
 
 
     const filePath = path.join(__dirname, 'image.png');
@@ -88,65 +89,90 @@ const editProfileImage = async(req, res) => {
     }); // Uploading URL TO Mongo
 
 
-    } catch(err) {
-      console.error("Edit Profile Image: ", err);
-    } finally {
-      res.redirect(`/profile/${req.cookies.uid}`);
+  } catch(err) {
+    console.error("Edit Profile Image: ", err);
+  } finally {
+    res.redirect(`/profile/${req.cookies.uid}`);
+  }
+}
+
+const createPost = async(req, res) => {
+  const mongo = getMongo();
+  const Users = mongo.users;
+  const Events = mongo.events;
+  let user = JSON.parse(localStorage.getItem('user'));
+  let id = new BSON.ObjectID();
+  let image = '';
+
+
+  try {
+
+
+    if (req.file) {
+      var imgData = req.file.buffer;
+      image = await sharp(imgData).resize(250, 300).png().toBuffer();
+      image = image.toString('base64');
+      image = new Buffer.from(image, 'base64');
+      fs.writeFileSync('src/controllers/image.png', image);
+
+
+      const filePath = path.join(__dirname, 'image.png');
+      const response = await drive.files.create({
+        requestBody: {
+          name: id.toString(),
+          mimeType: 'image/png'
+        },
+        media: {
+          mimeType: 'image/png',
+          body: fs.createReadStream(filePath)
+        }
+      }); // Create New Image File
+
+      await drive.permissions.create({
+        fileId: response.data.id,
+        requestBody: {
+          role: 'reader',
+          type: 'anyone'
+        }
+      }); //Change File Permissions to Public
+
+      image = response.data.id;
     }
-  }
 
+    if(req.cookies.uid) {
+      const result = await Events.insertOne({
+        _id: id,
+        uid: new BSON.ObjectID(user._id.toString()),
+        title: req.body.title,
+        desc: req.body.desc,
+        genre: req.body.genre,
+        image: image,
+        buttonName: req.body.buttonName||null,
+        url: req.body.url||null,
+        upvote: {},
+        downvote: {}
+      });
 
+      console.log("Custom: ", req.body.custom);
+      console.log("Result: ", result);
 
-  const createPost = async(req, res) => {
-    const mongo = getMongo();
-    const Users = mongo.users;
-    const Events = mongo.events;
-
-
-
-    try {
-
-
-      if (req.file) {
-        var imgData = req.file.buffer;
-        var image = await sharp(imgData).resize(250, 300).png().toBuffer();
-        image = image.toString('base64');
-      }
-
-      if(req.cookies.uid) {
-        const result = await Events.insertOne({
-          _id: new BSON.ObjectID,
-          uid: new BSON.ObjectID(app.currentUser.id),
-          title: req.body.title,
-          desc: req.body.desc,
-          genre: req.body.genre,
-          image: image||null,
-          buttonName: req.body.buttonName||null,
-          url: req.body.url||null,
-          upvote: {},
-          downvote: {}
-        });
-
-        console.log("Custom: ", req.body.custom);
-        console.log("Result: ", result);
-
-      }
-    } catch (err) {
-      console.error("Create Post Error: ", err);
-    } finally {
-      res.redirect(`/profile/${app.currentUser.id}`);
     }
-
-
+  } catch (err) {
+    console.error("Create Post Error: ", err);
+  } finally {
+    res.redirect(`/profile/${req.cookies.uid.toString()}`);
   }
 
 
+}
 
 
 
 
 
-  module.exports = {
-    editProfileImage,
-    createPost,
-  }
+
+
+module.exports = {
+  editProfileImage,
+  createPost,
+}

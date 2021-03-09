@@ -52,7 +52,7 @@
 }
 .profile-img-container img{
   clip-path: circle();
-  width: 12vw;
+  width: 11vw;
 }
 .mid-details{
   padding: 3%;
@@ -501,7 +501,7 @@ margin-bottom: 5vh;
   width: 10%;
   height: 30%;
   transform: translateY(6vh);
-  animation: pop 4s linear infinite;
+  animation: pop 5s linear infinite;
 
 }
 
@@ -526,10 +526,10 @@ margin-bottom: 5vh;
     opacity: 1
   }
   20%{
-    transform: translateY(2vh);
+    transform: translateY(0vh);
   }
   40%{
-    transform: translateY(-4vh);
+    transform: translateY(-6vh);
   }
   60%{
     transform: translateY(-10vh);

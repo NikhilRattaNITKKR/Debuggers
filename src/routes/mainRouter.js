@@ -31,6 +31,15 @@ router.route('/doubtforum').get(doubtControllers.getDoubtForum).post(doubtContro
 router.route('/doubtforum/:id').get(doubtControllers.getSpecificDoubt).post(doubtControllers.createAnswer);
 router.route('/doubtforum/:id/:aid').post(doubtControllers.createComment);
 
+router.route('/post').get(function(req,res){
+  res.render('post');
+});
+
+router.route('/newevents').get(function(req,res){
+  res.render('newevents');
+});
+
+
 //router.route('/comments/:id').get(userControllers.getComments);
 //router.route('/upVote/:id').get(userControllers.upVote);
 //router.route('/downVote/:id').get(userControllers.downVote);

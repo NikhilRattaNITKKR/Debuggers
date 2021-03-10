@@ -166,6 +166,21 @@ const createPost = async(req, res) => {
 
 }
 
+const searchUser = async(req, res) => {
+  // const Users = getMongo().users;
+  // let result;
+  // try {
+  //   console.log(req.query.name);
+  //   const query = {$text: {$search: `\"${req.query.name}\"`}}
+  //   result = await Users.find(query);
+  //   console.log(result);
+  // } catch (e) {
+  //   console.log('error: ', e);
+  // }
+
+  res.json({working: 'working'})
+}
+
 
 
 
@@ -175,4 +190,5 @@ const createPost = async(req, res) => {
 module.exports = {
   editProfileImage,
   createPost,
+  searchUser
 }

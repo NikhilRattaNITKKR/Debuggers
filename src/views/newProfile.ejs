@@ -90,7 +90,7 @@
           <div class="right-profile-container">
             <div class="search">
               <div class="search-bar">
-                <input type="text" name="" value="" placeholder="Search.."><button><i class="fas fa-search"></i></button>
+                <input type="search" id="search" onchange="testing('<%= user._id %>')" placeholder="Search.."><button><i class="fas fa-search"></i></button>
               </div>
             </div>
 
@@ -260,6 +260,30 @@
         </div>
       </div>
     </div>
+
+
+    <script type="text/javascript">
+
+    async function testing(_id) {
+      let query = document.getElementById('search').value;
+      console.log(query);
+
+      if (query.length > 3) {
+        try {
+
+          fetch(`/profile/${_id}/search/?name=${query}`)
+          .then(response => response.json())
+          .then(data => console.log(data));
+
+        } catch (e) {
+          console.error('Query Error: ', e.message);
+        }
+
+      }
+    }
+
+
+    </script>
 
 
 

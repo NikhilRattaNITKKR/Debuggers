@@ -23,6 +23,7 @@ router.route('/logOut').get(userControllers.logOut);
 router.route('/profile/:id').get(userControllers.getProfile);
 router.route('/editImage').post(upload.single('profileImage'), profileControllers.editProfileImage);
 router.route('/createPost').post(upload.single('image'), profileControllers.createPost);
+router.route('/profile/:id/search').get(profileControllers.searchUser);
 
 router.route('/events').get(userControllers.getEvents);
 
@@ -33,10 +34,6 @@ router.route('/doubtforum/:id/:aid').post(doubtControllers.createComment);
 
 router.route('/post').get(function(req,res){
   res.render('post');
-});
-
-router.route('/newevents').get(function(req,res){
-  res.render('newevents');
 });
 
 

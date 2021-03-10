@@ -433,7 +433,7 @@ option{
 }
 
 .post2{
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 10px rgb(197 187 187 / 50%);
   border-radius: 20px;
 }
 .post2-container{

@@ -50,3 +50,14 @@ $(document).ready(function(){
   $('.list-i').css("color","white");
   // $('.full-post-div.').css("width","0");
 });
+
+
+$('#post-toggler').on("click",function(){
+  $('.right-post').fadeTo("slow",0.1);
+  $('.left-post').fadeTo("slow",0.1);
+  $('.full-post-div').animate({
+    width: "0%"
+  },1000,function(){
+    $('.full-post-div').css("display","none");
+  });
+})

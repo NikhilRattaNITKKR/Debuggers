@@ -51,6 +51,19 @@ const getEvents = async(req, res) =>{
   }
 }
 
+const getSpecificEvent = async(req, res) =>{
+  let id = req.params.id;
+  const Events = getMongo().events;
+  let specificEvent = {};
+
+  try {
+    specificEvent = await Events.findOne({_id: new BSON.ObjectId(id)});
+  } catch (e) {
+    console.error(e.message);
+  }
+  res.json({data: specificEvent});
+}
+
 
 
 
@@ -67,4 +80,5 @@ const getEvents = async(req, res) =>{
 
 module.exports = {
   getEvents,
+  getSpecificEvent,
 }

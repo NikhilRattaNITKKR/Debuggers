@@ -187,36 +187,6 @@ const getProfile = async(req, res) => {
 
 
 
-
-const getEvents = async(req, res) =>{
-  try{
-    if (req.cookies.uid) {
-      const mongo = getMongo();
-      const Users = mongo.users;
-      const Events = mongo.events;
-
-      let events = await Events.find();
-      let user = await Users.find();
-      let users = [];
-      for (let i = 0; i<events.length; i++) {
-        for ( let j = 0; j<user.length; j++ ) {
-          if(events[i].uid.toString() === user[j]._id.toString()) {
-            users[i] = user[j];
-          }
-        }
-      }
-
-
-
-
-      res.render('events', {events: events, users: users});
-    } else {
-      res.redirect('/');
-    }
-  }catch (e){
-    console.log("Get Events error:",e);
-  }
-}
 /*
 const upVote= async ()=>{
 
@@ -286,7 +256,7 @@ module.exports={
   logIn,
   logOut,
   getProfile,
-  getEvents,
+
   //upVote,
   //downVote
 }

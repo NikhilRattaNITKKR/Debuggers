@@ -180,7 +180,7 @@
     <div class="mid-div-posts-container">
 
 
-          <%for(var i=0;i<5;i++){%>
+          <%for(var i=0;i< events.length; i++){%>
 
           <div class="posts-row row">
 
@@ -196,7 +196,7 @@
                     </div>
                     <div class="post-details">
                       <div class="genre-container">
-                        <h5>Technology</h5>
+                        <h5><%= events[i].genre %></h5>
                         <div class="genre-icons">
                             <i class="fas fa-share-alt n-ic"></i>
                             <i class="far fa-bookmark n-ic"></i>
@@ -204,10 +204,10 @@
                       </div>
 
                       <div class="title-container">
-                        <h4>Title goes here..</h4>
+                        <h4><%= events[i].title %></h4>
                       </div>
                       <div class="read-more">
-                        <p><a href="#" class="toggler-main-post" onclick="postdata()">Read more..</a></p>
+                        <p><a href="#" class="toggler-main-post" onclick="postdata('<%= events[i]._id %>')">Read more..</a></p>
                       </div>
 
                       <div class="user-details">
@@ -216,7 +216,7 @@
                             <img src="https://scontent.fdel1-2.fna.fbcdn.net/v/t1.0-9/83219598_1280190498857198_5424995061551071232_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=7VccmVIk7hsAX8ehs_u&_nc_ht=scontent.fdel1-2.fna&oh=9f6c0ab57d403881ad2f96cbef04af56&oe=606BF152" alt="">
                           </div>
                           <div class="username">
-                            <h5>Faisal Ali Khan</h5>
+                            <h5><%= users[i].name %></h5>
                           </div>
                         </div>
                       </div>
@@ -229,7 +229,7 @@
                 </div>
               </div>
 
-
+              <% if(events[i+1]) {%>
 
 
               <div class="col-lg-6 post-col">
@@ -242,7 +242,7 @@
                     </div>
                     <div class="post-details">
                       <div class="genre-container">
-                        <h5>Technology</h5>
+                        <h5><%= events[i+1].genre %></h5>
                         <div class="genre-icons">
                             <i class="fas fa-share-alt n-ic"></i>
                             <i class="far fa-bookmark n-ic"></i>
@@ -250,10 +250,10 @@
                       </div>
 
                       <div class="title-container">
-                        <h4>Title goes here..</h4>
+                        <h4><%= events[i+1].title %></h4>
                       </div>
                       <div class="read-more">
-                        <p><a href="#" class="toggler-main-post">Read more..</a></p>
+                        <p><a href="#" class="toggler-main-post" onclick="postdata('<%= events[i+1]._id %>')">Read more..</a></p>
                       </div>
 
                       <div class="user-details">
@@ -262,7 +262,7 @@
                             <img src="https://scontent.fdel1-2.fna.fbcdn.net/v/t1.0-9/83219598_1280190498857198_5424995061551071232_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=7VccmVIk7hsAX8ehs_u&_nc_ht=scontent.fdel1-2.fna&oh=9f6c0ab57d403881ad2f96cbef04af56&oe=606BF152" alt="">
                           </div>
                           <div class="username">
-                            <h5>Faisal Ali Khan</h5>
+                            <h5><%= users[i+1].name %></h5>
                           </div>
                         </div>
                       </div>
@@ -275,20 +275,7 @@
                 </div>
               </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <% } i++; %>
           </div>
 
 
@@ -376,8 +363,23 @@
 <script>
 
 
-    function postdata(){
-      $('.post-desc-p').html("Hello everyone this is Faisal Ali Khan. <3");
+    function postdata(id){
+
+      fetch(`/events/${id}`)
+      .then(response => response.json())
+      .then(async (data) =>{
+
+
+
+
+        console.log(data);
+        console.log(data.data.desc);
+        $('.post-desc-p').html(data.data.desc);
+        
+        $('.right-post').fadeTo("slow",1);
+        $('.left-post').fadeTo("slow",1);
+      })
+
     }
 
 

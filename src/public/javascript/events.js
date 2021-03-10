@@ -46,8 +46,7 @@ $('.toggler-main-post').on("click",function(){
   $('.full-post-div').animate({
     width: "100%"
   },800,function(){
-    $('.right-post').fadeTo("slow",1);
-    $('.left-post').fadeTo("slow",1);
+
   });
   $(window).scrollTop(0);
 });
@@ -57,7 +56,7 @@ $('#post-toggler').on("click",function(){
   $('.left-post').fadeTo("slow",0.1);
   $('.full-post-div').animate({
     width: "0%"
-  },1000,function(){
+  },600,function(){
     $('.full-post-div').css("display","none");
   });
 })

@@ -10,7 +10,12 @@
   position: relative;
   top: 0;
   width: 100%;
-  background: deepskyblue;
+  background-color: deepskyblue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-image: url('https://images.unsplash.com/photo-1479156731157-e883d1bd10d0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80');
 }
 
 .top-profile-container{
@@ -20,7 +25,7 @@
 }
 
 .profile-img{
-  padding-top: 5%;
+  padding-top: 3%;
   width: 20%;
   overflow: hidden;
 }
@@ -36,11 +41,15 @@
   padding-right: 10%;
   text-align: right;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+
 }
 .camera{
   position: absolute;
   top: 9.2em;
-  right: 6.4em;
+  right: 6.1em;
   z-index: 10;
   cursor: pointer;
 }
@@ -51,6 +60,11 @@
   font-size: 20px;
 }
 .profile-img-container img{
+  width: 100%;
+
+}
+.profile-img-circlediv{
+  overflow: hidden;
   clip-path: circle();
   width: 11vw;
 }
@@ -293,8 +307,9 @@ background: white;
 .about-container, .skills-container, .genre-container, .interests-container{
   width: 100%;
   height: 100%;
-  padding: 2%;
+  padding: 2% 4%;;
   box-shadow: 0 8px 22px 2px rgb(202 195 195 / 27%);
+  border-radius: 30px;
 }
 
 .skills-container ul{
@@ -547,4 +562,29 @@ margin-bottom: 5vh;
 .anim-img-container img{
   width: 100%;
   height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+/* carousel ******************************************************************************************************** */
+
+
+
+
+.carousel-posts-div{
+  width: 100%;
+  height: calc(100vh - 59.6px);
+}
+
+.carousel-posts-div-container{
+  width: 100%;
+  height: 100%;
+  padding: 3%;
 }

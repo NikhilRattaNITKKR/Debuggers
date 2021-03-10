@@ -51,15 +51,18 @@
               <div class="camera">
                 <i class="fas fa-camera-retro"></i>
               </div>
-              <% if(!user.image) { %>
-                <% if(user.gender === "male") { %>
-                  <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540444849012787/undraw_male_avatar_323b.png" alt="">
+              <div class="profile-img-circlediv">
+                <% if(!user.image) { %>
+                  <% if(user.gender === "male") { %>
+                    <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540444849012787/undraw_male_avatar_323b.png" alt="">
+                  <% } else { %>
+                    <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540456203517967/undraw_female_avatar_w3jk.png" alt="">
+                  <% } %>
                 <% } else { %>
-                  <img src="https://cdn.discordapp.com/attachments/818540389358108702/818540456203517967/undraw_female_avatar_w3jk.png" alt="">
+                  <img src="https://drive.google.com/thumbnail?id=<%= user.image %>" alt="">
                 <% } %>
-              <% } else { %>
-                <img src="https://drive.google.com/thumbnail?id=<%= user.image %>" alt="">
-              <% } %>
+              </div>
+
             </div>
         </section>
         <section class="mid-profile">
@@ -210,6 +213,30 @@
 
 
 
+    <div class="carousel-posts-div">
+
+        <div class="carousel-posts-div-container">
+
+
+
+
+
+        </div>
+    </div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="image-inp-popup">
       <div class="popup-container">
@@ -219,7 +246,7 @@
                <img src="https://cdn.discordapp.com/attachments/818540389358108702/818731812243243068/Pngtreedark_mood_instagram_post_frame_5593972.png" alt="">
              </div>
              <div class="anim-img-container" id="a2">
-               <img src="https://cdn.discordapp.com/attachments/818540389358108702/818732395791515678/Pngtreeblue_cartoon_travel_selfie_travel_5353747.png" alt="">
+               <img src="https://cdn.discordapp.com/attachments/818540389358108702/818731812243243068/Pngtreedark_mood_instagram_post_frame_5593972.png" alt="">
              </div>
              <div class="anim-img-container" id="a3">
                <img src="/assets/p5.png" alt="">
@@ -262,6 +289,29 @@
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script type="text/javascript">
 
     async function testing(_id) {
@@ -281,6 +331,10 @@
 
       }
     }
+
+
+
+
 
 
     </script>

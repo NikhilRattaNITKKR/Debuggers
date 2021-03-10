@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Debuggers</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/newevents.css">
+    <link rel="stylesheet" href="/css/events.css">
     <link rel="stylesheet" href="/css/nav.css">
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7d0e898fba.js" crossorigin="anonymous"></script>
@@ -122,7 +122,7 @@
 
               </div>
               <div class="post-desc">
-                <p>Lorem it dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="post-desc-p"> </p>
               </div>
 
               <div class="user-details">
@@ -207,7 +207,7 @@
                         <h4>Title goes here..</h4>
                       </div>
                       <div class="read-more">
-                        <p><a href="#" class="toggler-main-post">Read more..</a></p>
+                        <p><a href="#" class="toggler-main-post" onclick="postdata()">Read more..</a></p>
                       </div>
 
                       <div class="user-details">
@@ -373,7 +373,17 @@
 
 
 
+<script>
 
+
+    function postdata(){
+      $('.post-desc-p').html("Hello everyone this is Faisal Ali Khan. <3");
+    }
+
+
+
+
+</script>
 
 
 

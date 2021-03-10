@@ -28,3 +28,25 @@ $('.search-bar input').blur(function(){
     "color":"black"
   });
 });
+
+
+$('.post').on("click",function(){
+  $('.full-post-div').css("display","flex");
+  $('.full-post-div').animate({
+    width: "100%"
+  },800,function(){
+    $('.right-post').fadeTo("slow",1);
+    $('.left-post').fadeTo("slow",1);
+  });
+  $(window).scrollTop(0);
+});
+
+
+$(document).ready(function(){
+  $('.list-it').css({
+    "background":"#1700ff5c",
+    "color":"white"
+  });
+  $('.list-i').css("color","white");
+  // $('.full-post-div.').css("width","0");
+});

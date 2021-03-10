@@ -161,6 +161,7 @@ border: 2px solid deeppink;
 }
 
 .left-div{
+  background: #aaa2ff33;
   position: sticky;
   top: 75.6px;
   left: 0;
@@ -241,6 +242,12 @@ border: 2px solid deeppink;
   width: 100%;
   padding: 2%;
 }
+
+.mid-div-posts-container{
+  position: relative;
+  top: 0;
+}
+
 
 .posts-row{
   margin-top: 10vh;
@@ -402,3 +409,129 @@ option{
   color: rgb(30,30,30);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* post2 begin *************************************************************************************************** */
+
+.full-post-div{
+
+  justify-content: center;
+  padding: 3% 0;
+  display: none;
+  width: 0;
+
+}
+
+.post2{
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  border-radius: 20px;
+}
+.post2-container{
+  display: flex;
+  height: auto;
+
+}
+
+.left-post{
+  width: 25vw;
+  height: 45vh;
+  opacity: 0.3;
+}
+
+
+.image-container2{
+  height: 80% !important;
+}
+
+.img-container-inner2{
+  height: auto;
+}
+
+.genre-container2{
+  margin-top: 1vh;
+}
+
+.right-post{
+  min-height: 45vh;
+  width: 32vw;
+  opacity: 0.1;
+}
+
+.right-post-container{
+  height: 100%;
+  width: 100%;
+  padding: 2%;
+}
+
+.right-post-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-top-icon{
+  display: flex;
+  align-items: flex-start;
+}
+
+.post-desc{
+  padding: 2%;
+  font-size: 16px;
+  min-height: 200px;
+}
+
+.user-img-container{
+  width: 2.2rem;
+}
+
+.username h5{
+  font-size: 18px;
+}
+
+.user-details{
+  padding: 0 2%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-footer{
+  margin: 1vh 0;
+  padding: 2% 0;
+}
+.genre-icons{
+  justify-content: center;
+  align-items: center;
+}
+
+
+.right-post-top{
+  margin: 1vh 0;
+}
+
+
+.comment-section-container{
+  padding: 3%;
+}
+
+.comment-txt-div{
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+/* post2 end *************************************************************************************************** */

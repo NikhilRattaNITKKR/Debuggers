@@ -151,6 +151,7 @@ const getProfile = async(req, res) => {
 
 
   try {
+    console.log(req.params.id)
     let id = new BSON.ObjectID(req.params.id.toString());
     let owner = false;
     let user = {};

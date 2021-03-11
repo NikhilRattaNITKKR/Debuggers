@@ -110,7 +110,7 @@ const createPost = async(req, res) => {
 
     if (req.file) {
       var imgData = req.file.buffer;
-      image = await sharp(imgData).resize(250, 300).png().toBuffer();
+      image = await sharp(imgData).resize(1052, 700).png().toBuffer();
       image = image.toString('base64');
       image = new Buffer.from(image, 'base64');
       fs.writeFileSync('src/controllers/image.png', image);

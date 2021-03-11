@@ -42,6 +42,8 @@ $(document).ready(function(){
 
 
 $('.toggler-main-post').on("click",function(){
+  $('.right-post').css("opacity","0.1");
+  $('.left-post').css("opacity","0.1");
   $('.full-post-div').css("display","flex");
   $('.full-post-div').animate({
     width: "100%"
@@ -52,11 +54,59 @@ $('.toggler-main-post').on("click",function(){
 });
 
 $('#post-toggler').on("click",function(){
-  $('.right-post').fadeTo("slow",0.1);
-  $('.left-post').fadeTo("slow",0.1);
+  $('.right-post').fadeTo("slow",0.2);
+  $('.left-post').fadeTo("slow",0.3);
   $('.full-post-div').animate({
     width: "0%"
   },600,function(){
     $('.full-post-div').css("display","none");
   });
-})
+});
+
+
+
+
+
+
+// posts
+
+
+
+var genre ="";
+
+$(".checkbox").click(function(e){
+
+  if($(this).prop("checked")== true){
+  genre = genre+$(this).parent().text() + " ";
+  $(".dropdown_button").val(genre);
+  }
+
+
+  else if($(this).prop("checked")== false){
+    var newgenre = genre.split(" ");
+    console.log(newgenre);
+    for(var i=0;i<newgenre.length; i++){
+      if (newgenre[i] ==  $(this).parent().text()){
+        newgenre.splice(i,1);
+        console.log(newgenre);
+      }
+    }
+    var temp= "";
+    for(var i=0; i<newgenre.length-1;i++){
+      temp = temp + newgenre[i] + " ";
+    }
+    genre = temp;
+
+    $(".dropdown_button").val(temp);
+
+  }
+});
+
+
+$('#closepost').click(function(){
+  $('.create-event-div-over').css("display","none");
+});
+
+$('.create-event-div').click(function(){
+  $('.create-event-div-over').css("display","block");
+});

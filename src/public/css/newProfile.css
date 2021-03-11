@@ -25,7 +25,7 @@
 }
 
 .profile-img{
-  padding-top: 3%;
+  padding-top: 4%;
   width: 20%;
   overflow: hidden;
 }
@@ -38,6 +38,8 @@
   width: 35%;
 }
 .profile-img-container{
+  width: 100%;
+  height: 100%;
   padding-right: 10%;
   text-align: right;
   position: relative;
@@ -48,8 +50,8 @@
 }
 .camera{
   position: absolute;
-  top: 9.2em;
-  right: 6.1em;
+  top: 8.7em;
+right: 6.4em;
   z-index: 10;
   cursor: pointer;
 }
@@ -61,12 +63,14 @@
 }
 .profile-img-container img{
   width: 100%;
+  height: auto;
 
 }
 .profile-img-circlediv{
   overflow: hidden;
   clip-path: circle();
-  width: 11vw;
+  width: 80%;
+  height: 60%;
 }
 .mid-details{
   padding: 3%;
@@ -304,10 +308,10 @@ background: white;
 background: white;
 
 }
-.about-container, .skills-container, .genre-container, .interests-container{
+.about-container, .skills-container, .genre-container-profile, .interests-container{
   width: 100%;
   height: 100%;
-  padding: 2% 4%;;
+  padding: 2% 4%;
   box-shadow: 0 8px 22px 2px rgb(202 195 195 / 27%);
   border-radius: 30px;
 }
@@ -363,7 +367,7 @@ backdrop-filter: blur(2px);
 }
 .popup{
   position: absolute;
-  top: 32vh;
+  top: 28vh;
   left: 20vw;
   background: rgb(240,240,240);
   width: 42%;
@@ -374,7 +378,7 @@ backdrop-filter: blur(2px);
 
   clip-path: polygon(100% 0, 0 50%, 100% 100%);
   position: absolute;
-  top: 37vh;
+  top: 32vh;
   left: 18vw;
   height: 40px;
   width: 31px;
@@ -495,7 +499,7 @@ margin-bottom: 5vh;
 
 .animation-popup{
   position: absolute;
-  top: 10vh;
+  top: 6vh;
   height: 22vh;
   width: 34vw;
   left: 24vw;
@@ -580,11 +584,26 @@ margin-bottom: 5vh;
 
 .carousel-posts-div{
   width: 100%;
-  height: calc(100vh - 59.6px);
+  min-height: calc(100vh - 59.6px);
 }
 
 .carousel-posts-div-container{
   width: 100%;
   height: 100%;
   padding: 3%;
+}
+
+
+.carousel-grid-container{
+  padding: 4%;
+  display: flex;
+  flex:1;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+.grid{
+
 }

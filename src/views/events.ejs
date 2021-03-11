@@ -474,6 +474,12 @@
         $('.genre-update').html(specificEvent.genre);
         $('.title-update').html(specificEvent.title);
         $('.name-update').html(specificEvent.name);
+        $('.genre-update').html(specificEvent.genre);
+        $('.name-update').html(user.name);
+        $('.genre-update').removeClass("Technology");
+        $('.genre-update').removeClass("Internship");
+        $('.genre-update').removeClass("Research");
+        $('.genre-update').addClass(specificEvent.genre);
         $('.post2-img').attr("src",`https://drive.google.com/uc?export=view&id=${specificEvent.image}`);
         $('.post2-user-img').attr("src",`https://drive.google.com/uc?export=view&id=${user.image}`)
         $('.right-post').fadeTo("slow",1);

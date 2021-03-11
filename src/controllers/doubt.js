@@ -181,7 +181,7 @@ const createComment = async(req, res) => {
     {
       $addToSet:{"answers.$.comments":{
         uid: new BSON.ObjectID(user._id.toString()),
-        image: user.image || null,
+        image: user.image,
         comment: req.body.comment,
       }
     }

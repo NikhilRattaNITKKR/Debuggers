@@ -54,14 +54,17 @@ const getEvents = async(req, res) =>{
 const getSpecificEvent = async(req, res) =>{
   let id = req.params.id;
   const Events = getMongo().events;
+  const Users = getMongo().users;
   let specificEvent = {};
+  let user = {};
 
   try {
     specificEvent = await Events.findOne({_id: new BSON.ObjectId(id)});
+    user = await Users.findOne({_id: new BSON.ObjectID(specificEvent.uid.toString())});
   } catch (e) {
     console.error(e.message);
   }
-  res.json({data: specificEvent});
+  res.json({event: specificEvent, user});
 }
 
 

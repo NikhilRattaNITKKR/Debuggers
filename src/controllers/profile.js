@@ -43,12 +43,12 @@ const editProfileImage = async(req, res) => {
     });
 
     files = files.data.files
-    if(files.length>0) {
-      let result = await drive.files.delete({
-        fileId: files[0].id
-      });//Delete Iamge File If Already Exists
-      console.log("Delete Result", result.data);
-    } // Check File Name
+    // if(files.length>0) {
+    //   let result = await drive.files.delete({
+    //     fileId: files[0].id
+    //   });//Delete Iamge File If Already Exists
+      // console.log("Delete Result", result.data);
+    // } // Check File Name
 
 
 

@@ -370,12 +370,13 @@
       .then(async (data) =>{
 
 
-
+        let specificEvent = data.event;
+        let user = data.user;
 
         console.log(data);
-        console.log(data.data.desc);
-        $('.post-desc-p').html(data.data.desc);
-        
+
+        $('.post-desc-p').html();
+
         $('.right-post').fadeTo("slow",1);
         $('.left-post').fadeTo("slow",1);
       })

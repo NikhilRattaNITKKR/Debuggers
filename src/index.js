@@ -3,6 +3,10 @@ const {MongoClient} = require('mongodb');
 
 const client = MongoClient(process.env.MONGODB_URI || "mongodb+srv://owner:debuggers204@cluster0.mjejk.mongodb.net/Debuggers?retryWrites=true&w=majority", { useUnifiedTopology: true });
 
+if (process.env.MONGODB_URI) {
+  console.log(process.env.MONGODB_URI);
+}
+
 const port= process.env.PORT || 3000;
 
 var Users, Events, Doubts;

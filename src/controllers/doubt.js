@@ -29,7 +29,14 @@ const getDoubtForum = async(req, res) =>{
       let thisMonthDoubts = [];
       let otherDoubts = [];
 
-      doubts = await Doubts.find();
+
+      doubts = await Doubts.find().toArray()
+      .then(result => {
+        if (result) {
+          console.log(result);
+          return result;
+        }
+      });
 
 
       if (!localStorage.user) {

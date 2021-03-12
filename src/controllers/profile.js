@@ -1,21 +1,14 @@
 const Realm = require("realm");
 const BSON = require("bson");
 const sharp = require('sharp');
-const multer = require('multer');
 const fs = require('fs')
 const path = require('path');
 const {drive} = require('../services/googleapis');
 
 
-const app = new Realm.App({ id: "debuggers-lzxyc" });
 
-function getMongo() {
-  const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-  const Users = mongodb.db("Debuggers").collection('Users');
-  const Events = mongodb.db("Debuggers").collection('Events');
 
-  return {users: Users, events: Events}
-}
+// const app = new Realm.App({ id: "debuggers-lzxyc" });
 
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
@@ -33,7 +26,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 const editProfileImage = async(req, res) => {
 
-  const Users = getMongo().users;
+  const Users = req.app.get('Users')
   var imgData = req.file.buffer;
   const user = JSON.parse(localStorage.getItem('user'));
   try {
@@ -97,9 +90,8 @@ const editProfileImage = async(req, res) => {
 }
 
 const createPost = async(req, res) => {
-  const mongo = getMongo();
-  const Users = mongo.users;
-  const Events = mongo.events;
+  const Users = req.app.get('Users');
+  const Events = req.app.get('Events');
   let user = JSON.parse(localStorage.getItem('user'));
   let id = new BSON.ObjectID();
   let image = '';
@@ -110,7 +102,7 @@ const createPost = async(req, res) => {
 
     if (req.file) {
       var imgData = req.file.buffer;
-      image = await sharp(imgData).resize(1052, 700).png().toBuffer();
+      image = await sharp(imgData).resize(450, 250).png().toBuffer();
       image = image.toString('base64');
       image = new Buffer.from(image, 'base64');
       fs.writeFileSync('src/controllers/image.png', image);
@@ -160,23 +152,36 @@ const createPost = async(req, res) => {
   } catch (err) {
     console.error("Create Post Error: ", err);
   } finally {
-    res.redirect(`/profile/${req.cookies.uid.toString()}`);
+    // res.redirect(`/profile/${req.cookies.uid.toString()}`);
+    res.redirect('/events')
   }
 
 
 }
 
 const searchUser = async(req, res) => {
-  // const Users = getMongo().users;
-  // let result;
-  // try {
-  //   console.log(req.query.name);
-  //   const query = {$text: {$search: `\"${req.query.name}\"`}}
-  //   result = await Users.find(query);
-  //   console.log(result);
-  // } catch (e) {
-  //   console.log('error: ', e);
-  // }
+
+
+  const Users = req.app.get('Users');
+
+
+  let result = await Users.aggregate([
+    {
+      "$search": {
+        "autocomplete": {
+          "query": `${req.query.name}`,
+          "path": "name",
+          "fuzzy": {
+            "maxEdits": 2
+          }
+        }
+      }
+    }
+  ]).toArray();
+  console.log("Result: ", result);
+
+
+
 
   res.json({working: 'working'})
 }

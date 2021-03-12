@@ -18,9 +18,11 @@
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
   </head>
 
-
-  <body onload="getDoubt('<%= doubts[doubts.length-1]._id%>')">
-
+  <% if(doubts.length > 0 ) {%>
+    <body onload="getDoubt('<%= doubts[doubts.length-1]._id%>')">
+  <% } else { %>
+    <body>
+  <% } %>
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand" href="/"><i class="fas fa-bug icon"></i><p class="brand_name">Debuggers</p></a>

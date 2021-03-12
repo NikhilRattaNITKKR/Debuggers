@@ -3,7 +3,7 @@ const BSON = require('bson');
 const ejs = require('../public/javascript/ejs');
 
 
-const app = new Realm.App({ id: "debuggers-lzxyc" });
+// const app = new Realm.App({ id: "debuggers-lzxyc" });
 let doubts = [];
 let user;
 
@@ -13,22 +13,15 @@ if (typeof localStorage === "undefined" || localStorage === null) {
   localStorage = new LocalStorage('./scratch');
 }
 
-function getMongo() {
-  const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-  const Users = mongodb.db("Debuggers").collection('Users');
-  const Doubts = mongodb.db("Debuggers").collection('Doubts');
-
-  return {users: Users, doubts: Doubts}
-}
-
 
 
 const getDoubtForum = async(req, res) =>{
   try {
     if (req.cookies.uid) {
-      const mongo = getMongo();
-      const Users = mongo.users;
-      const Doubts = mongo.doubts;
+      const Users = req.app.get('Users');
+      const Doubts = req.app.get('Doubts');
+
+
 
       let todayDoubts = [];
       let yesterdayDoubts = [];
@@ -110,7 +103,8 @@ const getSpecificDoubt = async(req, res) => {
 
 const createDoubt = async(req, res) => {
 
-  const Doubts =  getMongo().doubts;
+  const Doubts = req.app.get('Doubts');
+
   let domain = user.email.split('@');
   domain = domain[1];
 
@@ -142,7 +136,8 @@ const createDoubt = async(req, res) => {
 
 const createAnswer = async(req, res) => {
 
-  const Doubts = getMongo().doubts;
+  const Doubts = req.app.get('Doubts');
+
 
   try {
     //  if() Add radio Buton value Here
@@ -169,7 +164,8 @@ const createAnswer = async(req, res) => {
 
 const createComment = async(req, res) => {
 
-  const Doubts = getMongo().doubts;
+  const Doubts = req.app.get('Doubts');
+
   let user = JSON.parse(localStorage.getItem('user'))
 
   try {

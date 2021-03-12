@@ -11,14 +11,6 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 }
 
 
-function getMongo() {
-  const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-  const Users = mongodb.db("Debuggers").collection('Users');
-  const Events = mongodb.db("Debuggers").collection('Events');
-
-  return {users: Users, events: Events};
-}
-
 
 const getHome = async(req, res) => {
 
@@ -161,8 +153,10 @@ const getProfile = async(req, res) => {
       res.redirect('/');
 
     } else {
-      const Users = getMongo().users;
-      const Events = getMongo().events;
+      const Users = req.app.get('Users');
+      const Events = req.app.get('Events');
+
+
 
       user = await Users.findOne({_id: id});
       if(user === null) {

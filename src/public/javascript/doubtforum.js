@@ -8,6 +8,7 @@ $(".fa-arrows-alt-v").click(function(){
 
 
 $(".new-post-text").click(function(){
+  $('.spinner-con').css("display","none");
 setTimeout(function(){
   $(".doubt-section").addClass("doubt-section-none");
   $(".post-a-doubt").addClass("post-a-doubt-display");
@@ -16,12 +17,15 @@ setTimeout(function(){
 });
 
 $("#cancel-btn").click(function(){
+  $('.spinner-con').css("display","flex");
 setTimeout(function(){
   $(".doubt-section").removeClass("doubt-section-none");
   $(".post-a-doubt").removeClass("post-a-doubt-display");
 },300);
 
 });
+
+
 
 // $(".add-a-comment").click(function(){
 // setTimeout(function(){

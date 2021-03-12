@@ -108,7 +108,7 @@
               </div>
               <div class="post-details">
                 <div class="genre-container genre-container2">
-                  <h5 class="genre-update">Technology</h5>
+                  <h5 class="genre-update"></h5>
 
                 </div>
 
@@ -220,7 +220,7 @@
                       <div class="user-details">
                         <div class="user-name">
                           <div class="user-img-container">
-                            <img src="https://drive.google.com/uc?export=view&id=<%=users[i].image%>" alt="">
+                            <img src="https://drive.google.com/thumbnail?id=<%=users[i].image%>" alt="">
                           </div>
                           <div class="username">
                             <h5><%= users[i].name %></h5>
@@ -266,7 +266,7 @@
                       <div class="user-details">
                         <div class="user-name">
                           <div class="user-img-container">
-                            <img src="https://drive.google.com/uc?export=view&id=<%=users[i+1].image%>" alt="">
+                            <img src="https://drive.google.com/thumbnail?id=<%=users[i+1].image%>" alt="">
                           </div>
                           <div class="username">
                             <h5><%= users[i+1].name %></h5>
@@ -481,10 +481,11 @@
         $('.genre-update').removeClass("Research");
         $('.genre-update').addClass(specificEvent.genre);
         $('.post2-img').attr("src",`https://drive.google.com/uc?export=view&id=${specificEvent.image}`);
-        $('.post2-user-img').attr("src",`https://drive.google.com/uc?export=view&id=${user.image}`)
+        $('.post2-user-img').attr("src",`https://drive.google.com/thumbnail?id=${user.image}`);
         $('.right-post').fadeTo("slow",1);
         $('.left-post').fadeTo("slow",1);
       })
+
 
     }
 

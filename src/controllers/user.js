@@ -77,7 +77,7 @@ const form = async({body, params}, res)=>{
     let genre = body.genre.split(' ');
 
     const result = await collection.insertOne({
-      _id: new BSON.ObjectID(user.id),
+      _id: new BSON.ObjectId(user.id),
       name: body.name,
       branch: body.branch,
       genre: genre,
@@ -88,7 +88,7 @@ const form = async({body, params}, res)=>{
 
     console.log("Form: ", result);
     console.log("Successfully logged in!", user.id);
-    res.cookie('uid', new BSON.ObjectID(user.id));
+    res.cookie('uid', new BSON.ObjectId(user.id));
     res.redirect(`/profile/${user.id}`);
 
   } catch (e) {
@@ -117,7 +117,7 @@ const logIn = async(req, res) => {
       );
       const user = await app.logIn(credentials);
       console.log("Successfully logged in!", user.id);
-      res.cookie('uid', new BSON.ObjectID(user.id))
+      res.cookie('uid', new BSON.ObjectId(user.id))
       res.redirect(`/profile/${user.id}`);
     }
 
@@ -144,7 +144,7 @@ const getProfile = async(req, res) => {
 
   try {
     console.log(req.params.id)
-    let id = new BSON.ObjectID(req.params.id.toString());
+    let id = new BSON.ObjectId(req.params.id.toString());
     let owner = false;
     let user = {};
 
@@ -162,15 +162,15 @@ const getProfile = async(req, res) => {
       if(user === null) {
         await app.allUsers[req.cookies.uid.toString()].logOut();
         res.render('form', {title: "Detail Form"});
-      }
+      } // Render To Form For New User
 
       if(id.toString() === req.cookies.uid.toString()) {
         localStorage.setItem('user', JSON.stringify(user));
         owner  = true;
-      }
+      } // Update LocalStorage
 
       let events = await Events.find({uid: id});
-      res.render('newProfile', {user, events, ejs, owner});
+      res.render('newProfile', {user, events, ejs, owner}); //Rende Profile
 
     }
   } catch (e) {

@@ -74,7 +74,7 @@ const editProfileImage = async(req, res) => {
     }); //Change File Permissions to Public
 
     await Users.updateOne({
-      _id: new BSON.ObjectID(req.cookies.uid.toString())
+      _id: new BSON.ObjectId(req.cookies.uid.toString())
     }, {
       $set: {
         image: response.data.id
@@ -93,7 +93,7 @@ const createPost = async(req, res) => {
   const Users = req.app.get('Users');
   const Events = req.app.get('Events');
   let user = JSON.parse(localStorage.getItem('user'));
-  let id = new BSON.ObjectID();
+  let id = new BSON.ObjectId();
   let image = '';
 
 
@@ -134,15 +134,14 @@ const createPost = async(req, res) => {
     if(req.cookies.uid) {
       const result = await Events.insertOne({
         _id: id,
-        uid: new BSON.ObjectID(user._id.toString()),
-        title: req.body.title,
-        desc: req.body.desc,
-        genre: req.body.genre,
+        uid: new BSON.ObjectId(user._id.toString()),
+        title: req.body.title.trim(),
+        desc: req.body.desc.trim(),
+        genre: req.body.genre.trim(),
         image: image,
         buttonName: req.body.buttonName||null,
         url: req.body.url||null,
-        upvote: {},
-        downvote: {}
+        like: 0
       });
 
       console.log("Custom: ", req.body.custom);
@@ -183,7 +182,7 @@ const searchUser = async(req, res) => {
 
 
 
-  res.json({working: 'working'})
+  res.json({result})
 }
 
 

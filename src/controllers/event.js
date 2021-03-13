@@ -16,34 +16,77 @@ var allEvents = [];
 
 
 const getEvents = async(req, res) =>{
+  let query = req.query.genre;
+  let type = req.query.event;
 
   try{
     if (req.cookies.uid) {
       const Users = req.app.get('Users');
-      const Events = req.app.get('Events');
+      const Events = req.app.get('Events'); //Get Database
+
+      let uid = req.cookies.uid.toString();
+      let user = await Users.findOne({_id: new BSON.ObjectId(uid)});
+      localStorage.setItem('user', JSON.stringify(user));
+      //Update LocalStorage
 
 
-      let events = await Events.find().toArray()
-      .then(result => {
-        if (result) {
-          return result;
+      let events = [];
+      let users = [];
+
+
+      if(type) {
+        if(type === "trending") {
+
+          events = await Events.find().sort({like: -1, participants: -1}).limit(10).toArray();
+          let trending = [];
+          for (var i = 0; i < events.length; i++) {
+
+            var postDate = new Date(events[i]._id.getTimestamp());
+            var currrentdate = Date.now();
+            let ms = currrentdate - postDate;
+
+            if(ms < 604800000)
+            trending.push(events[i])
+          }
+          events = trending;
+
+
+        } else if (type === "recent") {
+
+        } else if (type === "archived") {
+          let pids = user.archived;
+          // console.log(pids);
+
+          for (var i = 0; i < pids.length; i++) {
+            events[i] = await Events.findOne({_id: new BSON.ObjectId(pids[i].pid.toString())})
+          }
         }
-      });
-      let user = await Users.find().toArray()
-      .then(result => {
+      } else {
+        events = await Events.find(query ? {genre: query}: {}).toArray().then(result => {
+          if (result) {
+            // console.log(result);
+            return result;
+          } else {
+            console.log("No Events to Show");
+          }
+        });
+      } // Give Value to Events
+
+
+
+      let alluser = await Users.find().toArray().then(result => {
         if (result) {
           // console.log(result);
           return result;
         }
-      });
-      let users = [];
+      }); //Get All Users
       for (let i = 0; i<events.length; i++) {
-        for ( let j = 0; j<user.length; j++ ) {
-          if(events[i].uid.toString() === user[j]._id.toString()) {
-            users[i] = user[j];
+        for ( let j = 0; j<alluser.length; j++ ) {
+          if(events[i].uid.toString() === alluser[j]._id.toString()) {
+            users[i] = alluser[j];
           }
         }
-      }
+      } //Filter Users According To Events
 
       res.render('events',{events, users});
 
@@ -66,32 +109,60 @@ const getSpecificEvent = async(req, res) =>{
   let user = {};
 
 
-  // for (var i = 0; i < allEvents.length; i++) {
-  //   if (id === allEvents[i]._id.toString()) {
-  //     specificEvent = allEvents[i];
-  //     if(specificEvent.uid.toString() === users[i]._id.toString()) user = users[i];
-  //     else console.log('No Such User Exists');
-  
-  //   }
-  //   else console.log('No Such Event Exists');
-  // }
-
-
-
 
   try {
     specificEvent = await Events.findOne({_id: new BSON.ObjectId(id)});
-    user = await Users.findOne({_id: new BSON.ObjectID(specificEvent.uid.toString())});
+    user = await Users.findOne({_id: new BSON.ObjectId(specificEvent.uid.toString())});
   } catch (e) {
     console.error(e.message);
   }
   res.json({event: specificEvent, user});
 }
 
+const searchEvent = async(req, res) => {
+  const Events = req.app.get('Events');
+
+  let results = await Events.aggregate([
+    {
+      "$search": {
+        "autocomplete":{
+          "query": `${req.query.query}`,
+          "path": "title",
+          "fuzzy": {
+            "maxEdits": 2
+          }
+        }
+      }
+    }
+  ]).toArray();
+  console.log('Results: ', results);
 
 
+  res.json({results})
+}
 
-
+const takeAction = async(req, res) => {
+  console.log('Taking Action');
+  console.log(req.params.id);
+  let query = req.query.action;
+  const Users = req.app.get('Users');
+  let uid = JSON.parse(localStorage.getItem('user'))._id.toString();
+  if (query === "archive") {
+    let result = await Users.updateOne(
+      {
+        _id: new BSON.ObjectId(uid)
+      },
+      {
+        $addToSet: {
+          archived: {
+            pid: new BSON.ObjectId(req.params.id.toString())
+          }
+        }
+      }
+    );
+    // console.log(result);
+  }
+}
 
 
 
@@ -105,4 +176,6 @@ const getSpecificEvent = async(req, res) =>{
 module.exports = {
   getEvents,
   getSpecificEvent,
+  searchEvent,
+  takeAction,
 }

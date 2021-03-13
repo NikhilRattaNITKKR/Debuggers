@@ -96,7 +96,7 @@
           <div class="right-profile-container">
             <div class="search">
               <div class="search-bar">
-                <input type="search" id="search" onchange="testing('<%= user._id %>')" placeholder="Search.."><button><i class="fas fa-search"></i></button>
+                <input type="search" id="search" onchange="search('<%= user._id %>')" placeholder="Search.."><button><i class="fas fa-search"></i></button>
               </div>
             </div>
 
@@ -469,7 +469,7 @@
 
     <script type="text/javascript">
 
-    async function testing(_id) {
+    async function search(_id) {
       let query = document.getElementById('search').value;
       console.log(query);
 
@@ -486,7 +486,6 @@
 
       }
     }
-
 
 
 

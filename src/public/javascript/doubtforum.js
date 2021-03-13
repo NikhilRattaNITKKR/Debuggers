@@ -120,3 +120,25 @@ function xyz(){
   $("#show-doubt").css("opacity","1");
   $(".spinner-con").css("display","none");
 }
+
+
+
+
+//Search
+// async function search(_id) {
+//   let query = document.getElementById('search').value;
+//   console.log(query);
+//
+//   if (query.length > 3) {
+//     try {
+//
+//       fetch(`/profile/${_id}/search/?name=${query}`)
+//       .then(response => response.json())
+//       .then(data => console.log(data));
+//
+//     } catch (e) {
+//       console.error('Query Error: ', e.message);
+//     }
+//
+//   }
+// }

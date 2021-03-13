@@ -61,11 +61,11 @@
       </div>
       <div class="categories-list">
         <ul>
-          <a href="#"><li class="list-it">All <i class="fas fa-list list-i"></i></li></a>
-          <a href="#"><li>Technology <i class="fas fa-tv"></i></li></a>
-          <a href="#"><li>Research <i class="fas fa-atom"></i></li></a>
-          <a href="#"><li>Internship <i class="fas fa-graduation-cap"></i></li></a>
-          <a href="#"><li>Marketing <i class="fas fa-shopping-cart"></i></li></a>
+          <a href="/events"><li class="list-it">All <i class="fas fa-list list-i"></i></li></a>
+          <a href="/events?genre=Technology"><li>Technology <i class="fas fa-tv"></i></li></a>
+          <a href="/events?genre=Research"><li>Research <i class="fas fa-atom"></i></li></a>
+          <a href="/events?genre=Internship"><li>Internship <i class="fas fa-graduation-cap"></i></li></a>
+          <a href="/events?genre=Marketing"><li>Marketing <i class="fas fa-shopping-cart"></i></li></a>
         </ul>
       </div>
     </div>
@@ -81,13 +81,13 @@
     <option value="pall">1-102</option>
   </select>
 </div>
-<h6 class="space">of 102 Posts</h6>
+<h6 class="space">of <%= events.length %> Posts</h6>
   </div>
 
 
 <div class="search-div">
   <div class="search-bar">
-    <input type="text" name="" value="" placeholder="Search.."><button><i class="fas fa-search"></i></button>
+    <input type="search" id="search" onchange="test()" placeholder="Search.."><button><i class="fas fa-search"></i></button>
   </div>
 </div>
 
@@ -206,7 +206,7 @@
 
                         <div class="genre-icons">
                             <i class="fas fa-share-alt n-ic"></i>
-                            <i class="far fa-bookmark n-ic"></i>
+                            <i onclick="takeAction('<%= events[i]._id.toString() %>', 'archive')" class="far fa-bookmark n-ic"></i>
                         </div>
                       </div>
 
@@ -249,10 +249,10 @@
                     </div>
                     <div class="post-details">
                       <div class="genre-container">
-                        <h5 class="<%= events[i].genre%>"><%= events[i].genre%></h5>
+                        <h5 class="<%= events[i].genre%>"><%= events[i+1].genre%></h5>
                         <div class="genre-icons">
                             <i class="fas fa-share-alt n-ic"></i>
-                            <i class="far fa-bookmark n-ic"></i>
+                            <i onclick="takeAction('<%= events[i+1]._id.toString() %>', 'archive')"class="far fa-bookmark n-ic"></i>
                         </div>
                       </div>
 
@@ -309,7 +309,7 @@
   <section class="right-div">
     <div class="left-div-container">
       <div class="categories-txt">
-        <a href="#"><div class="categories-txt-div">
+        <a href="/events?event=trending"><div class="categories-txt-div">
           <h5> Trending Posts </h5>
           <div class="icon-right">
             <i class="fas fa-chart-line"></i>
@@ -321,7 +321,7 @@
             <i class="fas fa-calendar-week"></i>
           </div>
         </div></a>
-        <a href="#"><div class="categories-txt-div" id="bucket1">
+        <a href="/events?event=archived"><div class="categories-txt-div" id="bucket1">
             <h5>Archived Posts </h5>
           <div class="icon-right">
             <i class="far fa-bookmark"></i>
@@ -460,13 +460,14 @@
 
     function postdata(id){
 
-      fetch(`/events/${id}`)
+      fetch(`/events/get/${id}`)
       .then(response => response.json())
       .then(async (data) =>{
 
 
         let specificEvent = data.event;
         let user = data.user;
+        console.log('Running');
 
         console.log(user);
         console.log(specificEvent);
@@ -484,8 +485,40 @@
         $('.post2-user-img').attr("src",`https://drive.google.com/thumbnail?id=${user.image}`);
         $('.right-post').fadeTo("slow",1);
         $('.left-post').fadeTo("slow",1);
-      })
+      });
 
+
+    }
+
+
+
+    //search
+
+    async function test() {
+      // console.log('Hello');
+      let query = document.getElementById('search').value;
+      console.log("Query: ", query);
+
+      if (query.length > 3) {
+        try {
+
+          fetch(`/events/search/?query=${query}`)
+          .then(response => response.json())
+          .then(data => console.log('Data', data));
+
+        } catch (e) {
+          console.error('Query Error: ', e.message);
+        }
+
+      }
+    }
+
+
+    async function takeAction(_id, action) {
+      fetch(`/events/${_id}/?action=${action}`);
+    }
+
+    async function undoAction(_id, action) {
 
     }
 

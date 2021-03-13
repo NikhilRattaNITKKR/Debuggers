@@ -42,7 +42,7 @@ const getDoubtForum = async(req, res) =>{
       if (!localStorage.user) {
         try {
           console.log('Doesnot Exist');
-          let user = await Users.findOne({_id: new BSON.ObjectID(req.cookies.uid.toString())})
+          let user = await Users.findOne({_id: new BSON.ObjectId(req.cookies.uid.toString())})
           localStorage.setItem('user',JSON.stringify(user))
         } catch (e) {
           console.error(e);
@@ -120,13 +120,12 @@ const createDoubt = async(req, res) => {
 
   try {
     const result = await Doubts.insertOne({
-      _id: new BSON.ObjectID,
-      uid: new BSON.ObjectID(user._id.toString()),
+      _id: new BSON.ObjectId,
+      uid: new BSON.ObjectId(user._id.toString()),
       userName: userName,
-      question: req.body.question,
-      desc: req.body.desc,
+      question: req.body.question.trim(),
+      desc: req.body.desc.trim(),
       upvotes: {},
-      downvotes: {},
       domain: domain,
     })
 
@@ -150,13 +149,13 @@ const createAnswer = async(req, res) => {
     //  if() Add radio Buton value Here
 
     const result = await Doubts.updateOne({
-      _id: new BSON.ObjectID(req.params.id)
+      _id: new BSON.ObjectId(req.params.id)
     },
     {
       $addToSet: {
         answers: {
-          _id: new BSON.ObjectID(),
-          uid: new BSON.ObjectID(user._id.toString()),
+          _id: new BSON.ObjectId(),
+          uid: new BSON.ObjectId(user._id.toString()),
           name: user.name,
           answer: req.body.answer
         }
@@ -179,11 +178,11 @@ const createComment = async(req, res) => {
     let name = user.name;
     console.log(name);
     const result = await Doubts.updateOne({
-      answers: {$elemMatch: {_id: new BSON.ObjectID(req.params.aid)}}
+      answers: {$elemMatch: {_id: new BSON.ObjectId(req.params.aid)}}
     },
     {
       $addToSet:{"answers.$.comments":{
-        uid: new BSON.ObjectID(user._id.toString()),
+        uid: new BSON.ObjectId(user._id.toString()),
         image: user.image,
         comment: req.body.comment,
       }

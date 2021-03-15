@@ -125,7 +125,8 @@ const createDoubt = async(req, res) => {
       userName: userName,
       question: req.body.question.trim(),
       desc: req.body.desc.trim(),
-      upvotes: {},
+      upvotes: [],
+      downvotes: [],
       domain: domain,
     })
 
@@ -157,7 +158,9 @@ const createAnswer = async(req, res) => {
           _id: new BSON.ObjectId(),
           uid: new BSON.ObjectId(user._id.toString()),
           name: user.name,
-          answer: req.body.answer
+          answer: req.body.answer,
+          upvotes: [],
+          downvotes: [],
         }
       }
     });
@@ -196,6 +199,119 @@ const createComment = async(req, res) => {
 res.redirect('/doubtforum');
 }
 
+const updateDoubt = async(req, res) => {
+  let id = req.params.id.toString().trim();
+  let action = req.query.action;
+  let user = JSON.parse(localStorage.getItem('user'));
+
+  const Doubts = req.app.get('Doubts');
+
+  if(action === 'upvote') {
+    console.log('Upvote');
+
+    let result = await Doubts.updateOne(
+      {
+        _id: new BSON.ObjectId(id)
+      },
+      {
+        $addToSet: {
+          upvotes: [
+            new BSON.ObjectId(user._id.toString())
+          ]
+        },
+        $pull: {
+          downvotes: {
+            $in: [
+              new BSON.ObjectId(user._id.toString())
+            ]
+          }
+        }
+      }
+    )
+
+    console.log('Result: ', result);
+  } else if (action === 'downvote') {
+    console.log('downVote');
+    await Doubts.updateOne(
+      {
+        _id: new BSON.ObjectId(id)
+      },
+      {
+        $addToSet: {
+          downvotes: [
+            new BSON.ObjectId(user._id.toString())
+          ]
+        },
+        $pull: {
+          upvotes: {
+            $in: [
+              new BSON.ObjectId(user._id.toString())
+            ]
+          }
+        }
+      }
+    )
+
+  }
+}
+
+const updateAnswer = async(req, res) => {
+  let id = req.params.aid.toString().trim();
+  let action = req.query.action;
+  let user = JSON.parse(localStorage.getItem('user'));
+
+  const Doubts = req.app.get('Doubts');
+
+  if(action === 'upvote') {
+    console.log(action);
+
+    let result = await Doubts.updateOne(
+      {
+        answers: {$elemMatch: {_id: new BSON.ObjectId(id)}}
+      },
+      {
+        $addToSet: {
+          "answers.$.upvotes":[
+            new BSON.ObjectId(user._id.toString())
+          ]
+        },
+        $pull: {
+          "answer.$.downvotes": {
+            $in: [
+              new BSON.ObjectId(user._id.toString())
+            ]
+          }
+        }
+      }
+    )
+
+    console.log(result);
+  } else if (action === 'downvote') {
+    console.log(action);
+
+
+    await Doubts.updateOne(
+      {
+        answers: {$elemMatch: {_id: new BSON.ObjectId(id)}}
+      },
+      {
+        $addToSet: {
+          "answers.$.downvotes":[
+            new BSON.ObjectId(user._id.toString())
+          ]
+        },
+        $pull: {
+          "answer.$.upvotes": {
+            $in: [
+              new BSON.ObjectId(user._id.toString())
+            ]
+          }
+        }
+      }
+    )
+  }
+}
+
 
 
 
@@ -205,4 +321,6 @@ module.exports = {
   getSpecificDoubt,
   createAnswer,
   createComment,
+  updateDoubt,
+  updateAnswer
 }

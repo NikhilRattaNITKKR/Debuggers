@@ -37,6 +37,9 @@ router.route('/events/:id/undoAction').get(eventControllers.undoAction);
 router.route('/doubtforum').get(doubtControllers.getDoubtForum).post(doubtControllers.createDoubt)
 router.route('/doubtforum/:id').get(doubtControllers.getSpecificDoubt).post(doubtControllers.createAnswer);
 router.route('/doubtforum/:id/:aid').post(doubtControllers.createComment);
+router.route('/doubtforum/:id/updateDoubt').get(doubtControllers.updateDoubt);
+router.route('/doubtforum/:id/:aid/updateAnswer').get(doubtControllers.updateAnswer);
+
 
 router.route('/post').get(function(req,res){
   res.render('post');

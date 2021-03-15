@@ -275,9 +275,9 @@ async function getDoubt(_id) {
         <div class="answer">
         <button type="button" name="button" id="answer-trigger" onclick="addAnswer()">Answer</button>
         </div>
-        <span><a href="#">Upvote</a></span>
-        <span> <a href="#">Downvote</a></span>
-        <span><a href="#">Star</a></span>
+        <span><a href="#" onclick="updateDoubt('${doubt._id}', 'upvote')">Upvote</a></span>
+        <span> <a href="#" onclick="updateDoubt('${doubt._id}', 'downvote')">Downvote</a></span>
+        <span>${doubt.upvotes.length - doubt.downvotes.length}</span>
         </div>
 
         <button type="button" name="button">Edit</button>
@@ -417,9 +417,9 @@ async function getDoubt(_id) {
                 <div class="doubt-options">
                   <div class="doubt-options-span" id="answer-options-span">
 
-                    <span><a href="#">Upvote</a></span>
-                    <span> <a href="#">Downvote</a></span>
-                    <span><a href="#">Star</a></span>
+                    <span><a href="#" onclick="updateAnswer('${doubt._id}','${answers[i]._id}', 'upvote')">Upvote</a></span>
+                    <span> <a href="#" onclick="updateAnswer('${doubt.id}','${answers[i]._id}', 'downvote')">Downvote</a></span>
+                    <span>${answers[i].upvotes.length - answers[i].downvotes.length}</span>
                   </div>
 
                   <button type="button" name="button">Edit</button>
@@ -456,6 +456,16 @@ async function getDoubt(_id) {
 
 
 
+
+async function updateDoubt(id, action) {
+  fetch(`/doubtforum/${id}/updateDoubt?action=${action}`)
+  .catch(err => console.error(err));
+}
+
+async function updateAnswer(id, _id, action) {
+  fetch(`/doubtforum/${id}/${did}/updateAnswer?action=${action}`)
+  .catch(err => console.error(err));
+}
 
 
 

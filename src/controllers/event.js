@@ -187,6 +187,7 @@ const undoAction = async(req, res) => {
   console.log('Undoing Action');
 
   let query = req.query.action;
+  let id = req.params.id.toString();
   const Users = req.app.get('Users');
   let uid = JSON.parse(localStorage.getItem('user'))._id.toString();
 
@@ -199,11 +200,27 @@ const undoAction = async(req, res) => {
       {
         $pull: {
           archived: {
-            $in: [{pid: new BSON.ObjectId(req.params.id.toString())}]
+            $in: [{pid: new BSON.ObjectId(id)}]
           }
         }
-      })
+      }
+    )
+  } else if (query === "like") {
+    console.log('Like');
+    let result = await Events.updateOne(
+      {
+        _id: new BSON.ObjectId(id)
+      },
+      {
+        $pull: {
+          likes: {
+            $in: [new BSON.ObjectId(uid)]
+          }
+        }
+      }
+    )
   }
+
 }
 
 

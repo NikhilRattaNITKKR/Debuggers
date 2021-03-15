@@ -2,10 +2,10 @@ const { google }= require('googleapis');
 
 
 const CLIENT_ID = '178033643863-q6967s9v814jdk8drsi1nf3c449mdlp5.apps.googleusercontent.com';
-const CLIENT_SECRET = 'NPdXNmARw2gpNIEqQ_tZIwnS';
+const CLIENT_SECRET = '2oPqTDDKHm8DTqJ1ecS5uZBd';
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 
-const REFRESH_TOKEN = '1//04800dAap57vXCgYIARAAGAQSNwF-L9IrujWFuag1cEmYvswnwwz9sYGiBsNJsgqvgTGhziDaU6ISLy0DMXE9z4U7B9YWs8hCXto';
+const REFRESH_TOKEN = '1//04wzawkxlJwMvCgYIARAAGAQSNwF-L9Ir5n0avV6zwh3ntPXevKG307r4NV1uY-luD_YOg2Cth_z28BYU3Pb-320mEH5_mcKlXKE';
 
 
 const oauth2Client = new google.auth.OAuth2(

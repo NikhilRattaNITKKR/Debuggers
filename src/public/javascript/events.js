@@ -142,4 +142,18 @@ $('.fa-bookmark').on("click",function(){
 $('.fa-heart').on("click",function(){
   $(this).toggleClass("fa");
   $(this).toggleClass("far");
+
+  var cc = $(this).attr("onclick");
+  var ccSplit= cc.split('A');
+
+  if(ccSplit[0] === "take"){
+    var newatt = "undoA"+ccSplit[1];
+    $(this).attr("onclick",newatt);
+    console.log(newatt);
+  }
+  if(ccSplit[0] === "undo"){
+    var newatt = "takeA"+ccSplit[1];
+    $(this).attr("onclick",newatt);
+    console.log(newatt);
+  }
 })

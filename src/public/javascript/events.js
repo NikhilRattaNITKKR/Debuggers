@@ -151,7 +151,7 @@ $('.fa-heart').on("click",function(){
     $(this).attr("onclick",newatt);
     console.log(newatt);
   }
-  if(ccSplit[0] === "undo"){
+  else if(ccSplit[0] === "undo"){
     var newatt = "takeA"+ccSplit[1];
     $(this).attr("onclick",newatt);
     console.log(newatt);

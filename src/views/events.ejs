@@ -158,7 +158,7 @@
               <div class="post-footer">
                 <div class="genre-icons">
 
-                    <i onclick="takeAction(null, 'like')" class="fa-heart n-ic"></i>
+                    <i onclick="takeAction(null, 'like')" class="far fa-heart n-ic"></i>
                     <i onclick="takeAction(null, 'comment')"class="far fa-comments n-ic"></i>
                     <i class="fas fa-share-alt n-ic"></i>
                     <i class="far fa-bookmark n-ic"></i>
@@ -545,10 +545,12 @@
         $('.right-post').fadeTo("slow",1);
         $('.left-post').fadeTo("slow",1);
         if(likeBool) {
+          $('.fa-heart').attr("onclick","undoAction(null, 'like')");
           $('.fa-heart').removeClass('far');
           $('.fa-heart').addClass('fa');
           likeBool = false;
         } else {
+          $('.fa-heart').attr("onclick","takeAction(null, 'like')");
           $('.fa-heart').removeClass('fa');
           $('.fa-heart').addClass('far');
           likeBool = true;

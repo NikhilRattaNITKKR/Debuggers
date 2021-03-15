@@ -547,9 +547,11 @@
         if(likeBool) {
           $('.fa-heart').removeClass('far');
           $('.fa-heart').addClass('fa');
+          likeBool = false;
         } else {
           $('.fa-heart').removeClass('fa');
           $('.fa-heart').addClass('far');
+          likeBool = true;
         }
       });
 

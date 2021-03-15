@@ -189,6 +189,7 @@ const undoAction = async(req, res) => {
   let query = req.query.action;
   let id = req.params.id.toString();
   const Users = req.app.get('Users');
+  const Events = req.app.get('Events');
   let uid = JSON.parse(localStorage.getItem('user'))._id.toString();
 
   if(query === "archive") {

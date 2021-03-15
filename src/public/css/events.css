@@ -224,7 +224,29 @@ transition: all 300ms linear;
 .left-div-container{
   margin-top: 4vh;
   padding: 2%;
+  height: 100%;
+  position: relative;
 }
+.pop-event-archive, .pop-event-unarchive{
+  width: fit-content;
+  padding: 3%;
+  background: white;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 16vh;
+  transition: all 500ms linear;
+}
+
+.pop-event-unarchive{
+  left: 19%;
+  opacity: 0;
+}
+
+.pop-event-archive{
+  left: 24%;
+  opacity: 0;
+}
+
 
 .categories-txt{
   margin-bottom: 6vh;

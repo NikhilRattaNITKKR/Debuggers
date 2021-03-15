@@ -68,7 +68,15 @@
           <a href="/events?genre=Marketing"><li>Marketing <i class="fas fa-shopping-cart"></i></li></a>
         </ul>
       </div>
+
+
+      <div class="pop-event-archive">Event archived</div>
+      <div class="pop-event-unarchive">Event Unarchived</div>
     </div>
+
+
+
+
   </section>
   <section class="mid-div">
 
@@ -219,6 +227,7 @@
                                 }
                               }
                             }
+
                             if(bool) { %>
                                <i onclick="undoAction('<%= events[i]._id.toString() %>', 'archive')" class="fa fa-bookmark n-ic"></i>
 
@@ -269,24 +278,29 @@
                     </div>
                     <div class="post-details">
                       <div class="genre-container">
-                        <h5 class="<%= events[i].genre%>"><%= events[i+1].genre%></h5>
+                        <h5 class="<%= events[i+1].genre%>"><%= events[i+1].genre%></h5>
                         <div class="genre-icons">
                             <i class="fas fa-share-alt n-ic"></i>
+
+
                             <%
                             let bool = false;
-                            if(user.archived) {
-                              for(let j = 0; j< user.archived.length; j++) {
-                                if(user.archived[j].pid.toString() === events[i]._id.toString()) {
-                                  bool = true;
-                                }
+                            if(user.archived){
+                            for(let j = 0; j< user.archived.length; j++) {
+                              if(user.archived[j].pid.toString() === events[i+1]._id.toString()) {
+                                bool = true;
+
                               }
                             }
+                          }
                             if(bool) { %>
                                <i onclick="undoAction('<%= events[i+1]._id.toString() %>', 'archive')" class="fa fa-bookmark n-ic"></i>
+                               <% bool =false;%>
 
                             <% } else { %>
 
                                <i onclick="takeAction('<%= events[i+1]._id.toString() %>', 'archive')" class="far fa-bookmark n-ic"></i>
+                                <% bool =true;%>
                             <% } %>
 
                         </div>
@@ -567,17 +581,48 @@
 
 
     async function takeAction(_id, action) {
+
+      if(action === 'archive'){
+        $('.pop-event-archive').animate({
+            opacity: 1
+        },500,function(){
+
+          setTimeout(function(){
+            $('.pop-event-archive').css("opacity","0");
+          },2000);
+
+        });
+      }
+
+
       if (action === 'like' || action === 'comment') {
         _id = pid;
       }
       fetch(`/events/${_id}/takeAction/?action=${action}`);
+
+
     }
 
     async function undoAction(_id, action) {
+
+      if(action === 'archive'){
+        $('.pop-event-unarchive').animate({
+            opacity: 1
+        },500,function(){
+
+          setTimeout(function(){
+            $('.pop-event-unarchive').css("opacity","0");
+          },2000);
+
+        });
+      }
+
+
       if(action === 'like') {
         _id = pid;
       }
-      fetch(`/events/${_id}/undoAction/?action=${action}`)
+      fetch(`/events/${_id}/undoAction/?action=${action}`);
+
     }
 
 

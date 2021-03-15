@@ -149,7 +149,7 @@
 
               <div class="post-footer">
                 <div class="genre-icons">
-                    <i class="far fa-heart n-ic"></i>
+                    <i onclick="takeAction(null, 'like')" class="far fa-heart n-ic"></i>
                     <i class="far fa-comments n-ic"></i>
                     <i class="fas fa-share-alt n-ic"></i>
                     <i class="far fa-bookmark n-ic"></i>
@@ -206,7 +206,24 @@
 
                         <div class="genre-icons">
                             <i class="fas fa-share-alt n-ic"></i>
-                            <i onclick="takeAction('<%= events[i]._id.toString() %>', 'archive')" class="far fa-bookmark n-ic"></i>
+
+
+
+                            <%
+                            let bool = false;
+                            for(let j = 0; j< user.archived.length; j++) {
+                              if(user.archived[j].pid.toString() === events[i]._id.toString()) {
+                                bool = true;
+                              }
+                            }
+                            if(bool) { %>
+                               <i onclick="undoAction('<%= events[i]._id.toString() %>', 'archive')" class="fa fa-bookmark n-ic"></i>
+
+                            <% } else { %>
+
+                               <i onclick="takeAction('<%= events[i]._id.toString() %>', 'archive')" class="far fa-bookmark n-ic"></i>
+                            <% } %>
+
                         </div>
                       </div>
 
@@ -252,7 +269,21 @@
                         <h5 class="<%= events[i].genre%>"><%= events[i+1].genre%></h5>
                         <div class="genre-icons">
                             <i class="fas fa-share-alt n-ic"></i>
-                            <i onclick="takeAction('<%= events[i+1]._id.toString() %>', 'archive')"class="far fa-bookmark n-ic"></i>
+                            <%
+                            let bool = false;
+                            for(let j = 0; j< user.archived.length; j++) {
+                              if(user.archived[j].pid.toString() === events[i+1]._id.toString()) {
+                                bool = true;
+                              }
+                            }
+                            if(bool) { %>
+                               <i onclick="undoAction('<%= events[i+1]._id.toString() %>', 'archive')" class="fa fa-bookmark n-ic"></i>
+
+                            <% } else { %>
+
+                               <i onclick="takeAction('<%= events[i+1]._id.toString() %>', 'archive')" class="far fa-bookmark n-ic"></i>
+                            <% } %>
+
                         </div>
                       </div>
 
@@ -324,7 +355,7 @@
         <a href="/events?event=archived"><div class="categories-txt-div" id="bucket1">
             <h5>Archived Posts </h5>
           <div class="icon-right">
-            <i class="far fa-bookmark"></i>
+            <i class="fa fa-bookmark"></i>
           </div>
         </div></a>
 
@@ -457,9 +488,10 @@
 
 <script>
 
+  let pid = '';
 
     function postdata(id){
-
+      pid = id
       fetch(`/events/get/${id}`)
       .then(response => response.json())
       .then(async (data) =>{
@@ -515,10 +547,17 @@
 
 
     async function takeAction(_id, action) {
-      fetch(`/events/${_id}/?action=${action}`);
+      if (action === 'like') {
+        _id = pid;
+      }
+      fetch(`/events/${_id}/takeAction/?action=${action}`);
     }
 
     async function undoAction(_id, action) {
+      fetch(`/events/${_id}/undoAction/?action=${action}`)
+    }
+
+    function checkArchived(event, pids) {
 
     }
 

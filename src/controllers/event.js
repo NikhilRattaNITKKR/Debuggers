@@ -55,7 +55,7 @@ const getEvents = async(req, res) =>{
 
         } else if (type === "archived") {
           let pids = user.archived;
-          // console.log(pids);
+          console.log(pids);
 
           for (var i = 0; i < pids.length; i++) {
             events[i] = await Events.findOne({_id: new BSON.ObjectId(pids[i].pid.toString())})
@@ -88,7 +88,7 @@ const getEvents = async(req, res) =>{
         }
       } //Filter Users According To Events
 
-      res.render('events',{events, users});
+      res.render('events',{events, users, user});
 
 
 
@@ -143,10 +143,11 @@ const searchEvent = async(req, res) => {
 
 const takeAction = async(req, res) => {
   console.log('Taking Action');
-  console.log(req.params.id);
   let query = req.query.action;
   const Users = req.app.get('Users');
   let uid = JSON.parse(localStorage.getItem('user'))._id.toString();
+
+
   if (query === "archive") {
     let result = await Users.updateOne(
       {
@@ -161,8 +162,34 @@ const takeAction = async(req, res) => {
       }
     );
     // console.log(result);
+  } else if (query === "like") {
+    console.log('Like');
   }
 }
+
+const undoAction = async(req, res) => {
+  console.log('Undoing Action');
+
+  let query = req.query.action;
+  const Users = req.app.get('Users');
+  let uid = JSON.parse(localStorage.getItem('user'))._id.toString();
+
+  if(query === "archive") {
+
+    let result = await Users.updateOne(
+      {
+        _id: new BSON.ObjectId(uid)
+      },
+      {
+        $pull: {
+          archived: {
+            $in: [{pid: new BSON.ObjectId(req.params.id.toString())}]
+          }
+        }
+      })
+  }
+}
+
 
 
 
@@ -178,4 +205,5 @@ module.exports = {
   getSpecificEvent,
   searchEvent,
   takeAction,
+  undoAction
 }

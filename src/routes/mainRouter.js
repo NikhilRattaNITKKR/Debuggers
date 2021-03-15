@@ -29,7 +29,9 @@ router.route('/profile/:id/search').get(profileControllers.searchUser);
 router.route('/events').get(eventControllers.getEvents);
 router.route('/events/get/:id').get(eventControllers.getSpecificEvent)
 router.route('/events/search').get(eventControllers.searchEvent);
-router.route('/events/:id').get(eventControllers.takeAction);
+router.route('/events/:id/takeAction').get(eventControllers.takeAction);
+router.route('/events/:id/undoAction').get(eventControllers.undoAction);
+
 
 
 router.route('/doubtforum').get(doubtControllers.getDoubtForum).post(doubtControllers.createDoubt)

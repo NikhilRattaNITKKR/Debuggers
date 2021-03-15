@@ -149,8 +149,9 @@
 
               <div class="post-footer">
                 <div class="genre-icons">
-                    <i onclick="takeAction(null, 'like')" class="far fa-heart n-ic"></i>
-                    <i class="far fa-comments n-ic"></i>
+
+                    <i onclick="takeAction(null, 'like')" class="fa-heart n-ic"></i>
+                    <i onclick="takeAction(null, 'comment')"class="far fa-comments n-ic"></i>
                     <i class="fas fa-share-alt n-ic"></i>
                     <i class="far fa-bookmark n-ic"></i>
                 </div>
@@ -211,9 +212,11 @@
 
                             <%
                             let bool = false;
-                            for(let j = 0; j< user.archived.length; j++) {
-                              if(user.archived[j].pid.toString() === events[i]._id.toString()) {
-                                bool = true;
+                            if(user.archived) {
+                              for(let j = 0; j< user.archived.length; j++) {
+                                if(user.archived[j].pid.toString() === events[i]._id.toString()) {
+                                  bool = true;
+                                }
                               }
                             }
                             if(bool) { %>
@@ -271,9 +274,11 @@
                             <i class="fas fa-share-alt n-ic"></i>
                             <%
                             let bool = false;
-                            for(let j = 0; j< user.archived.length; j++) {
-                              if(user.archived[j].pid.toString() === events[i+1]._id.toString()) {
-                                bool = true;
+                            if(user.archived) {
+                              for(let j = 0; j< user.archived.length; j++) {
+                                if(user.archived[j].pid.toString() === events[i]._id.toString()) {
+                                  bool = true;
+                                }
                               }
                             }
                             if(bool) { %>
@@ -499,10 +504,18 @@
 
         let specificEvent = data.event;
         let user = data.user;
+        let currentUser = data.currentUser;
         console.log('Running');
 
         console.log(user);
         console.log(specificEvent);
+
+        let likeBool = false;
+        if(specificEvent.likes) {
+          for (var i = 0; i < specificEvent.likes.length; i++) {
+            if(specificEvent.likes[i].toString() === currentUser._id.toString()) likeBool = true;
+          }
+        }
         $('.post-desc-p').html(specificEvent.desc);
         $('.genre-update').html(specificEvent.genre);
         $('.title-update').html(specificEvent.title);
@@ -517,6 +530,13 @@
         $('.post2-user-img').attr("src",`https://drive.google.com/thumbnail?id=${user.image}`);
         $('.right-post').fadeTo("slow",1);
         $('.left-post').fadeTo("slow",1);
+        if(likeBool) {
+          $('.fa-heart').removeClass('far');
+          $('.fa-heart').addClass('fa');
+        } else {
+          $('.fa-heart').removeClass('fa');
+          $('.fa-heart').addClass('far');
+        }
       });
 
 
@@ -547,19 +567,19 @@
 
 
     async function takeAction(_id, action) {
-      if (action === 'like') {
+      if (action === 'like' || action === 'comment') {
         _id = pid;
       }
       fetch(`/events/${_id}/takeAction/?action=${action}`);
     }
 
     async function undoAction(_id, action) {
+      if(action === 'like') {
+        _id = pid;
+      }
       fetch(`/events/${_id}/undoAction/?action=${action}`)
     }
 
-    function checkArchived(event, pids) {
-
-    }
 
 
 

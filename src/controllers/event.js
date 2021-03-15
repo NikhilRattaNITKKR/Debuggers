@@ -107,6 +107,7 @@ const getSpecificEvent = async(req, res) =>{
 
   let specificEvent = {};
   let user = {};
+  let currentUser = JSON.parse(localStorage.getItem('user'));
 
 
 
@@ -116,7 +117,7 @@ const getSpecificEvent = async(req, res) =>{
   } catch (e) {
     console.error(e.message);
   }
-  res.json({event: specificEvent, user});
+  res.json({event: specificEvent, user, currentUser});
 }
 
 const searchEvent = async(req, res) => {
@@ -144,7 +145,9 @@ const searchEvent = async(req, res) => {
 const takeAction = async(req, res) => {
   console.log('Taking Action');
   let query = req.query.action;
+  let pid = req.params.id;
   const Users = req.app.get('Users');
+  const Events = req.app.get('Events');
   let uid = JSON.parse(localStorage.getItem('user'))._id.toString();
 
 
@@ -164,6 +167,19 @@ const takeAction = async(req, res) => {
     // console.log(result);
   } else if (query === "like") {
     console.log('Like');
+
+    let result = await Events.updateOne({
+      _id: new BSON.ObjectId(pid.toString())
+    }, {
+      $addToSet: {
+        likes: [
+          new BSON.ObjectId(uid)
+        ]
+      }
+    })
+    console.log('Like result ', result);
+  } else if (query === 'comment') {
+    console.log('Comment is On');
   }
 }
 

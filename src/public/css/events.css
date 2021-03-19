@@ -160,7 +160,9 @@ border: 2px solid deepskyblue;
 
 
 
-
+.bigger-post-img{
+  height: 100% !important;
+}
 
 
 

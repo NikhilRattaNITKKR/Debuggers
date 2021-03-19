@@ -173,3 +173,45 @@ $('.camera').click(function(){
 $('.cross').click(function(){
   $('.image-inp-popup').css("display","none");
 });
+
+
+
+
+$(document).ready(function(){
+  $('#about').addClass('border-ap');
+  $('#skills').removeClass('border-ap');
+  $('#genre').removeClass('border-ap');
+  $('#interests').removeClass('border-ap');
+
+  $('.skills').css("transform","translateY(44vh)");
+  $('.genre').css("transform","translateY(44vh)");
+  $('.interests').css("transform","translateY(44vh)");
+  $('.about').css("z-index","100");
+
+  $('.skills').css("z-index","-10");
+  $('.genre').css("z-index","-10");
+  $('.interests').css("z-index","-10");
+  $('.skills').css("transform","translateY(0)");
+  $('.genre').css("transform","translateY(0)");
+  $('.interests').css("transform","translateY(0)");
+
+});
+
+var i=-30;
+var j = 0;
+
+function slideleft(){
+
+  $('.grid').css("transform",`translateX(${i}vw)`);
+  j = i +30;
+
+  i = i -30;
+}
+
+function slideright(){
+  console.log(j);
+  $('.grid').css("transform",`translateX(${j}vw)`);
+  i = j-30;
+ 
+  j = j + 30;
+}

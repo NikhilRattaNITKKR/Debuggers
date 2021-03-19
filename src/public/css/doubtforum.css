@@ -588,3 +588,25 @@ top: 48vh;
    justify-content: center;
    align-items: center;
  }
+
+.updatebtn{
+  display: none;
+}
+
+.afterDesc ,.afterQues{
+  margin: 0;
+  margin-bottom: 2vh;
+  display: none;
+}
+
+.afterDesc input, .afterQues input{
+  background: none;
+  border: none;
+  padding-bottom: 1%;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+.afterDesc input:focus, .afterQues input:focus{
+  outline: none;
+}

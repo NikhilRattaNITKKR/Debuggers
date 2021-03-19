@@ -263,9 +263,13 @@ async function getDoubt(_id) {
 
         <span class="top-views">1500 views <i class="far fa-eye"></i> </span>
         </div>
+        <form action="#" method="post">
         <div class="question-mid-container">
-        <h5>${doubt.question}</h5>
-        <p>${doubt.desc}</p>
+
+        <h5 class="beforeQues">${doubt.question}</h5>
+        <h5 class="afterQues"><input type="text" value="${doubt.question}" placeholder="Type your Question" required="true"></h5>
+        <p class="beforeDesc">${doubt.desc}</p>
+        <p class="afterDesc"><input type="text" value="${doubt.desc}" placeholder="Type your description"></p>
         </div>
 
         <div class="doubt-bottom-div">
@@ -280,12 +284,14 @@ async function getDoubt(_id) {
         <span>${doubt.upvotes.length - doubt.downvotes.length}</span>
         </div>
 
-        <button type="button" name="button">Edit</button>
+        <button type="button" name="button" onclick="editQuestion()" class="editbtn">Edit</button>
+        <button type="submit" name="button" onclick="updateQuestion()" class="updatebtn">Update</button>
 
         </div>
 
 
         </div>
+        </form>
       </div>
 
       <div class="question-mid-div" id="answer-pop">

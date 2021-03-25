@@ -127,3 +127,43 @@ $('#top-icon').click(function(){
     },900);
   }
 });
+
+
+
+
+var i =0;
+$('.play-button').on("click",function(){
+  var vid = $('.phone-video');
+  if(i%2==0){
+    vid.trigger('play');
+  }
+  else{
+    vid.trigger('pause');
+  }
+  i++;
+});
+
+
+
+$(window).scroll(function(){
+  var value = $(this).scrollTop();
+  var margin;
+  var newvalue;
+  if(value<285*2){
+    margin = -285+(value/2);
+    console.log(margin);
+  }
+  else{
+     margin = 0;
+     console.log(margin);
+  }
+
+
+
+  $('.mid-section').css({
+    "margin-top":`${margin}`+"px",
+    "clip-path": "polygon(0% 0%, 0% 0%,"+ `${600 + value*2}`+"% 100%, 0% 100%)"
+  });
+
+
+});

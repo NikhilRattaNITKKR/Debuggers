@@ -25,30 +25,89 @@ body{
   position: relative;
   margin: 0;
   max-width:1519.200px;
- height:753px;
+  height:800px;
   position: relative;
-  background: url("/assets/Ellipse.svg");
+  background: url("/assets/phone-new.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position-y: -100px;
   background-size: contain;
 
 }
 
+.phone-frame{
+  width: 222px;
+  height: 496px;
+  overflow: hidden;
+  position: absolute;
+  top: 34px;
+  left: 260px;
+  border-radius: 30px;
+}
+
+.play-button{
+  width: 100px;
+  margin: 0 auto;
+  height: 100px;
+  background: rebeccapurple;
+  border-radius: 100%;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.txtcolor{
+  color: #8f82d4;
+}
+video{
+
+}
+.fa-play{
+  margin: 0 !important;
+  color: white;
+  font-size: 40px;
+}
 
 .text{
   text-align: center;
   padding-top: 150px;
 }
-
-
-
-.photo{
-  text-align: right;
-  padding-right: 80px;
-  padding-top: 90px;
+.welcome{
+  display:flex;
+  justify-content: center;
+  margin: 0;
+  margin-bottom: 20px;
+  align-items: flex-end;
+}
+.debuggers{
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-left: 20px;
+  display: flex;
 }
 
-.photo img{
+
+.txtcolor{
+  animation: bounce 2s linear infinite;
+}
+
+@keyframes bounce {
+    50%{
+      transform:translateY(-20px);
+
+    }
+
+    100%{
+      transform:translateY(0);
+    }
+}
+
+
+/* .photo img{
   position: relative;
   z-index: 100;
   transition: 300ms;
@@ -69,7 +128,7 @@ z-index: 00;
 background: linear-gradient(180deg, #fff823, #000000de);
 border-radius: 20px;
 transform: rotate(-6.74deg);
-}
+} */
 
 @media screen and (max-width: 1519.2px) {
   .photo {
@@ -78,12 +137,16 @@ transform: rotate(-6.74deg);
 }
 .get_started{
 
-  background: linear-gradient(90deg, #4D217B 25.29%, rgba(134,62,210, 0.6) 100%);
+background: linear-gradient(90deg, #4D217B 25.29%, rgba(134,62,210, 0.6) 100%);
 border-radius: 30px;
 width: 180px;
 height: 67px;
 margin: 0 auto;
 transition: 300ms;
+}
+
+.get_started:hover{
+  box-shadow:0 10px 10px rgba(200,200,200,0.8);
 }
 
 .get_started a{
@@ -109,7 +172,7 @@ transition: 300ms;
   margin-bottom: 80px;
 }
 
- 
+
 @media screen and (max-width: 576px){
   .row{
     padding-top: 80px !important;
@@ -121,6 +184,58 @@ transition: 300ms;
 
   }
 }
+
+
+
+.section2{
+  width: 100%;
+  min-height: calc(100vh - 59.6px);
+  clip-path: polygon(0% 0%, 0% 0%, 600% 100%, 0% 100%);
+  background: #dddddd;
+  margin-top: -285px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .section-container{
   background: linear-gradient(180deg, rgba(134,62,210,0.15), 10%, white	);

@@ -136,9 +136,15 @@ $('.play-button').on("click",function(){
   var vid = $('.phone-video');
   if(i%2==0){
     vid.trigger('play');
+    $('.play-button').css("opacity",0.5);
+    $('.play-btn').removeClass('fa-play');
+    $('.play-btn').addClass('fa-pause');
   }
   else{
     vid.trigger('pause');
+    $('.play-button').css("opacity",1);
+    $('.play-btn').removeClass('fa-pause');
+    $('.play-btn').addClass('fa-play');
   }
   i++;
 });
@@ -151,19 +157,21 @@ $(window).scroll(function(){
   var newvalue;
   if(value<285*2){
     margin = -285+(value/2);
-    console.log(margin);
   }
   else{
      margin = 0;
-     console.log(margin);
   }
-
-
 
   $('.mid-section').css({
     "margin-top":`${margin}`+"px",
-    "clip-path": "polygon(0% 0%, 0% 0%,"+ `${600 + value*2}`+"% 100%, 0% 100%)"
+    "clip-path": "polygon(0% 0%, 0% 0%,"+ `${600 + value*3}`+"% 100%, 0% 100%)"
   });
 
+
+  if(value>1490){
+    $('.col-container').animate({
+      opacity:"1"
+    });
+  }
 
 });

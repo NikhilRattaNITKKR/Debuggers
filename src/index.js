@@ -9,7 +9,7 @@ if (process.env.MONGODB_URI) {
 
 const port= process.env.PORT || 3000;
 
-var Users, Events, Doubts;
+var Users, Events, Doubts, Points;
 
 
 app.listen(port, async ()=>{
@@ -20,12 +20,15 @@ app.listen(port, async ()=>{
     Users = await client.db('Debuggers').collection('Users');
     Events = await client.db('Debuggers').collection('Events');
     Doubts = await client.db('Debuggers').collection('Doubts');
+    Points = await client.db('Debuggers').collection('Points');
 
 
 
     app.set('Users', Users);
     app.set('Events', Events);
     app.set('Doubts', Doubts);
+    app.set('Points', Points);
+
 
     // console.log('Events: ', Events);
 

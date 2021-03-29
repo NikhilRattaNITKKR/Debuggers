@@ -263,13 +263,13 @@ async function getDoubt(_id) {
 
         <span class="top-views">1500 views <i class="far fa-eye"></i> </span>
         </div>
-        <form action="#" method="post">
+        <form action="/doubtforum/updateDoubt/${doubt._id}" method="post">
         <div class="question-mid-container">
 
         <h5 class="beforeQues">${doubt.question}</h5>
-        <h5 class="afterQues"><input type="text" value="${doubt.question}" placeholder="Type your Question" required="true"></h5>
+        <h5 class="afterQues"><input type="text" name="question" value="${doubt.question}" placeholder="Type your Question" required="true"></h5>
         <p class="beforeDesc">${doubt.desc}</p>
-        <p class="afterDesc"><input type="text" value="${doubt.desc}" placeholder="Type your description"></p>
+        <p class="afterDesc"><input type="text" name="desc" value="${doubt.desc}" placeholder="Type your description"></p>
         </div>
 
         <div class="doubt-bottom-div">
@@ -285,7 +285,7 @@ async function getDoubt(_id) {
         </div>
 
         <button type="button" name="button" onclick="editQuestion()" class="editbtn">Edit</button>
-        <button type="submit" name="button" onclick="updateQuestion()" class="updatebtn">Update</button>
+        <button type="submit" name="button" class="updatebtn">Update</button>
 
         </div>
 
@@ -399,7 +399,7 @@ async function getDoubt(_id) {
               </span>
 
               <div class="comment-div" id="new-comment-div-new">
-              <form action="/doubtforum/${doubt._id}/${answers[i]._id}" method="post">
+              <form action="/doubtforum/createComment/${doubt._id}/${answers[i]._id}" method="post">
               <input class="new-comment-input" type="text" name="comment" value="" placeholder="Comment..">
               <div class="new-comment-buttons">
               <button class="new-comment-btn" type="submit" name="button">Post</button>
@@ -464,8 +464,14 @@ async function getDoubt(_id) {
 
 
 async function updateDoubt(id, action) {
-  fetch(`/doubtforum/${id}/updateDoubt?action=${action}`)
+  await fetch(`/doubtforum/updateDoubt/${id}?action=${action}`)
+  .then( () => {
+    console.log('Working');
+    getDoubt(id);
+
+  })
   .catch(err => console.error(err));
+
 }
 
 async function updateAnswer(id, _id, action) {

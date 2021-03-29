@@ -33,7 +33,7 @@ const getDoubtForum = async(req, res) =>{
       doubts = await Doubts.find().toArray()
       .then(result => {
         if (result) {
-          console.log(result);
+          // console.log(result);
           return result;
         }
       });
@@ -49,6 +49,7 @@ const getDoubtForum = async(req, res) =>{
         }
       }
       user = JSON.parse(localStorage.getItem('user'))
+      // console.log(user);
 
 
       //Popular Doubts Algo
@@ -191,7 +192,7 @@ const createComment = async(req, res) => {
       }
     }
   })
-  console.log(result);
+  console.log('Create COmment Result: ', result);
 
 } catch (e) {
   console.error("Create Comment Error: ", e);
@@ -229,7 +230,7 @@ const updateDoubt = async(req, res) => {
       }
     )
 
-    console.log('Result: ', result);
+    // console.log('Result: ', result);
   } else if (action === 'downvote') {
     console.log('downVote');
     await Doubts.updateOne(
@@ -251,7 +252,6 @@ const updateDoubt = async(req, res) => {
         }
       }
     )
-
   }
 }
 
@@ -312,6 +312,31 @@ const updateAnswer = async(req, res) => {
   }
 }
 
+const editDoubt = async(req, res) => {
+  let id = req.params.id.toString().trim();
+  const Doubts = req.app.get('Doubts');
+  let user = JSON.parse(localStorage.getItem('user'));
+
+
+  try {
+    let result = await Doubts.updateOne(
+      {
+        _id: new BSON.ObjectId(id)
+      },
+      {
+        $set: {
+          question: req.body.question,
+          desc: req.body.desc
+        }
+      },
+      {upsert: false}
+    )
+
+    res.redirect('/doubtforum')
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 
 
@@ -322,5 +347,6 @@ module.exports = {
   createAnswer,
   createComment,
   updateDoubt,
-  updateAnswer
+  updateAnswer,
+  editDoubt,
 }

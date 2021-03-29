@@ -1,7 +1,7 @@
 $('.search-bar input').focus(function(){
   $('.search-bar').css({
     "background":"rgba(255,255,255,0.4)",
-    "border":"4px solid #FFE74C"
+    "border":"4px solid #9884fc"
   });
   $(this).css("color","white");
   $('.fa-search').css({
@@ -31,6 +31,13 @@ $('.fa-sign-out-alt').mouseleave(function(){
 });
 
 
+$('.img-container-inner').mouseover(function(){
+  $(this).css("transform","translateY(-1vh)");
+});
+
+$('.img-container-inner').mouseleave(function(){
+  $(this).css("transform","translateY(0)");
+});
 
 
 
@@ -212,6 +219,14 @@ function slideright(){
   console.log(j);
   $('.grid').css("transform",`translateX(${j}vw)`);
   i = j-30;
- 
+
   j = j + 30;
 }
+
+
+
+
+$(window).scroll(function(){
+  var value = $(this).scrollTop();
+  $('.profile-img-circlediv img').css("transform",`rotateY(${360 + value/2}deg)`);
+});

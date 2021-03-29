@@ -14,7 +14,7 @@ body{
 }
 
 .row{
-  padding-top: 120px;
+  padding-top: 8vh;
   margin-right: 0;
   margin-left: 0;
 }
@@ -109,11 +109,7 @@ transition: 300ms;
   margin-bottom: 80px;
 }
 
-
-.row{
-  padding-top: 20vh;
-
-}
+ 
 @media screen and (max-width: 576px){
   .row{
     padding-top: 80px !important;

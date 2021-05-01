@@ -356,9 +356,10 @@ transition: 300ms;
 .team-section{
   width: 100%;
   min-height: 115vh;
+  background-attachment: fixed;
   background-image: url('/assets/memlines.svg');
   background-repeat: no-repeat;
-  background-position-x: 1420px;
+  background-position-x: 92.5vw;
   overflow-x: hidden;
 }
 
@@ -471,6 +472,7 @@ transition: 300ms;
   color: white;
   transition: all 300ms;
   letter-spacing: 3px;
+  cursor: pointer;
 }
 
 .r1{
@@ -528,7 +530,12 @@ transition: 300ms;
   color: black !important;
 }
 
-
+.fa-linkedin-in{
+  color: #0e76a8 !important;
+}
+.fa-times-circle{
+  color: #F32013 !important;
+}
 
 
 
@@ -883,9 +890,9 @@ transition: 300ms;
   text-align: center;
   color: black;
   outline: none;
-  background-color: #863ED2;
+  background-color:#863ed25c;
    border-radius: 50px;
-  opacity: 0.5;
+
 }
 
 .contact-input-msg{

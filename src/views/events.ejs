@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debuggers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/events.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7d0e898fba.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/aea9fc94ab.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
+  </head>
+  <body>
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <a class="navbar-brand" href="/"><i class="fas fa-bug icon"></i><p class="brand_name">Debuggers</p></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/events"><p class="about_nav_text">Events</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/doubtforum"><p class="meet_nav_text">Doubt Forum</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/"><p class="contact_nav_text">Profile</p></a>
+          </li>
+
+          <!-- <li class="nav-item">
+          <a class="nav-link" href="/LogIn"><p class="login_nav_text">Login</p></a>
+        </li>  -->
+
+      </ul>
+    </div>
+    </nav>
+
+
+<div class="main-section">
+  <section class="left-div">
+    <div class="create-event">
+      <div class="create-event-div">
+        Create an Event
+      </div>
+    </div>
+    <div class="left-div-container">
+      <div class="categories-txt">
+        <h4>Categories</h4>
+      </div>
+      <div class="categories-list">
+        <ul>
+          <a href="/events"><li class="list-it">All <i class="fas fa-list list-i"></i></li></a>
+          <a href="/events?genre=Technology"><li>Technology <i class="fas fa-tv"></i></li></a>
+          <a href="/events?genre=Research"><li>Research <i class="fas fa-atom"></i></li></a>
+          <a href="/events?genre=Internship"><li>Internship <i class="fas fa-graduation-cap"></i></li></a>
+          <a href="/events?genre=Marketing"><li>Marketing <i class="fas fa-shopping-cart"></i></li></a>
+        </ul>
+      </div>
+
+
+      <div class="pop-event-archive">Event archived</div>
+      <div class="pop-event-unarchive">Event Unarchived</div>
+    </div>
+
+
+
+
+  </section>
+  <section class="mid-div">
+
+<div class="mid-div-top">
+  <div class="mid-top-container">
+     <h6 class="space">Showing</h6> <div class="selector space"><select name="posts-count" id="postsnum">
+    <option value="p12">1-12</option>
+    <option value="p4">1-24</option>
+    <option value="p54">1-54</option>
+    <option value="pall">1-102</option>
+  </select>
+</div>
+<h6 class="space">of <%= events.length %> Posts</h6>
+  </div>
+
+
+<div class="search-div">
+  <div class="search-bar">
+    <input type="search" id="search" onchange="test()" placeholder="Search.."><button><i class="fas fa-search"></i></button>
+  </div>
+</div>
+
+</div>
+
+<div class="mid-div-posts">
+
+
+    <div class="full-post-div">
+      <div class="post2">
+        <div class="post2-container">
+          <div class="left-post">
+            <div class="post-container">
+              <div class="image-container image-container2">
+                <div class="img-container-inner img-container-inner2">
+                  <img class="post2-img bigger-post-img" src="https://images.unsplash.com/photo-1515524738708-327f6b0037a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                </div>
+              </div>
+              <div class="post-details">
+                <div class="genre-container genre-container2">
+                  <h5 class="genre-update"></h5>
+
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+          <div class="right-post">
+            <div class="right-post-container">
+              <div class="right-post-top">
+                <h4 class="title-update">Title goes here..</h4>
+                <div class="post-top-icon">
+                    <i class="fas fa-chevron-left n-ic" id="post-toggler"></i>
+                </div>
+
+              </div>
+              <div class="post-desc">
+                <p class="post-desc-p"> </p>
+              </div>
+
+              <div class="user-details">
+                <div class="user-name">
+                  <div class="user-img-container">
+                    <img class="post2-user-img " src="https://scontent.fdel1-2.fna.fbcdn.net/v/t1.0-9/83219598_1280190498857198_5424995061551071232_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=7VccmVIk7hsAX8ehs_u&_nc_ht=scontent.fdel1-2.fna&oh=9f6c0ab57d403881ad2f96cbef04af56&oe=606BF152" alt="">
+                  </div>
+                  <div class="username">
+                    <h5 class="name-update">Faisal Ali Khan</h5>
+                  </div>
+                </div>
+
+                <div class="date-post">
+                  <div class="date-container">
+                    <h6>09/March/2021</h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="post-footer">
+                <div class="genre-icons">
+
+                    <i onclick="takeAction(null, 'like')" class="far fa-heart n-ic"></i>
+                    <i onclick="takeAction(null, 'comment')"class="far fa-comments n-ic"></i>
+                    <i class="fas fa-share-alt n-ic"></i>
+                    <i class="far fa-bookmark n-ic"></i>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+        <div class="comment-section">
+            <div class="comment-section-container">
+              <div class="comment-txt-div">
+                <h5>Comments..</h5>
+              </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="mid-div-posts-container">
+
+
+          <%for(var i=0;i< events.length; i++){%>
+
+          <div class="posts-row row">
+
+
+
+              <div class="col-lg-6 post-col">
+                <div class="post">
+                  <div class="post-container">
+                    <div class="image-container">
+                      <div class="img-container-inner">
+                        <img src="https://drive.google.com/uc?export=view&id=<%= events[i].image %>" alt="">
+                      </div>
+                    </div>
+                    <div class="post-details">
+                      <div class="genre-container">
+
+                      <h5 class="<%= events[i].genre%>"><%= events[i].genre%></h5>
+
+                        <div class="genre-icons">
+                            <i class="fas fa-share-alt n-ic"></i>
+
+
+
+                            <%
+                            let bool = false;
+                            if(user.archived) {
+                              for(let j = 0; j< user.archived.length; j++) {
+                                if(user.archived[j].pid.toString() === events[i]._id.toString()) {
+                                  bool = true;
+                                }
+                              }
+                            }
+
+                            if(bool) { %>
+                               <i onclick="undoAction('<%= events[i]._id.toString() %>', 'archive')" class="fa fa-bookmark n-ic"></i>
+
+                            <% } else { %>
+
+                               <i onclick="takeAction('<%= events[i]._id.toString() %>', 'archive')" class="far fa-bookmark n-ic"></i>
+                            <% } %>
+
+                        </div>
+                      </div>
+
+                      <div class="title-container">
+                        <h4><%= events[i].title %></h4>
+                      </div>
+                      <div class="read-more">
+                        <p><a href="#" class="toggler-main-post" onclick="postdata('<%= events[i]._id %>')">Read more..</a></p>
+                      </div>
+
+                      <div class="user-details">
+                        <div class="user-name">
+                          <div class="user-img-container">
+                            <img src="https://drive.google.com/thumbnail?id=<%=users[i].image%>" alt="">
+                          </div>
+                          <div class="username">
+                            <h5><%= users[i].name %></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="date-container">
+                        <h6>09/March/2021</h6>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <% if(events[i+1]) {%>
+
+
+              <div class="col-lg-6 post-col">
+                <div class="post">
+                  <div class="post-container">
+                    <div class="image-container">
+                      <div class="img-container-inner">
+                        <img src="https://drive.google.com/uc?export=view&id=<%=events[i+1].image%>" alt="">
+                      </div>
+                    </div>
+                    <div class="post-details">
+                      <div class="genre-container">
+                        <h5 class="<%= events[i+1].genre%>"><%= events[i+1].genre%></h5>
+                        <div class="genre-icons">
+                            <i class="fas fa-share-alt n-ic"></i>
+
+
+                            <%
+                            let bool = false;
+                            if(user.archived){
+                            for(let j = 0; j< user.archived.length; j++) {
+                              if(user.archived[j].pid.toString() === events[i+1]._id.toString()) {
+                                bool = true;
+
+                              }
+                            }
+                          }
+                            if(bool) { %>
+                               <i onclick="undoAction('<%= events[i+1]._id.toString() %>', 'archive')" class="fa fa-bookmark n-ic"></i>
+                               <% bool =false;%>
+
+                            <% } else { %>
+
+                               <i onclick="takeAction('<%= events[i+1]._id.toString() %>', 'archive')" class="far fa-bookmark n-ic"></i>
+                                <% bool =true;%>
+                            <% } %>
+
+                        </div>
+                      </div>
+
+                      <div class="title-container">
+                        <h4><%= events[i+1].title %></h4>
+                      </div>
+                      <div class="read-more">
+                        <p><a href="#" class="toggler-main-post" onclick="postdata('<%= events[i+1]._id %>')">Read more..</a></p>
+                      </div>
+
+                      <div class="user-details">
+                        <div class="user-name">
+                          <div class="user-img-container">
+                            <img src="https://drive.google.com/thumbnail?id=<%=users[i+1].image%>" alt="">
+                          </div>
+                          <div class="username">
+                            <h5><%= users[i+1].name %></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="date-container">
+                        <h6>09/March/2021</h6>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <% } i++; %>
+          </div>
+
+
+          <%}%>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+  </section>
+  <section class="right-div">
+    <div class="left-div-container">
+      <div class="categories-txt">
+        <a href="/events?event=trending"><div class="categories-txt-div">
+          <h5> Trending Posts </h5>
+          <div class="icon-right">
+            <i class="fas fa-chart-line"></i>
+          </div>
+        </div></a>
+        <a href="#"><div class="categories-txt-div" id="bucket">
+          <h5>Recent Posts</h5>
+          <div class="icon-right">
+            <i class="fas fa-calendar-week"></i>
+          </div>
+        </div></a>
+        <a href="/events?event=archived"><div class="categories-txt-div" id="bucket1">
+            <h5>Archived Posts </h5>
+          <div class="icon-right">
+            <i class="fa fa-bookmark"></i>
+          </div>
+        </div></a>
+
+
+
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+<!--  #################################################################   create an event pop -up #################################################  -->
+
+<div class="create-event-div-over">
+
+  <div class="create-event-container">
+    <div class="post-content-top">
+    <div class="post-content-div">
+      <div class="pop-header">
+        <h4>Create Post</h4>
+        <i class="fas fa-window-close" id="closepost"></i>
+
+      </div>
+      <hr class="hor_line">
+
+      <form action="/createPost" method="post" enctype="multipart/form-data">
+        <div class="title_div">
+          <div class="title_div_heading">Title</div>
+          <input class="title_div_input" type="text" name="title" placeholder="Enter the title">
+        </div>
+
+
+        <div class="description_div">
+          <div class="description_div_heading">Description</div>
+          <textarea class="description_div_input" placeholder="Enter the description" name="desc" rows="2"></textarea>
+
+        </div>
+
+
+        <div class="genre_div">
+          <div class="genre_div_heading">Genre</div>
+          <div class="dropdown">
+            <input class="dropdown_button" type="text" placeholder="Enter genre you are interested in" name="genre">
+            <div class="dropdown_content">
+              <span class="d-block menu-option" style="display: block;"><label><input class="checkbox" type="checkbox">Research</label></span>
+              <span class="d-block menu-option" style="display: block; margin-top:5px;"><label><input class="checkbox" type="checkbox">Technology</label></span>
+              <span class="d-block menu-option" style="display: block; margin-top:5px;"><label><input class="checkbox" type="checkbox">Internship</label></span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="photo_div">
+          <span class="fa-time"><i class="fas fa-times"></i></span>
+          <img src="" class="photo-post" alt="photo">
+        </div>
+
+        <div class="add_to_post_div">
+          <div class="add_to_post_text_div">
+            <h2 class="add_to_post_text">Add to Post</h2>
+            <i class="far fa-image"></i><input class="user-img-post" type="file" name="image" accept="image/*" />
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="add_to_post_icons">
+
+          </div>
+        </div>
+
+
+
+
+
+        <div class="toggle_section_div">
+          <div class="toggle_section_head">
+            <div class="toggle-section">
+              <h3 class="toggle_section_head_heading">Wanna add custom button?</h3>
+              <label class="switch">
+                <input type="checkbox" id="check-box" name="custom">  <!-- checked add krna hoga yaha  -->
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+            <div class="toggle_section_dropdown_content">
+              <input type="text" class="toggle_section_dropdown_content_name_input"
+              name="buttonName" placeholder="Enter name of the button">
+              <input type="text" class="toggle_section_dropdown_content_url_input"
+              name="url" placeholder="Enter the url">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="post-button-post">
+          <button type="submit" name="button">Post</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+  let pid = '';
+
+    function postdata(id){
+      pid = id
+      fetch(`/events/get/${id}`)
+      .then(response => response.json())
+      .then(async (data) =>{
+
+
+        let specificEvent = data.event;
+        let user = data.user;
+        let currentUser = data.currentUser;
+        console.log('Running');
+
+        console.log(user);
+        console.log(specificEvent);
+
+        let likeBool = false;
+        if(specificEvent.likes) {
+          for (var i = 0; i < specificEvent.likes.length; i++) {
+            if(specificEvent.likes[i].toString() === currentUser._id.toString()) likeBool = true;
+          }
+        }
+        $('.post-desc-p').html(specificEvent.desc);
+        $('.genre-update').html(specificEvent.genre);
+        $('.title-update').html(specificEvent.title);
+        $('.name-update').html(specificEvent.name);
+        $('.genre-update').html(specificEvent.genre);
+        $('.name-update').html(user.name);
+        $('.genre-update').removeClass("Technology");
+        $('.genre-update').removeClass("Internship");
+        $('.genre-update').removeClass("Research");
+        $('.genre-update').addClass(specificEvent.genre);
+        $('.post2-img').attr("src",`https://drive.google.com/uc?export=view&id=${specificEvent.image}`);
+        $('.post2-user-img').attr("src",`https://drive.google.com/thumbnail?id=${user.image}`);
+        $('.right-post').fadeTo("slow",1);
+        $('.left-post').fadeTo("slow",1);
+        if(likeBool) {
+          $('.fa-heart').attr("onclick","undoAction(null, 'like')");
+          $('.fa-heart').removeClass('far');
+          $('.fa-heart').addClass('fa');
+          likeBool = false;
+        } else {
+          $('.fa-heart').attr("onclick","takeAction(null, 'like')");
+          $('.fa-heart').removeClass('fa');
+          $('.fa-heart').addClass('far');
+          likeBool = true;
+        }
+      });
+
+
+    }
+
+
+
+    //search
+
+    async function test() {
+      // console.log('Hello');
+      let query = document.getElementById('search').value;
+      console.log("Query: ", query);
+
+      if (query.length > 3) {
+        try {
+
+          fetch(`/events/search/?query=${query}`)
+          .then(response => response.json())
+          .then(data => console.log('Data', data));
+
+        } catch (e) {
+          console.error('Query Error: ', e.message);
+        }
+
+      }
+    }
+
+
+    async function takeAction(_id, action) {
+
+      if(action === 'archive'){
+        $('.pop-event-archive').animate({
+            opacity: 1
+        },500,function(){
+
+          setTimeout(function(){
+            $('.pop-event-archive').css("opacity","0");
+          },2000);
+
+        });
+      }
+
+
+      if (action === 'like' || action === 'comment') {
+        _id = pid;
+      }
+      fetch(`/events/${_id}/takeAction/?action=${action}`);
+
+
+    }
+
+    async function undoAction(_id, action) {
+
+      if(action === 'archive'){
+        $('.pop-event-unarchive').animate({
+            opacity: 1
+        },500,function(){
+
+          setTimeout(function(){
+            $('.pop-event-unarchive').css("opacity","0");
+          },2000);
+
+        });
+      }
+
+
+      if(action === 'like') {
+        _id = pid;
+      }
+      fetch(`/events/${_id}/undoAction/?action=${action}`);
+
+    }
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<%- include('partials/footer-events') %>

@@ -1,0 +1,153 @@
+[33mcommit 931cb313194446652748220fc2d2581f205c5be7[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Sun Jan 31 17:03:51 2021 +0530
+
+    Added Contact Us
+
+[33mcommit 1e1c1ffab2b106de50301cc42cd9650bf6ebbbe2[m
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Sun Jan 31 13:22:02 2021 +0530
+
+    done some minor integrations
+
+[33mcommit 788f107ab3a51c202a8d016129cce7dde2c9b5a2[m
+Merge: fb70845 a5d139b
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Sun Jan 31 12:23:50 2021 +0530
+
+    Merge branch 'main' of https://github.com/NikhilRattaNITKKR/Debuggers into main
+
+[33mcommit fb708457b7c2a8a169db0828a2701d927a1c83e7[m
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Sun Jan 31 12:22:40 2021 +0530
+
+    minor changes
+
+[33mcommit a5d139b7d4d7486730f60ce459258574a9bef515[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Sun Jan 31 03:12:24 2021 +0530
+
+    Team section UI
+
+[33mcommit 07e66eccfa65b2c4d22bd1cf08a1a969a62a64c9[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Sat Jan 30 22:15:12 2021 +0530
+
+    Added team section
+
+[33mcommit 5e58aa86d81d821852bfbbbde56680f43fc458f8[m
+Merge: 7f5d433 a1219e1
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Sat Jan 30 00:33:52 2021 +0530
+
+    Merge branch 'main' of https://github.com/NikhilRattaNITKKR/Debuggers into main
+
+[33mcommit 7f5d433f906f533fdae7d76d8a60835ce141fc49[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Sat Jan 30 00:33:24 2021 +0530
+
+    Added home page sections
+
+[33mcommit a1219e170a42a05afc76e0eac5c47b1ff643a0e1[m
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Fri Jan 29 21:33:10 2021 +0530
+
+    done some stupid things
+
+[33mcommit fd60d512ac84be1a57e71f8aec6c16819989ecb4[m
+Merge: 54c7872 5ff15f4
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Fri Jan 29 17:27:27 2021 +0530
+
+    Merge branch 'main' of https://github.com/NikhilRattaNITKKR/Debuggers into main
+
+[33mcommit 54c7872caaeeb1db91577871e2227bdef1e53767[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Fri Jan 29 17:25:23 2021 +0530
+
+    Color theme
+
+[33mcommit 5ff15f43cc00e7e4578fe1e8566d89114b6dc6ff[m
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Thu Jan 28 19:16:28 2021 +0530
+
+    Created Models
+
+[33mcommit 91f70ec1164fdf732c09a60aff96f41752b3fd34[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Thu Jan 28 16:06:16 2021 +0530
+
+    final toggle
+
+[33mcommit ca1309d2668bf7c9e05ee22d00d755ad717d0a76[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Thu Jan 28 15:42:17 2021 +0530
+
+    toggle
+
+[33mcommit f7aa5e5ba1e1d8f4b0bc41dc5e0016691e4087f2[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Thu Jan 28 14:23:02 2021 +0530
+
+    sign up page
+
+[33mcommit c44551a8e2462cc1efa02e124f378e7290fc931c[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Thu Jan 28 10:39:48 2021 +0530
+
+    Responsive login
+
+[33mcommit 2011e4befe197388315f37a1754b9f1e11575053[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Wed Jan 27 23:31:09 2021 +0530
+
+    login page
+
+[33mcommit ce054e12c0cf79f0823a5163ed434d7d76db5a09[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Wed Jan 27 19:21:46 2021 +0530
+
+    Responsive
+
+[33mcommit 00df03804a0397114bc229119b8d4f2845528d74[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Wed Jan 27 18:29:55 2021 +0530
+
+    style
+
+[33mcommit 5faaaa086c02a69183b611e06efb9d17e4001097[m
+Merge: b12edd0 78698fe
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Wed Jan 27 18:04:35 2021 +0530
+
+    Merge branch 'main' of https://github.com/NikhilRattaNITKKR/Debuggers into main
+
+[33mcommit b12edd03c6db0ff2bdb5f7347ecbb1bee9b54adc[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Wed Jan 27 18:04:24 2021 +0530
+
+    Button style
+
+[33mcommit 78698fea60de2796f08e20acd027d704bd6eb7e7[m
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Wed Jan 27 17:56:52 2021 +0530
+
+    created the MVR model
+
+[33mcommit f2505188cc3fb33841c8ebba345628da5c0a0569[m
+Author: Faisal <faisalalik9@gmail.com>
+Date:   Wed Jan 27 10:11:10 2021 +0530
+
+    Home and login Page added
+
+[33mcommit 77ea319b3b9b6bfd8fbf9f2a4d55ca29f0adad35[m
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Fri Jan 22 17:57:55 2021 +0530
+
+    some packages
+
+[33mcommit 4213869ef3b7ba0253f91d13238e56e85dcdfbd1[m
+Author: Nikhil Ratta <nikhilratta84@gmail.com>
+Date:   Fri Jan 22 17:46:33 2021 +0530
+
+    Init commit

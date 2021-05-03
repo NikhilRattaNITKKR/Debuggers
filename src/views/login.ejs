@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <!--try to use partials in all view files-->
+    <title>Debuggers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/nav.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7d0e898fba.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/aea9fc94ab.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/"><i class="fas fa-bug icon"></i><p class="brand_name">Debuggers</p></a>
+        </nav>
+
+
+<div class="block1">
+  <div class="block1-container">
+    <div class="container">
+    <div class="row box1">
+      <div class="col-md-7 col-sm-2 col-1 left1">
+
+      </div>
+      <div class="col-md-5 col-sm-10 col-11 right1">
+        <form action="/logIn" method="post">
+        <div class="top-welcome">
+            Welcome Debuggers
+        </div>
+
+        <div class="login-text">
+          Login Your Account
+        </div>
+
+        <div class="username">
+          <input type="text" name="email" placeholder="Username">
+          <select  name="college">
+            <option value="@nitkkr.ac.in">@nitkkr.ac.in</option>
+            <option value="@svnit.ac.in">@svnit.ac.in</option>
+            <option value="@mnnit.ac.in">@mnnit.ac.in</option>
+          </select>
+        </div>
+        <div class="password">
+          <input type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="button-login">
+          <button type="submit">Login</button>
+        </div>
+
+        <div class="create-account">
+            <a href="/SignUp">Create Account</a>
+        </div>
+
+        <div class="forgot-pass">
+          <a href="#">Forgot Your Password?</a>
+        </div>
+      </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('partials/footer') -%>

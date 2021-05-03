@@ -1,0 +1,220 @@
+*{
+  background: url('');
+  font-family: "Helvetica";
+}
+.block1-container{
+  margin-top: 80px;
+}
+
+
+.box1{
+  height: calc(73.1vh);
+  border-radius:25px;
+  margin: 0 30px;
+}
+
+.left1{
+  background: #9507EC;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 50px 0px 0px 50px;
+  padding-right: 0;
+}
+
+.right1{
+
+  padding-left: 0;
+  border-radius: 0px 50px 50px 0px;
+   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.top-welcome{
+width:250px;
+height:42px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+background: #9507EC;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 0px 50px 50px 0px;
+transform: translateY(20px);
+font-size: 19px;
+}
+
+.login-text{
+  display: flex;
+  justify-content: center;
+  padding-left: 8%;
+  transform: translateY(70px);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  transform: translateY(90px);
+  padding-left: 8%;
+  border-radius: 20px;
+}
+.btn1, .btn2{
+  border: none;
+  float: left;
+  height: 40px;
+
+}
+.btn1{
+  padding: 0 10px;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0px 1px 1px 0.5px rgba(0, 0, 0, 0.25);
+}
+.btn2{
+    padding: 0 15px;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 2px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+.btn1:hover{
+  background:#FFD700;
+  color:white;
+
+}
+.btn2:hover{
+  background:#FFD700;
+  color:white;
+}
+
+.btn1:focus{
+  outline: none;
+  border: none;
+  background:#FFD700;
+  color:white;
+}
+
+.btn2:focus{
+  outline: none;
+  border: none;
+  background:#FFD700;
+  color:white;
+}
+.active{
+  outline: none;
+  border: none;
+  background:#FFD700;
+  color:white;
+}
+
+.username {
+  display: flex;
+  justify-content: center ;
+  transform: translateY(130px);
+  padding-left: 16.5%;
+}
+.username input{
+  background: none;
+  border: none;
+  transition: 300ms;
+  width: 40%;
+}
+.username input:focus{
+  background: none;
+  border: none;
+  outline: none;
+  transform: translateY(-10px);
+  border-bottom: 1.5px solid black;
+}
+
+.username select{
+  background: none;
+  outline: none;
+  border: none;
+  color: gray;
+
+}
+.username select:focus{
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.password{
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+  transform: translateY(160px);
+}
+
+.password input{
+  background: none;
+  border: none;
+  transition: 300ms;
+}
+
+.password input:focus{
+  background: none;
+  border: none;
+  outline: none;
+  transform: translateY(-10px);
+  border-bottom: 1.5px solid black;
+}
+
+.confirm-password{
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+  transform: translateY(190px);
+}
+
+.confirm-password input{
+  background: none;
+  border: none;
+  transition: 300ms;
+}
+
+.confirm-password input:focus{
+  background: none;
+  border: none;
+  outline: none;
+  transform: translateY(-10px);
+  border-bottom: 1.5px solid black;
+}
+
+.button-login{
+  display: flex;
+  justify-content: center ;
+  transform: translateY(240px);
+
+}
+
+.button-login button{
+  background: none;
+  border: none;
+  width: 170px;
+  height:40px;
+  background: linear-gradient(180deg, #9507EC 44.06%, rgba(149, 7, 236, 0) 100%);
+  border-radius: 50px;
+  transition: 300ms;
+  color: white;
+  font-weight: bold;
+}
+
+.button-login button:hover{
+  transform: translateY(-10px);
+}
+
+.button-login button:focus{
+  outline: none;
+
+}
+
+
+
+.forgot-pass{
+  display: flex;
+  justify-content: center ;
+  transform: translateY(260px);
+}
+
+.forgot-pass a{
+  text-decoration: none;
+  color: #0024E0;
+}

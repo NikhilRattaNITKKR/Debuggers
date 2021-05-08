@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 const Realm = require("realm");
 const mainRouter=require('./routes/mainRouter');
 
+
 const app=express();
 
 
@@ -28,8 +29,13 @@ app.use(cookieParser());
 
 app.use(mainRouter);
 
+
+ 
+
 app.use("*", function(req, res) {
   res.render('404', {title: 'Error 404'});
 });
+
+
 
 module.exports=app;

@@ -1,0 +1,298 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-div{
+  width: 100%;
+  height: calc(100vh - 59.6px);
+  padding: 2%;
+}
+
+.main-div-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gossip-box-div{
+  width: 75%;
+  height: 85%;
+  display: flex;
+
+}
+
+.gossip-box-left{
+  width: 35%;
+  height: 100%;
+  border-radius: 35px 0 0 35px;
+  background: #F5F5F5;
+  box-shadow: -10px 6px 10px #eeeeee;
+
+}
+
+.gossip-left-container{
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+}
+.gossip-room-txt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gossip-room-txt h3{
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.create-new-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin: 2vh 0;
+
+}
+.create-new-group button{
+  width: 75%;
+  height: 7vh;
+  background: #727BFF;
+  border: none;
+  border-radius: 25px;
+  transition: all 300ms linear;
+  color: white;
+}
+.create-new-group button:focus{
+  outline: none;
+}
+.create-inner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-plus{
+  margin: 0 !important;
+  margin-right: 1vw !important;
+  color: white !important;
+  font-size: 25px !important;
+}
+
+.gossip-groups{
+  margin-top: 4vh;
+}
+
+.gossip-groups ul{
+  list-style: none;
+  overflow-y: scroll;
+}
+
+
+.group-div{
+  padding: 3.5% 0;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 5%;
+  align-items: center;
+  border-bottom: 1px solid #dddddd;
+  position: relative;
+  cursor: pointer;
+  transition: all 300ms ease-in;
+  /* border-left: 7px solid transparent; */
+}
+
+.group-div:hover{
+  border-left: 7px solid #727bff;
+}
+
+.gossip-groups li:first-of-type{
+  border-top: 1px solid #dddddd;
+}
+.group-logo-container{
+  clip-path: circle();
+  width: 6vh;
+  height: 6vh;
+  overflow: hidden;
+  margin-right: 1vw;
+}
+
+.group-logo-container img{
+  width: 100%;
+  height: 100%;
+}
+
+.group-name h5{
+  margin: 0;
+}
+
+.group-mem{
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+}
+
+.group-active{
+  border-left: 7px solid #727bff;
+  background: linear-gradient(90deg, #727bff, 0.03%, transparent);
+}
+
+
+
+.gossip-box-right{
+  border-radius: 0 35px 35px 0;
+  width: 65%;
+  height: 100%;
+  background: #F5F5F5;
+}
+
+.gossip-box-right-container{
+  width: 100%;
+  height: 100%;
+  padding: 3%;
+  padding-left: 0;
+}
+.right-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5vh;
+}
+.right-group-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1vw;
+}
+
+.leave-room{
+  margin-right: 2vw;
+  font-size: 14px;
+  padding: 0.5% 1.5%;
+  border-radius: 15px;
+  border: 3px solid #FF5733;
+  color: #FF5733;
+}
+
+.right-body{
+  width: 100%;
+  height: 88%;
+  background: white;
+  border-radius: 0 35px 35px 0;
+}
+
+.messages-container{
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.message-div-ot{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2%;
+}
+
+.messages-div-user{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 2%;
+}
+
+.message{
+  display: flex;
+}
+
+.user-img{
+  clip-path: circle();
+  width: 5vh;
+  height: 5vh;
+  overflow: hidden;
+  margin-right: 1vw;
+}
+.user-img img{
+  height: 100%;
+}
+.message-text{
+  padding: 6px 10px;
+  background: #dddddd;
+  flex-wrap: wrap;
+  max-width: 25vw;
+  overflow-wrap: break-word;
+  border-radius: 0 15px 15px 0;
+}
+.msg-txt-user{
+  border-radius: 15px 0 0 15px !important;
+}
+.right-body-container{
+  width: 100%;
+  height: 85%;
+  background-image: url(https://i.redd.it/qwd83nc4xxf41.jpg);
+  background-size: contain;
+}
+
+.msg-user{
+  margin-right: 0 !important;
+  margin-left: 1vw;
+}
+
+.send-msg-div{
+  height: 15%;
+  width: 100%;
+}
+.send-msg-container{
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.send-msg-input{
+  width: 80%;
+  height: 100%;
+}
+
+.send-msg-input input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 1%;
+  padding-top: 0;
+  border-bottom: 2px solid #cccccc;
+}
+
+.send-msg-input input:focus{
+  outline: none;
+}
+
+.send-msg-btn{
+  width: 20%;
+  height: 100%;
+}
+
+.send-msg-btn button{
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  text-align: start;
+  padding-left: 15%;
+}
+.send-msg-btn button:focus{
+  outline: none;
+}
+
+.fa-paper-plane{
+  color: #aaaaaa;
+  font-size: 32px;
+  transition: all 300ms linear;
+}
+.fa-paper-plane:hover{
+  color: black;
+}

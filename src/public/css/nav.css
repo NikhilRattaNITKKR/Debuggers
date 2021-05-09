@@ -4,7 +4,7 @@
 }
 ::-webkit-scrollbar-thumb{
   background: linear-gradient(transparent,#4D217B );
-  border-radius: 5px;
+ 
 }
 ::-webkit-scrollbar-thumb:hover{
   background: linear-gradient(transparent,#0014ff);

@@ -10,7 +10,7 @@ const profileControllers = require("../controllers/profile")
 const doubtControllers = require("../controllers/doubt");
 const eventControllers = require("../controllers/event");
 const router=new express.Router();       //creates a new router object basically it contains all the functions we need like get,post,delete.patchs
-
+const gossipController = require("../controllers/gossip");
 
 router.route('/').get(userControllers.getHome);
 
@@ -44,6 +44,14 @@ router.route('/doubtforum/:id/:aid/updateAnswer').get(doubtControllers.updateAns
 router.route('/post').get(function(req,res){
   res.render('post');
 });
+
+
+
+router.get("/gossip" ,function(req,res){
+    res.render("gossip");
+});
+
+
 
 
 //router.route('/comments/:id').get(userControllers.getComments);

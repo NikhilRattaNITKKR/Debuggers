@@ -112,6 +112,8 @@ function xyz(){
 
 
 function editQuestion(){
+  window.history.pushState("", "", "/doubtforum/updateDoubt");
+
   $('.beforeQues').css("display","none");
   $('.beforeDesc').css("display","none");
 
